@@ -1,0 +1,40 @@
+name: 推荐一个 Skill
+description: 提交新的 Agent Skill 或 Harness 候选
+title: "[Candidate] "
+labels: ["candidate"]
+body:
+  - type: input
+    id: source
+    attributes:
+      label: 原始仓库
+      placeholder: https://github.com/owner/repo
+    validations:
+      required: true
+  - type: input
+    id: path
+    attributes:
+      label: SKILL.md 精确路径
+      placeholder: skills/example/SKILL.md
+    validations:
+      required: true
+  - type: textarea
+    id: value
+    attributes:
+      label: 解决的工作问题
+      description: 说明触发场景、节省的步骤和预期产出。
+    validations:
+      required: true
+  - type: textarea
+    id: security
+    attributes:
+      label: 权限与安全检查
+      description: 记录脚本、网络、凭据、外部写入和高权限行为。
+    validations:
+      required: true
+  - type: textarea
+    id: compatibility
+    attributes:
+      label: Pi / OpenCode 测试
+      description: 未运行请明确写 not-run。
+    validations:
+      required: true

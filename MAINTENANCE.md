@@ -39,6 +39,19 @@ site:github.com agent skills leaderboard weekly installs
 8. 运行 `python scripts/validate_catalog.py`。
 9. 只有发现有意义变化时才提交；纯排名波动不更新。
 
+## 精选清单的数据规则
+
+`data/recommended-skills.json` 是精选层的机器可读数据。新增或更新精选项时必须同步检查：
+
+- 精确 `SKILL.md` 路径；
+- 审查时观察到的 40 位第三方 commit，以及是否能通过 GitHub API 和网页双重解析；
+- SPDX 许可证标识；
+- 按 `SCORING.md` 计算的分数与独立风险等级；
+- `source_path`、`install_syntax`、`runtime_pi` 和 `runtime_opencode` 状态；
+- `catalog/recommended-stack.md` 中的用途、命令和风险说明。
+
+第三方默认分支变化不应自动覆盖固定 commit。先比较差异，再更新 commit 和核验日期。commit 未通过双重解析时，将 `pinning_status` 保持为 `pending-upstream-commit-verification`，对外链接使用 `main` 的精确路径。
+
 ## 更新准则
 
 有意义变化包括：
@@ -50,6 +63,8 @@ site:github.com agent skills leaderboard weekly installs
 - 链接失效或原有描述已经不准确。
 
 每日自动任务应保持安静，未发现有意义变化时不提交、不通知。发现候选但证据不足时，只更新观察清单并注明原因。任何第三方脚本都不能因为自动更新任务而被直接执行。
+
+每周一可以生成一次 `reports/weekly/` 简报，汇总新增、上升、降级、移除和 Pi/OpenCode 兼容性变化。没有有意义变化时不创建空报告。
 
 ## 人工复核重点
 

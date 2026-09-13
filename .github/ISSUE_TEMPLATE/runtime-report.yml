@@ -1,0 +1,47 @@
+name: 提交实机测试记录
+description: 记录一个 Skill 在 Pi 或 OpenCode 中的真实行为
+title: "[Runtime] "
+labels: ["runtime-test"]
+body:
+  - type: dropdown
+    id: agent
+    attributes:
+      label: Agent
+      options:
+        - Pi
+        - OpenCode
+    validations:
+      required: true
+  - type: input
+    id: skill
+    attributes:
+      label: Skill 名称
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Agent 版本与 Skill commit
+    validations:
+      required: true
+  - type: textarea
+    id: trigger
+    attributes:
+      label: 应触发案例
+      description: 给出 prompt、是否加载 Skill、主要工具调用和结果。
+    validations:
+      required: true
+  - type: textarea
+    id: negative
+    attributes:
+      label: 不应触发案例
+      description: 给出 prompt 和实际行为。
+    validations:
+      required: true
+  - type: textarea
+    id: side_effects
+    attributes:
+      label: 权限与副作用
+      description: 文件、命令、网络、凭据和外部写入。
+    validations:
+      required: true

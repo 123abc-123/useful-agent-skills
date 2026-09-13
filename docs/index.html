@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="面向算法工程师的 Pi 与 OpenCode Agent Skills 精选目录">
+  <title>Useful Agent Skills</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #162033;
+      --muted: #637083;
+      --line: #dce2ea;
+      --paper: #f5f7fa;
+      --card: #ffffff;
+      --accent: #2f5bea;
+      --accent-soft: #e9efff;
+      --low: #157347;
+      --medium: #9a6700;
+      --high: #b42318;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font: 15px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+    }
+    header {
+      padding: 56px max(24px, calc((100vw - 1120px) / 2));
+      color: #fff;
+      background: linear-gradient(135deg, #172554, #2f5bea 65%, #6b8cff);
+    }
+    h1 { margin: 0 0 8px; font-size: clamp(30px, 5vw, 52px); letter-spacing: -.04em; }
+    header p { max-width: 720px; margin: 0; color: #dbe5ff; font-size: 17px; }
+    main { max-width: 1120px; margin: 0 auto; padding: 28px 24px 64px; }
+    .controls {
+      display: grid;
+      grid-template-columns: minmax(220px, 1fr) repeat(2, minmax(150px, 220px));
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    input, select {
+      width: 100%;
+      padding: 11px 12px;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      background: var(--card);
+      color: var(--ink);
+      font: inherit;
+    }
+    .summary { margin: 12px 0 20px; color: var(--muted); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+    article {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      background: var(--card);
+      box-shadow: 0 7px 24px rgba(22, 32, 51, .05);
+    }
+    article h2 { margin: 0 0 8px; font-size: 18px; }
+    article p { min-height: 47px; margin: 0 0 14px; color: var(--muted); }
+    .meta { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
+    .tag { padding: 3px 8px; border-radius: 999px; background: var(--accent-soft); color: #2446ad; font-size: 12px; }
+    .risk-low { color: var(--low); background: #e8f5ee; }
+    .risk-medium { color: var(--medium); background: #fff5d6; }
+    .risk-high { color: var(--high); background: #ffebe9; }
+    .links { display: flex; gap: 13px; }
+    a { color: var(--accent); text-decoration: none; font-weight: 650; }
+    a:hover { text-decoration: underline; }
+    .empty { padding: 36px; text-align: center; color: var(--muted); }
+    footer { margin-top: 36px; color: var(--muted); }
+    @media (max-width: 720px) { .controls { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Useful Agent Skills</h1>
+    <p>面向算法工程师的 Pi 与 OpenCode 精选目录。热度用于发现，源码、维护、权限和实机验证决定是否采用。</p>
+  </header>
+  <main>
+    <div class="controls" aria-label="筛选器">
+      <input id="query" type="search" placeholder="搜索名称、用途或来源" aria-label="搜索">
+      <select id="category" aria-label="分类"><option value="">全部分类</option></select>
+      <select id="risk" aria-label="风险"><option value="">全部风险</option><option value="low">低风险</option><option value="medium">中风险</option><option value="high">高风险</option></select>
+    </div>
+    <div id="summary" class="summary">正在读取目录…</div>
+    <section id="grid" class="grid" aria-live="polite"></section>
+    <footer>
+      数据来自仓库中的 <a href="https://github.com/123abc-123/useful-agent-skills/blob/main/data/recommended-skills.json">recommended-skills.json</a>。
+      <a href="https://github.com/123abc-123/useful-agent-skills">查看完整清单与安全说明</a>。
+    </footer>
+  </main>
+  <script>
+    const labels = { low: "低风险", medium: "中风险", high: "高风险" };
+    let skills = [];
+    let pinningStatus = "pending-upstream-commit-verification";
+    const query = document.querySelector("#query");
+    const category = document.querySelector("#category");
+    const risk = document.querySelector("#risk");
+    const grid = document.querySelector("#grid");
+    const summary = document.querySelector("#summary");
+
+    function sourceUrl(skill) {
+      const ref = pinningStatus === "verified" && skill.commit !== "main" ? skill.commit : "main";
+      return "https://github.com/" + skill.source + "/blob/" + ref + "/" + skill.path;
+    }
+
+    function escapeHtml(value) {
+      return String(value).replace(/[&<>"']/g, character => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;"
+      })[character]);
+    }
+
+    function render() {
+      const term = query.value.trim().toLowerCase();
+      const filtered = skills.filter(skill => {
+        const text = (skill.name + " " + skill.purpose + " " + skill.source).toLowerCase();
+        return (!term || text.includes(term)) &&
+          (!category.value || skill.category === category.value) &&
+          (!risk.value || skill.risk === risk.value);
+      });
+      summary.textContent = "显示 " + filtered.length + " / " + skills.length + " 项；实机状态以数据字段为准。";
+      grid.innerHTML = filtered.map(skill =>
+        '<article>' +
+          '<h2>' + escapeHtml(skill.name) + '</h2>' +
+          '<p>' + escapeHtml(skill.purpose) + '</p>' +
+          '<div class="meta">' +
+            '<span class="tag">' + escapeHtml(skill.category) + '</span>' +
+            '<span class="tag">评分 ' + skill.score + '</span>' +
+            '<span class="tag risk-' + skill.risk + '">' + labels[skill.risk] + '</span>' +
+            '<span class="tag">Pi ' + escapeHtml(skill.runtime_pi) + '</span>' +
+            '<span class="tag">OpenCode ' + escapeHtml(skill.runtime_opencode) + '</span>' +
+          '</div>' +
+          '<div class="links"><a href="' + sourceUrl(skill) + '">精确源码</a>' +
+          '<a href="https://github.com/' + escapeHtml(skill.source) + '">' + escapeHtml(skill.source) + '</a></div>' +
+        '</article>'
+      ).join("") || '<div class="empty">没有符合条件的 Skill。</div>';
+    }
+
+    fetch("./skills.json")
+      .then(response => {
+        if (!response.ok) throw new Error(response.status);
+        return response.json();
+      })
+      .then(data => {
+        skills = data.skills;
+        pinningStatus = data.pinning_status;
+        [...new Set(skills.map(skill => skill.category))].sort().forEach(value => {
+          const option = document.createElement("option");
+          option.value = value;
+          option.textContent = value;
+          category.appendChild(option);
+        });
+        render();
+      })
+      .catch(() => {
+        summary.textContent = "目录读取失败，请前往 GitHub 查看原始数据。";
+      });
+    [query, category, risk].forEach(element => element.addEventListener("input", render));
+  </script>
+</body>
+</html>

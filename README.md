@@ -8,6 +8,7 @@
 
 | 目标 | 推荐入口 |
 |---|---|
+| 直接安装一组经过筛选的 Skill | [算法工程师精选组合](catalog/recommended-stack.md) |
 | 找适合算法工程的 Skill | [分类清单](catalog/skills.md) |
 | 理解 Harness、搭建团队工作流 | [Harness 专题](catalog/harness.md) |
 | 系统学习 Skill、MCP、Agent、评测 | [学习资源](catalog/learning-resources.md) |
@@ -15,11 +16,13 @@
 | 关注新项目和低成熟度项目 | [观察清单](catalog/watchlist.md) |
 | 了解收录与每日更新规则 | [维护规则](MAINTENANCE.md) |
 
+可搜索的网页目录源码位于 [`docs/index.html`](docs/index.html)，部署成功后由 GitHub Pages 提供。页面直接读取机器可读的 [`data/recommended-skills.json`](data/recommended-skills.json)。
+
 ## 最值得先试的 12 组
 
 1. [Hugging Face Skills](https://github.com/huggingface/skills)：数据集、训练、评测、论文、Spaces 与本地模型。
 2. [Scientific Agent Skills](https://github.com/K-Dense-AI/scientific-agent-skills)：科研与机器学习工具链覆盖面广。
-3. [Superpowers Skills](https://github.com/obra/superpowers-skills)：系统调试、计划、验证、代码评审与 Git worktree。
+3. [Superpowers](https://github.com/obra/superpowers)：系统调试、计划、验证、代码评审与 Git worktree。
 4. [GitHub Awesome Copilot Skills](https://github.com/github/awesome-copilot)：代码库理解、技术调研、实现计划、Phoenix 评测与 tracing。
 5. [Trail of Bits Skills](https://github.com/trailofbits/skills)：静态分析、供应链、模糊测试、属性测试和安全审计。
 6. [Playwright CLI](https://github.com/microsoft/playwright-cli)：让 Coding Agent 执行浏览器测试和页面检查。
@@ -48,6 +51,24 @@
 # OpenCode
 .opencode/skills/<skill-name>/SKILL.md
 ~/.config/opencode/skills/<skill-name>/SKILL.md
+```
+
+使用 Skills CLI 同时安装到 Pi 与 OpenCode：
+
+```bash
+npx skills add <owner>/<repo> --skill <skill-name> -a pi -a opencode --copy
+```
+
+本仓库已经提供五个无脚本的算法工程 Skill：
+
+```bash
+npx skills add 123abc-123/useful-agent-skills \
+  --skill data-leakage-audit \
+  --skill experiment-review \
+  --skill model-eval-report \
+  --skill training-failure-debug \
+  --skill paper-to-technical-spike \
+  -a pi -a opencode --copy
 ```
 
 安装第三方 Skill 的推荐过程：

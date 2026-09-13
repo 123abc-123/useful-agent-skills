@@ -1,0 +1,27 @@
+name: Catalog CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: "30 1 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate catalog and local skills
+        run: python scripts/validate_catalog.py
+      - name: Check external links
+        run: python scripts/check_links.py --timeout 15 --workers 8

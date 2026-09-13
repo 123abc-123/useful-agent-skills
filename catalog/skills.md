@@ -35,17 +35,17 @@
 
 | Skill | 作用 | 适用场景 | Pi / OpenCode | 成熟度 | 链接 |
 |---|---|---|---|---|---|
-| `systematic-debugging` | 按证据定位根因，避免反复猜修复 | 复杂 Bug、训练异常、线上故障 | 标准；Pi 有适配说明 | B | [Superpowers Skills](https://github.com/obra/superpowers-skills) |
-| `verification-before-completion` | 完成前运行验证并给出证据 | 防止 Agent 虚报完成 | 标准；Pi 有适配说明 | B | [Superpowers Skills](https://github.com/obra/superpowers-skills) |
-| `test-driven-development` | 先定义失败测试，再实现功能 | 稳定改动和回归保护 | 标准；Pi 有适配说明 | B | [Superpowers Skills](https://github.com/obra/superpowers-skills) |
-| `when-stuck` | 卡住时系统切换调查路径 | 减少无效重试 | 标准；Pi 有适配说明 | B | [Superpowers Skills](https://github.com/obra/superpowers-skills) |
-| `brainstorming` | 在编码前澄清目标和约束 | 新功能、方案探索 | 标准；Pi 有适配说明 | B | [Superpowers Skills](https://github.com/obra/superpowers-skills) |
-| `writing-plans` | 把目标拆成可执行步骤 | 跨文件、跨模块改造 | 标准；Pi 有适配说明 | B | [Superpowers Skills](https://github.com/obra/superpowers-skills) |
-| `executing-plans` | 按检查点执行并验证计划 | 长任务、迁移任务 | 标准；Pi 有适配说明 | B | [Superpowers Skills](https://github.com/obra/superpowers-skills) |
-| `requesting-code-review` | 在合适节点组织代码评审 | PR 前自检、团队评审 | 标准；Pi 有适配说明 | B | [Superpowers Skills](https://github.com/obra/superpowers-skills) |
-| `receiving-code-review` | 验证并处理评审意见 | 避免盲目接受错误建议 | 标准；Pi 有适配说明 | B | [Superpowers Skills](https://github.com/obra/superpowers-skills) |
-| `using-git-worktrees` | 用隔离 worktree 并行开发 | 多任务、多 Agent | 标准；Pi 有适配说明 | B | [Superpowers Skills](https://github.com/obra/superpowers-skills) |
-| `finishing-a-development-branch` | 收尾分支、验证和交付 | PR/合并前 | 标准；Pi 有适配说明 | B | [Superpowers Skills](https://github.com/obra/superpowers-skills) |
+| `systematic-debugging` | 按证据定位根因，避免反复猜修复 | 复杂 Bug、训练异常、线上故障 | 标准 | B | [Superpowers](https://github.com/obra/superpowers) |
+| `verification-before-completion` | 完成前运行验证并给出证据 | 防止 Agent 虚报完成 | 标准 | B | [Superpowers](https://github.com/obra/superpowers) |
+| `test-driven-development` | 先定义失败测试，再实现功能 | 稳定改动和回归保护 | 标准 | B | [Superpowers](https://github.com/obra/superpowers) |
+| `when-stuck` | 卡住时系统切换调查路径 | 减少无效重试 | 标准；旧拆分仓库 | C | [Superpowers Skills](https://github.com/obra/superpowers-skills) |
+| `brainstorming` | 在编码前澄清目标和约束 | 新功能、方案探索 | 标准 | B | [Superpowers](https://github.com/obra/superpowers) |
+| `writing-plans` | 把目标拆成可执行步骤 | 跨文件、跨模块改造 | 标准 | B | [Superpowers](https://github.com/obra/superpowers) |
+| `executing-plans` | 按检查点执行并验证计划 | 长任务、迁移任务 | 标准 | B | [Superpowers](https://github.com/obra/superpowers) |
+| `requesting-code-review` | 在合适节点组织代码评审 | PR 前自检、团队评审 | 标准 | B | [Superpowers](https://github.com/obra/superpowers) |
+| `receiving-code-review` | 验证并处理评审意见 | 避免盲目接受错误建议 | 标准 | B | [Superpowers](https://github.com/obra/superpowers) |
+| `using-git-worktrees` | 用隔离 worktree 并行开发 | 多任务、多 Agent | 标准 | B | [Superpowers](https://github.com/obra/superpowers) |
+| `finishing-a-development-branch` | 收尾分支、验证和交付 | PR/合并前 | 标准 | B | [Superpowers](https://github.com/obra/superpowers) |
 | `acquire-codebase-knowledge` | 扫描代码库并生成结构化认知 | 接手陌生项目 | 标准 | A | [Awesome Copilot Skills](https://github.com/github/awesome-copilot) |
 | `create-technical-spike` | 组织短期技术验证 | 新库选型、性能探索 | 标准 | A | [Awesome Copilot Skills](https://github.com/github/awesome-copilot) |
 | `create-implementation-plan` | 生成与仓库对应的实现计划 | 中大型需求 | 标准 | A | [Awesome Copilot Skills](https://github.com/github/awesome-copilot) |
