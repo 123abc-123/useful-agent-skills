@@ -16,7 +16,7 @@
 | 关注新项目和低成熟度项目 | [观察清单](catalog/watchlist.md) |
 | 了解收录与每日更新规则 | [维护规则](MAINTENANCE.md) |
 
-可搜索的网页目录源码位于 [`docs/index.html`](docs/index.html)，部署成功后由 GitHub Pages 提供。页面直接读取机器可读的 [`data/recommended-skills.json`](data/recommended-skills.json)。
+可搜索的网页目录已经上线：[Useful Agent Skills](https://123abc-123.github.io/useful-agent-skills/)。页面直接读取机器可读的 [`data/recommended-skills.json`](data/recommended-skills.json)。
 
 ## 最值得先试的 12 组
 
