@@ -6,6 +6,8 @@ on:
     paths:
       - "docs/**"
       - "data/recommended-skills.json"
+      - "data/prompts.json"
+      - "prompts/**"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
 
@@ -30,7 +32,11 @@ jobs:
         run: |
           mkdir _site
           cp docs/index.html _site/index.html
+          cp docs/prompts.html _site/prompts.html
           cp data/recommended-skills.json _site/skills.json
+          cp data/prompts.json _site/prompts.json
+          mkdir -p _site/prompts
+          cp prompts/*.prompt.md _site/prompts/
           touch _site/.nojekyll
       - name: Configure Pages
         uses: actions/configure-pages@v5

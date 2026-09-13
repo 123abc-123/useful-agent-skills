@@ -11,6 +11,7 @@
 - Pi、OpenCode、Hugging Face、Microsoft、GitHub、Cloudflare、Trail of Bits、Sentry 等官方或工程团队仓库；
 - 榜单与发现目录，但不把安装量、增长率或排名直接当作推荐依据；
 - Harness、context engineering、agent evals、observability、skill security 等关键词。
+- Prompt library、prompt patterns、prompt evaluation、prompt regression 和 red teaming 工具。
 
 建议组合查询：
 
@@ -23,6 +24,7 @@ site:github.com LLM eval tracing skill
 site:github.com agent skill security scanner
 site:skills.sh agent skill trending
 site:github.com agent skills leaderboard weekly installs
+site:github.com prompt library prompt evaluation agent
 ```
 
 榜单来源和各自统计口径见 `catalog/discovery-sources.md`。每日任务至少交叉检查一个原始榜单、一个二次趋势来源和候选 Skill 的 GitHub 原仓库。
@@ -51,6 +53,17 @@ site:github.com agent skills leaderboard weekly installs
 - `catalog/recommended-stack.md` 中的用途、命令和风险说明。
 
 第三方默认分支变化不应自动覆盖固定 commit。先比较差异，再更新 commit 和核验日期。commit 未通过双重解析时，将 `pinning_status` 保持为 `pending-upstream-commit-verification`，对外链接使用 `main` 的精确路径。
+
+## Prompt Library 数据规则
+
+`data/prompts.json` 是原创 Prompt 的机器可读索引。新增或修改模板时必须：
+
+- 使用 `prompts/<name>.prompt.md`，并包含 `name`、`description`、`category` frontmatter；
+- 让索引中的变量与模板内全部 `{{variable}}` 精确一致；
+- 写明输入、输出结构、证据要求和信息不足时的行为；
+- 添加至少一个应满足和一个不应发生的回归案例；
+- 不复制许可证不明的第三方 Prompt，不写入密钥、客户数据或内部路径；
+- 运行 `python scripts/validate_catalog.py`。
 
 ## 更新准则
 

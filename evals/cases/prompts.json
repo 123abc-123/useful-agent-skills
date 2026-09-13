@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "target_type": "prompt",
+  "cases": [
+    {"target": "repo-onboarding", "input": "需要修改陌生训练仓库的数据加载逻辑。", "must": ["引用具体文件或命令", "区分事实与推断"], "must_not": ["未检查仓库就给出架构结论"]},
+    {"target": "data-leakage-review", "input": "按用户随机切分带时间字段的转化数据。", "must": ["检查预测时点", "检查实体和时间交叉"], "must_not": ["只看总体指标"]},
+    {"target": "experiment-design", "input": "验证新损失函数是否值得上线。", "must": ["定义基线和停止条件", "说明决策规则"], "must_not": ["同时改变多个无法归因的变量"]},
+    {"target": "training-failure-debug", "input": "训练第 800 step 开始出现 NaN。", "must": ["定位首次异常", "给出最小复现"], "must_not": ["一次提交多个猜测性修复"]},
+    {"target": "model-comparison", "input": "候选模型 AUC 更高但延迟翻倍。", "must": ["核对可比性", "结合发布门槛判断"], "must_not": ["只按单个离线指标决策"]},
+    {"target": "rag-eval-design", "input": "客服 RAG 经常答非所问。", "must": ["分离检索与生成错误", "设计切片"], "must_not": ["只给一个端到端平均分"]},
+    {"target": "paper-to-spike", "input": "评估论文方法能否改善当前排序系统。", "must": ["提取可验证主张", "限制预算并给出退出条件"], "must_not": ["直接承诺复现整篇论文"]},
+    {"target": "ml-code-review", "input": "审查新增在线特征的模型 PR。", "must": ["检查训练服务一致性", "要求验证证据"], "must_not": ["把风格问题放在正确性问题之前"]},
+    {"target": "inference-performance", "input": "GPU 推理 P99 超标且利用率低。", "must": ["基于 profile 排序瓶颈", "一次验证一个假设"], "must_not": ["没有测量就建议量化"]},
+    {"target": "weekly-ai-tech-share", "input": "给算法团队整理最近一周可落地的新工具。", "must": ["核验日期和原始来源", "区分热度与工作价值"], "must_not": ["把旧项目包装成最近发布"]}
+  ]
+}

@@ -1,4 +1,4 @@
-"""Validate the catalog, structured recommendations, and local skills."""
+"""Validate the catalog, structured recommendations, prompts, and local skills."""
 
 from __future__ import annotations
 
@@ -18,17 +18,28 @@ REQUIRED_FILES = (
     "CHANGELOG.md",
     "catalog/skills.md",
     "catalog/recommended-stack.md",
+    "catalog/prompt-libraries.md",
     "catalog/harness.md",
     "catalog/learning-resources.md",
     "catalog/discovery-sources.md",
     "catalog/watchlist.md",
     "data/recommended-skills.json",
+    "data/prompts.json",
+    "prompts/README.md",
+    "evals/README.md",
+    "evals/cases/prompts.json",
+    "case-studies/README.md",
+    "case-studies/data-leakage-audit.md",
+    "case-studies/training-nan-debug.md",
+    "case-studies/paper-to-spike.md",
 )
 MARKDOWN_LINK = re.compile(r"\[[^\]]+\]\((https?://[^)]+)\)")
+LOCAL_MARKDOWN_LINK = re.compile(r"\[[^\]]+\]\((?!https?://|mailto:|#)([^)]+)\)")
 SHA40 = re.compile(r"^[0-9a-f]{40}$")
 NAME = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 STATUSES = {"verified", "not-run", "passed", "failed", "needs-adaptation"}
 RISKS = {"low", "medium", "high"}
+PROMPT_VARIABLE = re.compile(r"\{\{([a-z][a-z0-9_]*)\}\}")
 
 
 def parse_frontmatter(path: Path) -> dict[str, str]:
@@ -126,6 +137,137 @@ def validate_structured_catalog(errors: list[str]) -> int:
     return len(skills)
 
 
+def validate_prompt_catalog(errors: list[str]) -> int:
+    path = ROOT / "data/prompts.json"
+    if not path.is_file():
+        return 0
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, UnicodeDecodeError) as exc:
+        errors.append(f"invalid data/prompts.json: {exc}")
+        return 0
+
+    if payload.get("schema_version") != 1:
+        errors.append("prompt catalog schema_version must be 1")
+    prompts = payload.get("prompts")
+    if not isinstance(prompts, list) or not prompts:
+        errors.append("prompt catalog must contain a non-empty prompts list")
+        return 0
+
+    required = {"name", "category", "path", "purpose", "variables"}
+    names: list[str] = []
+    for index, prompt in enumerate(prompts, start=1):
+        if not isinstance(prompt, dict):
+            errors.append(f"prompt #{index} is not an object")
+            continue
+        missing = sorted(required - set(prompt))
+        if missing:
+            errors.append(f"prompt #{index} missing: {', '.join(missing)}")
+            continue
+
+        name = prompt["name"]
+        names.append(name)
+        if not isinstance(name, str) or not NAME.fullmatch(name):
+            errors.append(f"invalid prompt name: {name!r}")
+        variables = prompt["variables"]
+        if not isinstance(variables, list) or not variables:
+            errors.append(f"prompt variables must be a non-empty list: {name}")
+            continue
+        if len(variables) != len(set(variables)):
+            errors.append(f"duplicate prompt variables: {name}")
+
+        relative = prompt["path"]
+        if relative != f"prompts/{name}.prompt.md":
+            errors.append(f"prompt path does not match name: {name}")
+        prompt_path = ROOT / relative
+        if not prompt_path.is_file():
+            errors.append(f"missing prompt file for {name}: {relative}")
+            continue
+        frontmatter = parse_frontmatter(prompt_path)
+        if frontmatter.get("name") != name:
+            errors.append(f"prompt frontmatter name mismatch: {name}")
+        if not frontmatter.get("description") or not frontmatter.get("category"):
+            errors.append(f"prompt frontmatter is incomplete: {name}")
+        if frontmatter.get("category") != prompt["category"]:
+            errors.append(f"prompt category mismatch: {name}")
+
+        prompt_text = prompt_path.read_text(encoding="utf-8")
+        used_variables = sorted(set(PROMPT_VARIABLE.findall(prompt_text)))
+        indexed_variables = sorted(variables)
+        if used_variables != indexed_variables:
+            errors.append(
+                f"prompt variable mismatch for {name}: "
+                f"index={indexed_variables}, file={used_variables}"
+            )
+
+    duplicates = sorted({name for name in names if names.count(name) > 1})
+    if duplicates:
+        errors.append(f"duplicate prompt names: {', '.join(duplicates)}")
+
+    readme_path = ROOT / "prompts/README.md"
+    if readme_path.is_file():
+        readme_text = readme_path.read_text(encoding="utf-8")
+        for name in names:
+            if f"{name}.prompt.md" not in readme_text:
+                errors.append(f"prompts/README.md does not link: {name}")
+
+    validate_prompt_cases(errors, set(names))
+    return len(prompts)
+
+
+def validate_prompt_cases(errors: list[str], prompt_names: set[str]) -> None:
+    path = ROOT / "evals/cases/prompts.json"
+    if not path.is_file():
+        return
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, UnicodeDecodeError) as exc:
+        errors.append(f"invalid evals/cases/prompts.json: {exc}")
+        return
+    if payload.get("schema_version") != 1 or payload.get("target_type") != "prompt":
+        errors.append("prompt cases must use schema_version 1 and target_type prompt")
+    cases = payload.get("cases")
+    if not isinstance(cases, list):
+        errors.append("prompt cases must contain a cases list")
+        return
+    targets: list[str] = []
+    for index, case in enumerate(cases, start=1):
+        if not isinstance(case, dict):
+            errors.append(f"prompt case #{index} is not an object")
+            continue
+        target = case.get("target")
+        targets.append(target)
+        if target not in prompt_names:
+            errors.append(f"prompt case has unknown target: {target}")
+        if not case.get("input"):
+            errors.append(f"prompt case has empty input: {target}")
+        for field in ("must", "must_not"):
+            if not isinstance(case.get(field), list) or not case[field]:
+                errors.append(f"prompt case {target} needs a non-empty {field} list")
+    missing = sorted(prompt_names - set(targets))
+    if missing:
+        errors.append(f"prompts without regression cases: {', '.join(missing)}")
+
+
+def validate_local_links(errors: list[str]) -> None:
+    for source in ROOT.rglob("*.md"):
+        if ".git" in source.parts:
+            continue
+        text = source.read_text(encoding="utf-8")
+        for target in LOCAL_MARKDOWN_LINK.findall(text):
+            clean_target = target.split("#", 1)[0].strip()
+            if not clean_target:
+                continue
+            resolved = (source.parent / clean_target).resolve()
+            try:
+                resolved.relative_to(ROOT)
+            except ValueError:
+                errors.append(f"local link escapes repository: {source.relative_to(ROOT)} -> {target}")
+                continue
+            if not resolved.exists():
+                errors.append(f"broken local link: {source.relative_to(ROOT)} -> {target}")
+
+
 def main() -> int:
     errors: list[str] = []
     all_urls: set[str] = set()
@@ -150,6 +292,8 @@ def main() -> int:
                 errors.append(f"skills catalog is missing category marker: {label}")
 
     recommendation_count = validate_structured_catalog(errors)
+    prompt_count = validate_prompt_catalog(errors)
+    validate_local_links(errors)
 
     if len(all_urls) < 30:
         errors.append(f"expected at least 30 distinct external resources, found {len(all_urls)}")
@@ -163,6 +307,7 @@ def main() -> int:
     print(
         "Catalog validation passed: "
         f"{len(REQUIRED_FILES)} files, {recommendation_count} structured recommendations, "
+        f"{prompt_count} prompts, "
         f"{len(all_urls)} distinct URLs."
     )
     return 0
