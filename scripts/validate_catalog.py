@@ -15,6 +15,7 @@ REQUIRED_FILES = (
     "catalog/skills.md",
     "catalog/harness.md",
     "catalog/learning-resources.md",
+    "catalog/discovery-sources.md",
     "catalog/watchlist.md",
 )
 MARKDOWN_LINK = re.compile(r"\[[^\]]+\]\((https?://[^)]+)\)")

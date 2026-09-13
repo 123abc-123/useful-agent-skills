@@ -12,6 +12,7 @@
 | Hugging Face Agents Course | Agent 基础、框架、用例和实践 | 入门到进阶 | [课程](https://huggingface.co/learn/agents-course/unit1/introduction) |
 | Model Context Protocol | MCP 架构、规范、SDK 和服务端开发 | 做内部工具接入时必读 | [官方文档](https://modelcontextprotocol.io/) |
 | Skills.sh | 搜索社区 Skill 和查看使用趋势 | 发现入口；安装前单独审查 | [skills.sh](https://www.skills.sh/) |
+| Skill 榜单与发现源 | 对比 skills.sh、Codex 榜、近 7 天趋势和聚合榜的统计口径 | 日常发现新 Skill | [本项目整理](discovery-sources.md) |
 | Awesome Copilot Skills Catalog | 按类别查看大量标准 Skill | 选型参考 | [目录](https://github.com/github/awesome-copilot/blob/main/docs/README.skills.md) |
 
 ## Harness 与 Agent 工程

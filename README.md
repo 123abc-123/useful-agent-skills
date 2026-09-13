@@ -11,6 +11,7 @@
 | 找适合算法工程的 Skill | [分类清单](catalog/skills.md) |
 | 理解 Harness、搭建团队工作流 | [Harness 专题](catalog/harness.md) |
 | 系统学习 Skill、MCP、Agent、评测 | [学习资源](catalog/learning-resources.md) |
+| 查看安装榜、趋势榜和发现渠道 | [榜单与发现源](catalog/discovery-sources.md) |
 | 关注新项目和低成熟度项目 | [观察清单](catalog/watchlist.md) |
 | 了解收录与每日更新规则 | [维护规则](MAINTENANCE.md) |
 
@@ -77,3 +78,5 @@
 ## 说明
 
 本项目是精选目录，不代表对第三方代码的安全背书。链接、兼容性和活跃度会随项目变化；每日任务只提交有明确价值并通过检查的变更。
+
+榜单中的“安装量”“增长量”“GitHub star”和“质量评分”是不同指标。榜单只用于发现候选 Skill，不能替代源码、安全、许可证和实际效果审查。
