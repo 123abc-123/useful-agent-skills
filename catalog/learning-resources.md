@@ -1,6 +1,6 @@
 # 学习网站与资料
 
-最近核验：2026-09-13。优先列官方规范、官方文档和高质量工程文章。
+最近核验：2026-09-15。优先列官方规范、官方文档和高质量工程文章。
 
 ## Skill、上下文与工具协议
 
@@ -25,6 +25,7 @@
 | Anthropic: Building effective agents | 从 workflow 到 agent 的基本设计原则 | [文章](https://www.anthropic.com/engineering/building-effective-agents) |
 | Martin Fowler: Harness Engineering | 从软件工程视角理解 Harness | [文章](https://martinfowler.com/articles/harness-engineering.html) |
 | Agents Best Practices | 可直接交给 Agent 阅读的 Harness 架构指南 | [GitHub](https://github.com/DenisSergeevitch/agents-best-practices) |
+| Skill Issue（2026-09-11） | 用真实历史 PR 构造较难任务，比较仓库 Skill 对 Coding Agent 的增益与方差 | [arXiv](https://arxiv.org/abs/2609.12742) |
 
 ## Pi 与 OpenCode
 
@@ -37,6 +38,7 @@
 | OpenCode Agents | 主 Agent、子 Agent 和配置 | [OpenCode 文档](https://opencode.ai/docs/agents) |
 | OpenCode Plugins | 插件机制与扩展方式 | [OpenCode 文档](https://opencode.ai/docs/plugins) |
 | OpenCode Tools | 内置工具与权限 | [OpenCode 文档](https://dev.opencode.ai/docs/tools/) |
+| pi-open-agents | 在 Pi 中统一主 Agent、子 Agent、模型与权限，并兼容 OpenCode Agent 定义 | [GitHub](https://github.com/andrea-tomassi/pi-open-agents) |
 
 ## 评测、可观测性与安全
 

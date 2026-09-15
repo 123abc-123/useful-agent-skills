@@ -29,20 +29,21 @@ Prompt 适合一次性的明确任务，Skill 适合需要 Agent 自动发现并
 
 网页支持搜索、分类和一键复制。模板的结构一致性由 CI 检查，轻量回归边界见 [`evals/cases/prompts.json`](evals/cases/prompts.json)。
 
-## 最值得先试的 12 组
+## 最值得先试的 13 组
 
 1. [Hugging Face Skills](https://github.com/huggingface/skills)：数据集、训练、评测、论文、Spaces 与本地模型。
 2. [Scientific Agent Skills](https://github.com/K-Dense-AI/scientific-agent-skills)：科研与机器学习工具链覆盖面广。
 3. [Superpowers](https://github.com/obra/superpowers)：系统调试、计划、验证、代码评审与 Git worktree。
 4. [GitHub Awesome Copilot Skills](https://github.com/github/awesome-copilot)：代码库理解、技术调研、实现计划、Phoenix 评测与 tracing。
-5. [Trail of Bits Skills](https://github.com/trailofbits/skills)：静态分析、供应链、模糊测试、属性测试和安全审计。
-6. [Playwright CLI](https://github.com/microsoft/playwright-cli)：让 Coding Agent 执行浏览器测试和页面检查。
-7. [Cloudflare Skills](https://github.com/cloudflare/skills)：明确支持 Pi 与 OpenCode 的云端部署和 Agent SDK Skill。
-8. [Sentry for AI](https://github.com/getsentry/sentry-for-ai)：错误追踪、告警、AI 应用调试。
-9. [Agents Best Practices](https://github.com/DenisSergeevitch/agents-best-practices)：完整的 Agent Harness 架构知识。
-10. [Agent Harness Skill](https://github.com/netresearch/agent-harness-skill)：给代码仓库补齐可验证的 Agent Harness。
-11. [Skillet](https://github.com/getsentry/skillet)：创建、校验和评测自己的 Skill。
-12. [Agent Skills 规范](https://agentskills.io/)：理解 `SKILL.md` 的标准结构和可移植性。
+5. [Google Agents CLI](https://github.com/google/agents-cli)：Agent 评测、失败分析、prompt 优化和线上可观测性。
+6. [Trail of Bits Skills](https://github.com/trailofbits/skills)：静态分析、供应链、模糊测试、属性测试和安全审计。
+7. [Playwright CLI](https://github.com/microsoft/playwright-cli)：让 Coding Agent 执行浏览器测试和页面检查。
+8. [Cloudflare Skills](https://github.com/cloudflare/skills)：明确支持 Pi 与 OpenCode 的云端部署和 Agent SDK Skill。
+9. [Sentry for AI](https://github.com/getsentry/sentry-for-ai)：错误追踪、告警、AI 应用调试。
+10. [Agents Best Practices](https://github.com/DenisSergeevitch/agents-best-practices)：完整的 Agent Harness 架构知识。
+11. [Agent Harness Skill](https://github.com/netresearch/agent-harness-skill)：给代码仓库补齐可验证的 Agent Harness。
+12. [Skillet](https://github.com/getsentry/skillet)：创建、校验和评测自己的 Skill。
+13. [Agent Skills 规范](https://agentskills.io/)：理解 `SKILL.md` 的标准结构和可移植性。
 
 ## Pi 与 OpenCode 怎么安装
 

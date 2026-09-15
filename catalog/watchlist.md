@@ -15,6 +15,7 @@
 | junminhong/awesome-agent-skills | 大型链接索引，适合发现新来源 | 收录不等于验证或推荐 | [GitHub](https://github.com/junminhong/awesome-agent-skills) |
 | madebywild/agent-harness | 跨客户端同步 Harness 配置的思路 | Pi/OpenCode 支持不明确 | [GitHub](https://github.com/madebywild/agent-harness) |
 | SUNRNEHUI/agent-harness | 运行时中立契约值得跟踪 | 新项目，当前适配器有限 | [GitHub](https://github.com/SUNRNEHUI/agent-harness) |
+| pi-open-agents | 用同一套定义管理 Pi 主 Agent、子 Agent、模型、权限和 OpenCode 兼容配置 | MIT、新项目约 16 stars；涉及子进程与工具权限，需先做隔离实测 | [GitHub](https://github.com/andrea-tomassi/pi-open-agents) |
 
 ## 晋级条件
 

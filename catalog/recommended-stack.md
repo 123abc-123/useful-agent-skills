@@ -1,6 +1,6 @@
 # 算法工程师精选 Skill 组合
 
-最近核验：2026-09-13。机器可读数据见 [`data/recommended-skills.json`](../data/recommended-skills.json)，评分规则见 [`SCORING.md`](../SCORING.md)。本次 GitHub 分支接口返回的 commit 无法通过 commit API 和网页同时解析，因此 commit 暂时仅保留为观察元数据；点击链接使用 `main` 的精确路径，自动任务会在两种入口都通过后再标记固定版本。
+最近核验：2026-09-15。机器可读数据见 [`data/recommended-skills.json`](../data/recommended-skills.json)，评分规则见 [`SCORING.md`](../SCORING.md)。Google Agents CLI 新增项已经完成 commit API 与网页双重核验；此前条目的全局 `pinning_status` 仍保持 pending，点击链接继续使用 `main` 的精确路径。
 
 ## 先安装本仓库的五个工作流
 
@@ -87,6 +87,20 @@ npx skills add github/awesome-copilot \
 |---|---|---:|---|
 | `phoenix-evals` | [精确路径](https://github.com/github/awesome-copilot/blob/main/skills/phoenix-evals/SKILL.md) | 92 | 中：依赖、模型和服务凭据 |
 | `phoenix-tracing` | [精确路径](https://github.com/github/awesome-copilot/blob/main/skills/phoenix-tracing/SKILL.md) | 91 | 中：trace 可能包含业务数据 |
+
+Google Agents CLI 的评测与观测 Skill 在近期榜单中显著上升，原仓库提供 Apache-2.0 许可证和标准 `SKILL.md`：
+
+```bash
+npx skills add google/agents-cli \
+  --skill google-agents-cli-eval \
+  --skill google-agents-cli-observability \
+  -a pi -a opencode --copy
+```
+
+| Skill | 固定源码 | 分数 | 风险 |
+|---|---|---:|---|
+| `google-agents-cli-eval` | [固定 commit](https://github.com/google/agents-cli/blob/5597738f14b5d4a490dfdefa282bc229003b7bbe/skills/google-agents-cli-eval/SKILL.md) | 90 | 中：会运行 Agent、模型评测和可选优化 |
+| `google-agents-cli-observability` | [固定 commit](https://github.com/google/agents-cli/blob/5597738f14b5d4a490dfdefa282bc229003b7bbe/skills/google-agents-cli-observability/SKILL.md) | 86 | 高：日志可能上传完整 prompt/response，并涉及云资源与 IAM |
 
 ### 4. Harness、浏览器和供应链
 

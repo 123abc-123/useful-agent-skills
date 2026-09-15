@@ -1,5 +1,12 @@
 # 更新记录
 
+## 2026-09-15
+
+- 新增 Google Agents CLI 的 Agent 评测与可观测性 Skill；固定源码 commit 已通过 API 和网页双重核验，实机状态仍为 `not-run`。
+- 新增 `pi-open-agents` 观察项，关注 Pi/OpenCode 共用 Agent 定义、模型路由和权限控制。
+- 新增 2026-09-11 发布的 Skill 优化实证论文 `Skill Issue`。
+- 核验 skills.sh、Skillselion、SkillSignal、LinklyAI、Skill Leaderboard 与 Skills.sh Dashboard；热度变化只作为候选发现证据。
+
 ## 2026-09-13
 
 - 新增 10 个面向算法工程的原创 Prompt、机器可读索引和可搜索网页。

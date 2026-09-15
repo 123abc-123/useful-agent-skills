@@ -1,6 +1,6 @@
 # Agent Skills 分类清单
 
-最近核验：2026-09-13。每一项给出实际用途、来源和 Pi/OpenCode 适配判断。名称为仓库中的 Skill 名或功能组；安装前请以来源仓库当前目录为准。
+最近核验：2026-09-15。每一项给出实际用途、来源和 Pi/OpenCode 适配判断。名称为仓库中的 Skill 名或功能组；安装前请以来源仓库当前目录为准。
 
 ## 1. 机器学习、数据与科研
 
@@ -60,6 +60,8 @@
 |---|---|---|---|---|---|
 | `phoenix-evals` | 构建 LLM、RAG 和 Agent 评测 | 幻觉、相关性、检索质量 | 标准 | A | [Awesome Copilot Skills](https://github.com/github/awesome-copilot) |
 | `phoenix-tracing` | 接入 OpenInference tracing | 定位 Agent/RAG 链路问题 | 标准 | A | [Awesome Copilot Skills](https://github.com/github/awesome-copilot) |
+| `google-agents-cli-eval` | 构建 Agent 数据集、指标、裁判模型、失败分析与版本对比 | ADK 或其他 Agent 项目的质量闭环 | 标准；依赖 agents-cli | A | [Google Agents CLI](https://github.com/google/agents-cli/blob/main/skills/google-agents-cli-eval/SKILL.md) |
+| `google-agents-cli-observability` | 配置 trace、prompt 日志、BigQuery 分析和第三方观测 | Google Cloud/ADK Agent 线上诊断 | 标准；云端功能需审查数据与 IAM | A | [Google Agents CLI](https://github.com/google/agents-cli/blob/main/skills/google-agents-cli-observability/SKILL.md) |
 | `pytest-coverage` | 使用 pytest 与 coverage 查缺口 | Python 项目回归测试 | 标准 | A | [Awesome Copilot Skills](https://github.com/github/awesome-copilot) |
 | `quality-playbook` | 建立统一质量检查流程 | 团队工程规范 | 标准 | A | [Awesome Copilot Skills](https://github.com/github/awesome-copilot) |
 | `sentry-get-started` | 为应用接入 Sentry | 线上错误和性能观测 | 适配；使用生成的客户端插件 | A | [Sentry for AI](https://github.com/getsentry/sentry-for-ai) |
