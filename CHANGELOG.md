@@ -1,5 +1,12 @@
 # 更新记录
 
+## 2026-09-18
+
+- 新增 MLflow 官方 Agent 评测与 tracing Skills；固定源码 commit 已通过 API 和网页双重核验，Pi/OpenCode 实机状态仍为 `not-run`。
+- 新增 `agent-skill-eval` 与 `agent-skills-creator` 观察项，分别用于真实 Harness 对照评测和 Skill 生命周期审计。
+- Prompt 工具导航新增 `agent-skill-eval`，补充启用/禁用 Skill 的 pass@k、成本、耗时与误触发评测路径。
+- 复核 skills.sh、Skillselion、SkillSignal、LinklyAI、Skill Leaderboard 与 Skills.sh Dashboard；继续只把榜单作为候选发现依据。
+
 ## 2026-09-15
 
 - 新增 Google Agents CLI 的 Agent 评测与可观测性 Skill；固定源码 commit 已通过 API 和网页双重核验，实机状态仍为 `not-run`。

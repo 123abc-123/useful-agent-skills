@@ -16,6 +16,8 @@
 | madebywild/agent-harness | 跨客户端同步 Harness 配置的思路 | Pi/OpenCode 支持不明确 | [GitHub](https://github.com/madebywild/agent-harness) |
 | SUNRNEHUI/agent-harness | 运行时中立契约值得跟踪 | 新项目，当前适配器有限 | [GitHub](https://github.com/SUNRNEHUI/agent-harness) |
 | pi-open-agents | 用同一套定义管理 Pi 主 Agent、子 Agent、模型、权限和 OpenCode 兼容配置 | MIT、新项目约 16 stars；涉及子进程与工具权限，需先做隔离实测 | [GitHub](https://github.com/andrea-tomassi/pi-open-agents) |
+| agent-skill-eval | 通过真实 OpenCode、Codex 或 Claude Harness 做启用/禁用 Skill 的基线对比，记录 pass@k、状态差异、token、成本和耗时 | 新项目、采用度低；需要已认证的 Agent CLI 和裁判模型 API，执行时使用跳过权限参数且暂不支持 Pi | [GitHub](https://github.com/tardigrde/agent-skill-eval) |
+| agent-skills-creator | 覆盖 Skill 创建、审计、路由评测和结构验证，适合学习完整生命周期 | 依赖 Bash、Ruby 和 Perl；尚无 Pi/OpenCode 实机证据，Windows 可移植性需验证 | [GitHub](https://github.com/mblode/agent-skills/blob/main/skills/agent-skills-creator/SKILL.md) |
 
 ## 晋级条件
 

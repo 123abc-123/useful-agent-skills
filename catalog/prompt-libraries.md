@@ -1,6 +1,6 @@
 # 开源 Prompt 库与工程工具
 
-最近核验：2026-09-13。开源 Prompt 项目大致分为四类：可复制模板、提示工程教程、可执行 Pattern、评测与版本管理。收录不代表可以把社区 Prompt 直接放进生产环境。
+最近核验：2026-09-18。开源 Prompt 项目大致分为四类：可复制模板、提示工程教程、可执行 Pattern、评测与版本管理。收录不代表可以把社区 Prompt 直接放进生产环境。
 
 | 项目 | 类型 | 适合用途 | 许可证 | 链接 |
 |---|---|---|---|---|
@@ -10,6 +10,7 @@
 | Anthropic Courses | 交互课程 | 提示结构、示例、工具使用、复杂 Prompt 和评测 | 以仓库许可证为准 | [GitHub](https://github.com/anthropics/courses) |
 | prompts.chat | 大型社区模板库 | 发现通用角色和任务模板 | Prompt 数据 CC0，站点源码 MIT | [GitHub](https://github.com/f/prompts.chat) |
 | Promptfoo | Prompt/Agent 测试工具 | 测试用例、模型对比、回归检查和 red teaming | MIT | [GitHub](https://github.com/promptfoo/promptfoo) |
+| agent-skill-eval | Skill/Prompt 行为评测 Harness | 用真实 Agent CLI 对比启用与禁用 Skill 的 pass@k、成本、耗时和误触发 | MIT | [GitHub](https://github.com/tardigrde/agent-skill-eval) |
 | Microsoft Prompt Engine | Prompt 组合代码库 | few-shot、代码生成和多轮 Prompt 组装 | MIT | [GitHub](https://github.com/microsoft/prompt-engine) |
 | Anthropic Prompt Tutorial | 交互式练习 | 从基础结构到幻觉控制和复杂行业案例 | 查看仓库当前许可证 | [GitHub](https://github.com/anthropics/prompt-eng-interactive-tutorial) |
 

@@ -1,6 +1,6 @@
 # 算法工程师精选 Skill 组合
 
-最近核验：2026-09-15。机器可读数据见 [`data/recommended-skills.json`](../data/recommended-skills.json)，评分规则见 [`SCORING.md`](../SCORING.md)。Google Agents CLI 新增项已经完成 commit API 与网页双重核验；此前条目的全局 `pinning_status` 仍保持 pending，点击链接继续使用 `main` 的精确路径。
+最近核验：2026-09-18。机器可读数据见 [`data/recommended-skills.json`](../data/recommended-skills.json)，评分规则见 [`SCORING.md`](../SCORING.md)。Google Agents CLI 与 MLflow 新增项已经完成 commit API 与网页双重核验；此前条目的全局 `pinning_status` 仍保持 pending，点击链接继续使用 `main` 的精确路径。
 
 ## 先安装本仓库的五个工作流
 
@@ -101,6 +101,22 @@ npx skills add google/agents-cli \
 |---|---|---:|---|
 | `google-agents-cli-eval` | [固定 commit](https://github.com/google/agents-cli/blob/5597738f14b5d4a490dfdefa282bc229003b7bbe/skills/google-agents-cli-eval/SKILL.md) | 90 | 中：会运行 Agent、模型评测和可选优化 |
 | `google-agents-cli-observability` | [固定 commit](https://github.com/google/agents-cli/blob/5597738f14b5d4a490dfdefa282bc229003b7bbe/skills/google-agents-cli-observability/SKILL.md) | 86 | 高：日志可能上传完整 prompt/response，并涉及云资源与 IAM |
+
+MLflow 官方仓库明确支持 OpenCode 和其他兼容 Agent Skills 的 Coding Agent。评测 Skill 依赖 tracing Skill，要求 MLflow 3.8+：
+
+```bash
+npx skills add mlflow/skills \
+  --skill instrumenting-with-mlflow-tracing \
+  --skill agent-evaluation \
+  -a pi -a opencode --copy
+```
+
+| Skill | 固定源码 | 分数 | 风险 |
+|---|---|---:|---|
+| `agent-evaluation` | [固定 commit](https://github.com/mlflow/skills/blob/85ab69be2df4f92db82ddbf4be9ce63ab3722249/agent-evaluation/SKILL.md) | 89 | 中：会运行评测、调用模型并读写 MLflow 数据 |
+| `instrumenting-with-mlflow-tracing` | [固定 commit](https://github.com/mlflow/skills/blob/85ab69be2df4f92db82ddbf4be9ce63ab3722249/instrumenting-with-mlflow-tracing/SKILL.md) | 88 | 高：trace 可能包含 prompt、response、PII 和远端服务凭据 |
+
+以上两个 Skill 的来源、路径与安装语法已核验；Pi/OpenCode 实机状态仍为 `not-run`。
 
 ### 4. Harness、浏览器和供应链
 

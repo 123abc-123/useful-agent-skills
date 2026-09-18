@@ -1,6 +1,6 @@
 # Agent Skills 分类清单
 
-最近核验：2026-09-15。每一项给出实际用途、来源和 Pi/OpenCode 适配判断。名称为仓库中的 Skill 名或功能组；安装前请以来源仓库当前目录为准。
+最近核验：2026-09-18。每一项给出实际用途、来源和 Pi/OpenCode 适配判断。名称为仓库中的 Skill 名或功能组；安装前请以来源仓库当前目录为准。
 
 ## 1. 机器学习、数据与科研
 
@@ -62,6 +62,8 @@
 | `phoenix-tracing` | 接入 OpenInference tracing | 定位 Agent/RAG 链路问题 | 标准 | A | [Awesome Copilot Skills](https://github.com/github/awesome-copilot) |
 | `google-agents-cli-eval` | 构建 Agent 数据集、指标、裁判模型、失败分析与版本对比 | ADK 或其他 Agent 项目的质量闭环 | 标准；依赖 agents-cli | A | [Google Agents CLI](https://github.com/google/agents-cli/blob/main/skills/google-agents-cli-eval/SKILL.md) |
 | `google-agents-cli-observability` | 配置 trace、prompt 日志、BigQuery 分析和第三方观测 | Google Cloud/ADK Agent 线上诊断 | 标准；云端功能需审查数据与 IAM | A | [Google Agents CLI](https://github.com/google/agents-cli/blob/main/skills/google-agents-cli-observability/SKILL.md) |
+| `agent-evaluation` | 用数据集、scorer、trace 和结果分析评测 Agent | 回归评测、版本对比和失败分析 | 标准；README 明确支持 OpenCode，Pi 待实测 | A | [MLflow Skills](https://github.com/mlflow/skills/blob/main/agent-evaluation/SKILL.md) |
+| `instrumenting-with-mlflow-tracing` | 为 Python/TypeScript LLM 应用接入并验证 tracing | 诊断 RAG、Agent 和模型调用链 | 标准；README 明确支持 OpenCode，Pi 待实测 | A | [MLflow Skills](https://github.com/mlflow/skills/blob/main/instrumenting-with-mlflow-tracing/SKILL.md) |
 | `pytest-coverage` | 使用 pytest 与 coverage 查缺口 | Python 项目回归测试 | 标准 | A | [Awesome Copilot Skills](https://github.com/github/awesome-copilot) |
 | `quality-playbook` | 建立统一质量检查流程 | 团队工程规范 | 标准 | A | [Awesome Copilot Skills](https://github.com/github/awesome-copilot) |
 | `sentry-get-started` | 为应用接入 Sentry | 线上错误和性能观测 | 适配；使用生成的客户端插件 | A | [Sentry for AI](https://github.com/getsentry/sentry-for-ai) |
