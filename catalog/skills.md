@@ -105,7 +105,7 @@
 
 ## 6. 文档与日常产出
 
-精美 HTML 技术报告、领导汇报、交互式可视化和 HTML 幻灯片已拆分为独立的 [HTML 报告与可视化 Skills](html-report-skills.md) 栏目。
+精美 HTML 技术报告、领导汇报、交互式可视化和 HTML 幻灯片已归入 [Tools / HTML 报告与可视化](tools/html-reports/README.md) 子栏目。
 
 | Skill | 作用 | 适用场景 | Pi / OpenCode | 成熟度 | 链接 |
 |---|---|---|---|---|---|

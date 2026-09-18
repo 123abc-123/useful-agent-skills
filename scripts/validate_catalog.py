@@ -23,10 +23,14 @@ REQUIRED_FILES = (
     "catalog/learning-resources.md",
     "catalog/discovery-sources.md",
     "catalog/watchlist.md",
-    "catalog/html-report-skills.md",
+    "catalog/README.md",
+    "catalog/tools/README.md",
+    "catalog/tools/html-reports/README.md",
     "data/recommended-skills.json",
-    "data/html-report-skills.json",
+    "data/tools/html-reports.json",
     "data/prompts.json",
+    "docs/tools/index.html",
+    "docs/tools/html-reports/index.html",
     "docs/html-reports.html",
     "prompts/README.md",
     "evals/README.md",
@@ -220,13 +224,13 @@ def validate_prompt_catalog(errors: list[str]) -> int:
 
 
 def validate_html_report_catalog(errors: list[str]) -> int:
-    path = ROOT / "data/html-report-skills.json"
+    path = ROOT / "data/tools/html-reports.json"
     if not path.is_file():
         return 0
     try:
         payload = json.loads(path.read_text(encoding="utf-8"))
     except (json.JSONDecodeError, UnicodeDecodeError) as exc:
-        errors.append(f"invalid data/html-report-skills.json: {exc}")
+        errors.append(f"invalid data/tools/html-reports.json: {exc}")
         return 0
 
     if payload.get("schema_version") != 1:
@@ -242,7 +246,7 @@ def validate_html_report_catalog(errors: list[str]) -> int:
         "install_syntax", "runtime_pi", "runtime_opencode", "install",
     }
     names: list[str] = []
-    markdown_path = ROOT / "catalog/html-report-skills.md"
+    markdown_path = ROOT / "catalog/tools/html-reports/README.md"
     markdown_text = markdown_path.read_text(encoding="utf-8") if markdown_path.is_file() else ""
     for index, item in enumerate(items, start=1):
         if not isinstance(item, dict):
@@ -270,7 +274,7 @@ def validate_html_report_catalog(errors: list[str]) -> int:
         if not SHA40.fullmatch(str(item["commit"])):
             errors.append(f"HTML report commit must be a 40-character SHA: {name}")
         if f"`{name}`" not in markdown_text:
-            errors.append(f"html-report-skills.md does not mention: {name}")
+            errors.append(f"catalog/tools/html-reports/README.md does not mention: {name}")
 
     duplicates = sorted({name for name in names if names.count(name) > 1})
     if duplicates:

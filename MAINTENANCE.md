@@ -12,6 +12,7 @@
 - 榜单与发现目录，但不把安装量、增长率或排名直接当作推荐依据；
 - Harness、context engineering、agent evals、observability、skill security 等关键词。
 - Prompt library、prompt patterns、prompt evaluation、prompt regression 和 red teaming 工具。
+- HTML report、interactive report、data visualization、HTML slides、dashboard 和 architecture diagram Skill。
 
 建议组合查询：
 
@@ -25,6 +26,7 @@ site:github.com agent skill security scanner
 site:skills.sh agent skill trending
 site:github.com agent skills leaderboard weekly installs
 site:github.com prompt library prompt evaluation agent
+site:github.com SKILL.md HTML report visualization slides
 ```
 
 榜单来源和各自统计口径见 `catalog/discovery-sources.md`。每日任务至少交叉检查一个原始榜单、一个二次趋势来源和候选 Skill 的 GitHub 原仓库。
@@ -64,6 +66,27 @@ site:github.com prompt library prompt evaluation agent
 - 添加至少一个应满足和一个不应发生的回归案例；
 - 不复制许可证不明的第三方 Prompt，不写入密钥、客户数据或内部路径；
 - 运行 `python scripts/validate_catalog.py`。
+
+## Tools 子栏目数据规则
+
+Tools 使用一致的三层结构：
+
+```text
+catalog/tools/<category>/README.md
+data/tools/<category>.json
+docs/tools/<category>/index.html
+```
+
+新增或更新工具子栏目时必须：
+
+- 保持分类说明、结构化数据和网页卡片的条目一致；
+- 记录固定 commit、许可证、输出类型、适配说明、评分、状态和风险；
+- 分别记录 `source_path`、`install_syntax`、`runtime_pi` 和 `runtime_opencode`；
+- 实机未运行时保持 `not-run`，不把源码可移植推断写成通过；
+- 页面或数据结构变化后检查桌面、移动端、搜索、筛选和复制功能；
+- 保留已经公开的旧 URL 跳转，避免外部链接失效。
+
+Tools 只负责分类。真正安装到 Pi/OpenCode 时，仍使用 `.agents/skills/<skill-name>/SKILL.md`，不在安装目录中复制 `tools/<category>/` 层级。
 
 ## 更新准则
 

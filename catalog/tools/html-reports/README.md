@@ -1,6 +1,6 @@
 # HTML 报告与可视化 Skills
 
-最近核验：2026-09-19。这个栏目收录能生成精美 HTML、技术报告、领导汇报、交互式可视化和 HTML 幻灯片的 Skill。机器可读数据见 [`data/html-report-skills.json`](../data/html-report-skills.json)，网页入口见 [HTML Reports & Visuals](https://123abc-123.github.io/useful-agent-skills/html-reports.html)。
+最近核验：2026-09-19。这个栏目收录能生成精美 HTML、技术报告、领导汇报、交互式可视化和 HTML 幻灯片的 Skill。机器可读数据见 [`data/tools/html-reports.json`](../../../data/tools/html-reports.json)，网页入口见 [Tools / HTML Reports & Visuals](../../../docs/tools/html-reports/index.html)。
 
 ## 优先选择
 

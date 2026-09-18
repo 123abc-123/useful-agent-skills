@@ -16,7 +16,7 @@
 
 ## 修改流程
 
-1. 更新 `data/recommended-skills.json` 或对应 `catalog/` 文档。
+1. 更新 `data/recommended-skills.json` 或对应 `catalog/` 文档；工具子栏目同时更新 `catalog/tools/<category>/`、`data/tools/<category>.json` 和 `docs/tools/<category>/`。
 2. 如果修改仓库内 Skill，保持目录名、frontmatter `name` 和触发描述一致。
 3. 更新 `CHANGELOG.md` 和核验日期。
 4. 运行：

@@ -7,7 +7,7 @@ on:
       - "docs/**"
       - "data/recommended-skills.json"
       - "data/prompts.json"
-      - "data/html-report-skills.json"
+      - "data/tools/**"
       - "prompts/**"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
@@ -32,12 +32,11 @@ jobs:
       - name: Build static artifact
         run: |
           mkdir _site
-          cp docs/index.html _site/index.html
-          cp docs/prompts.html _site/prompts.html
-          cp docs/html-reports.html _site/html-reports.html
+          cp -r docs/. _site/
           cp data/recommended-skills.json _site/skills.json
           cp data/prompts.json _site/prompts.json
-          cp data/html-report-skills.json _site/html-report-skills.json
+          mkdir -p _site/data/tools
+          cp data/tools/html-reports.json _site/data/tools/html-reports.json
           mkdir -p _site/prompts
           cp prompts/*.prompt.md _site/prompts/
           touch _site/.nojekyll

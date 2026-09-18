@@ -10,7 +10,8 @@
 |---|---|
 | 直接安装一组经过筛选的 Skill | [算法工程师精选组合](catalog/recommended-stack.md) |
 | 复制可直接使用的算法工程 Prompt | [Prompt Library](prompts/README.md) |
-| 生成好看的 HTML、技术报告和演示 | [HTML 报告与可视化 Skills](catalog/html-report-skills.md) |
+| 浏览报告、自动化、评测和安全工具 | [Tools 分类](catalog/tools/README.md) |
+| 生成好看的 HTML、技术报告和演示 | [HTML 报告与可视化](catalog/tools/html-reports/README.md) |
 | 查找开源 Prompt 库和评测工具 | [开源 Prompt 资源](catalog/prompt-libraries.md) |
 | 看真实工作场景如何使用 Skill/Prompt | [可复现实战案例](case-studies/README.md) |
 | 找适合算法工程的 Skill | [分类清单](catalog/skills.md) |
@@ -20,7 +21,21 @@
 | 关注新项目和低成熟度项目 | [观察清单](catalog/watchlist.md) |
 | 了解收录与每日更新规则 | [维护规则](MAINTENANCE.md) |
 
-可搜索的网页目录已经上线：[Useful Agent Skills](https://123abc-123.github.io/useful-agent-skills/)。其中 [Prompt Library](https://123abc-123.github.io/useful-agent-skills/prompts.html) 可按分类搜索 10 个原创模板，[HTML Reports & Visuals](https://123abc-123.github.io/useful-agent-skills/html-reports.html) 单独收录 HTML 报告、可视化和演示 Skill。页面读取机器可读的 [`data/recommended-skills.json`](data/recommended-skills.json)、[`data/prompts.json`](data/prompts.json) 和 [`data/html-report-skills.json`](data/html-report-skills.json)。
+可搜索的网页目录已经上线：[Useful Agent Skills](https://123abc-123.github.io/useful-agent-skills/)。其中 [Prompt Library](https://123abc-123.github.io/useful-agent-skills/prompts.html) 可按分类搜索 10 个原创模板，[Tools](docs/tools/index.html) 负责工具型分类，[HTML Reports & Visuals](docs/tools/html-reports/index.html) 是其第一个子栏目。页面读取机器可读的 [`data/recommended-skills.json`](data/recommended-skills.json)、[`data/prompts.json`](data/prompts.json) 和 [`data/tools/html-reports.json`](data/tools/html-reports.json)。
+
+## 仓库结构
+
+```text
+catalog/                         人工整理的分类、判断与采用边界
+  tools/<category>/README.md     工具型子栏目
+data/                            网页与自动化读取的结构化数据
+  tools/<category>.json          工具型子栏目数据
+docs/                            GitHub Pages
+  tools/<category>/index.html    工具型子栏目页面
+skills/<skill-name>/SKILL.md     本仓库自己维护的可安装 Skill
+```
+
+`catalog/` 和 `docs/` 负责分类；安装到 Pi/OpenCode 时仍使用扁平的 `.agents/skills/<skill-name>/`。
 
 ## Prompt Library
 

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="面向算法工程师的 Agent Tools 分类入口">
+  <title>Tools · Useful Agent Skills</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #172033;
+      --muted: #647084;
+      --line: #d9e0e8;
+      --paper: #f4f7fa;
+      --card: #fff;
+      --accent: #0f766e;
+      --accent-soft: #dff7f3;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font: 15px/1.6 system-ui, -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif; color: var(--ink); background: var(--paper); }
+    header {
+      padding: 58px max(24px, calc((100vw - 1120px) / 2));
+      color: #fff;
+      background:
+        radial-gradient(circle at 78% 18%, rgba(94, 234, 212, .24), transparent 25rem),
+        linear-gradient(125deg, #102a43, #0f766e);
+    }
+    .eyebrow { margin: 0 0 9px; color: #99f6e4; font-size: 13px; font-weight: 750; letter-spacing: .09em; }
+    h1 { margin: 0 0 10px; font-size: clamp(34px, 5vw, 56px); letter-spacing: -.04em; }
+    header p:not(.eyebrow) { max-width: 740px; margin: 0; color: #d7f3ef; font-size: 17px; }
+    nav { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 16px; }
+    nav a { color: #fff; }
+    main { max-width: 1120px; margin: 0 auto; padding: 34px 24px 68px; }
+    .intro { max-width: 800px; margin: 0 0 24px; color: var(--muted); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
+    article { padding: 21px; border: 1px solid var(--line); border-radius: 15px; background: var(--card); box-shadow: 0 9px 25px rgba(16, 42, 67, .05); }
+    article.primary { border-color: #9fddd3; background: linear-gradient(145deg, #fff, #edfdf8); }
+    .state { display: inline-block; margin-bottom: 12px; padding: 3px 8px; border-radius: 999px; background: #edf1f5; color: var(--muted); font-size: 12px; }
+    .state.live { background: var(--accent-soft); color: #09665e; }
+    h2 { margin: 0 0 8px; font-size: 21px; }
+    article p { margin: 0 0 15px; color: var(--muted); }
+    a { color: var(--accent); text-decoration: none; font-weight: 700; }
+    a:hover { text-decoration: underline; }
+    footer { margin-top: 38px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--muted); }
+  </style>
+</head>
+<body>
+  <header>
+    <p class="eyebrow">USEFUL AGENT SKILLS</p>
+    <h1>Tools</h1>
+    <p>按实际产出分类的 Agent 工具：报告、可视化、浏览器自动化、Skill 评测、可观测性与安全。</p>
+    <nav aria-label="目录导航"><a href="../index.html">Skills</a><a href="../prompts.html">Prompt Library</a><a href="./index.html">Tools</a><a href="https://github.com/123abc-123/useful-agent-skills">GitHub</a></nav>
+  </header>
+  <main>
+    <p class="intro">Tools 是分类入口，不是安装根目录。安装到 Pi/OpenCode 时，每个 Skill 仍放在独立的 <code>.agents/skills/&lt;skill-name&gt;/</code> 目录。</p>
+    <section class="grid">
+      <article class="primary">
+        <span class="state live">已上线 · 7 项</span>
+        <h2>HTML 报告与可视化</h2>
+        <p>技术调研、领导汇报、交互页面、HTML 幻灯片、流程图和架构图。</p>
+        <a href="./html-reports/">进入子栏目 →</a>
+      </article>
+      <article>
+        <span class="state">使用主清单</span>
+        <h2>浏览器与自动化</h2>
+        <p>Playwright、页面检查、回归验证与工作流自动化。</p>
+        <a href="../index.html">在 Skills 中查看</a>
+      </article>
+      <article>
+        <span class="state">使用主清单</span>
+        <h2>Skill 创建与评测</h2>
+        <p>Skill 创建、结构校验、路由测试、行为基线和回归评测。</p>
+        <a href="../index.html">在 Skills 中查看</a>
+      </article>
+      <article>
+        <span class="state">使用主清单</span>
+        <h2>可观测性与评测</h2>
+        <p>Tracing、日志、数据集评测、Scorer 和失败分析。</p>
+        <a href="../index.html">在 Skills 中查看</a>
+      </article>
+      <article>
+        <span class="state">使用主清单</span>
+        <h2>安全与供应链</h2>
+        <p>静态分析、Skill 扫描、依赖审查和供应链风险。</p>
+        <a href="../index.html">在 Skills 中查看</a>
+      </article>
+    </section>
+    <footer>分类说明和目录约定见 <a href="https://github.com/123abc-123/useful-agent-skills/blob/main/catalog/tools/README.md">catalog/tools/README.md</a>。</footer>
+  </main>
+</body>
+</html>
