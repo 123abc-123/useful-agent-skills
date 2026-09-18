@@ -21,7 +21,7 @@
 | 关注新项目和低成熟度项目 | [观察清单](catalog/watchlist.md) |
 | 了解收录与每日更新规则 | [维护规则](MAINTENANCE.md) |
 
-可搜索的网页目录已经上线：[Useful Agent Skills](https://123abc-123.github.io/useful-agent-skills/)。其中 [Prompt Library](https://123abc-123.github.io/useful-agent-skills/prompts.html) 可按分类搜索 10 个原创模板，[Tools](docs/tools/index.html) 负责工具型分类，[HTML Reports & Visuals](docs/tools/html-reports/index.html) 是其第一个子栏目。页面读取机器可读的 [`data/recommended-skills.json`](data/recommended-skills.json)、[`data/prompts.json`](data/prompts.json) 和 [`data/tools/html-reports.json`](data/tools/html-reports.json)。
+可搜索的网页目录已经上线：[Useful Agent Skills](https://123abc-123.github.io/useful-agent-skills/)。其中 [Prompt Library](https://123abc-123.github.io/useful-agent-skills/prompts.html) 可按分类搜索 10 个原创模板，[Tools](https://123abc-123.github.io/useful-agent-skills/tools/) 负责工具型分类，[HTML Reports & Visuals](https://123abc-123.github.io/useful-agent-skills/tools/html-reports/) 是其第一个子栏目。页面读取机器可读的 [`data/recommended-skills.json`](data/recommended-skills.json)、[`data/prompts.json`](data/prompts.json) 和 [`data/tools/html-reports.json`](data/tools/html-reports.json)。
 
 ## 仓库结构
 
