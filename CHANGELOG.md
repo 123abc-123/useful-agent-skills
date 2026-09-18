@@ -1,5 +1,11 @@
 # 更新记录
 
+## 2026-09-19
+
+- 新增独立的 HTML 报告与可视化栏目、7 项机器可读清单和可搜索 GitHub Pages 页面。
+- 首批覆盖通用技术报告、研究报告、中文领导汇报、视觉设计、复杂交互页面、HTML 幻灯片和 Mermaid 图表。
+- 每项记录固定 commit、许可证、输出类型、安装状态、Pi/OpenCode 实机状态、适配成本和风险。
+
 ## 2026-09-18
 
 - 新增 MLflow 官方 Agent 评测与 tracing Skills；固定源码 commit 已通过 API 和网页双重核验，Pi/OpenCode 实机状态仍为 `not-run`。

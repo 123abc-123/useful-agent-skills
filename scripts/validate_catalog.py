@@ -23,8 +23,11 @@ REQUIRED_FILES = (
     "catalog/learning-resources.md",
     "catalog/discovery-sources.md",
     "catalog/watchlist.md",
+    "catalog/html-report-skills.md",
     "data/recommended-skills.json",
+    "data/html-report-skills.json",
     "data/prompts.json",
+    "docs/html-reports.html",
     "prompts/README.md",
     "evals/README.md",
     "evals/cases/prompts.json",
@@ -40,6 +43,7 @@ NAME = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 STATUSES = {"verified", "not-run", "passed", "failed", "needs-adaptation"}
 RISKS = {"low", "medium", "high"}
 PROMPT_VARIABLE = re.compile(r"\{\{([a-z][a-z0-9_]*)\}\}")
+HTML_REPORT_STATUSES = {"recommended", "trial", "needs-adaptation"}
 
 
 def parse_frontmatter(path: Path) -> dict[str, str]:
@@ -215,6 +219,65 @@ def validate_prompt_catalog(errors: list[str]) -> int:
     return len(prompts)
 
 
+def validate_html_report_catalog(errors: list[str]) -> int:
+    path = ROOT / "data/html-report-skills.json"
+    if not path.is_file():
+        return 0
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, UnicodeDecodeError) as exc:
+        errors.append(f"invalid data/html-report-skills.json: {exc}")
+        return 0
+
+    if payload.get("schema_version") != 1:
+        errors.append("HTML report catalog schema_version must be 1")
+    items = payload.get("items")
+    if not isinstance(items, list) or not items:
+        errors.append("HTML report catalog must contain a non-empty items list")
+        return 0
+
+    required = {
+        "name", "category", "source", "path", "commit", "license", "purpose",
+        "output", "compatibility", "score", "status", "risk", "source_path",
+        "install_syntax", "runtime_pi", "runtime_opencode", "install",
+    }
+    names: list[str] = []
+    markdown_path = ROOT / "catalog/html-report-skills.md"
+    markdown_text = markdown_path.read_text(encoding="utf-8") if markdown_path.is_file() else ""
+    for index, item in enumerate(items, start=1):
+        if not isinstance(item, dict):
+            errors.append(f"HTML report item #{index} is not an object")
+            continue
+        missing = sorted(required - set(item))
+        if missing:
+            errors.append(f"HTML report item #{index} missing: {', '.join(missing)}")
+            continue
+        name = item["name"]
+        names.append(name)
+        if not isinstance(name, str) or not NAME.fullmatch(name):
+            errors.append(f"invalid HTML report skill name: {name!r}")
+        if not isinstance(item["score"], int) or not 0 <= item["score"] <= 100:
+            errors.append(f"invalid HTML report score for {name}")
+        if item["status"] not in HTML_REPORT_STATUSES:
+            errors.append(f"invalid HTML report status for {name}: {item['status']}")
+        if item["risk"] not in RISKS:
+            errors.append(f"invalid HTML report risk for {name}: {item['risk']}")
+        for field in ("source_path", "install_syntax", "runtime_pi", "runtime_opencode"):
+            if item[field] not in STATUSES:
+                errors.append(f"invalid {field} for HTML report skill {name}: {item[field]}")
+        if not str(item["path"]).endswith("SKILL.md"):
+            errors.append(f"HTML report source path must end in SKILL.md: {name}")
+        if not SHA40.fullmatch(str(item["commit"])):
+            errors.append(f"HTML report commit must be a 40-character SHA: {name}")
+        if f"`{name}`" not in markdown_text:
+            errors.append(f"html-report-skills.md does not mention: {name}")
+
+    duplicates = sorted({name for name in names if names.count(name) > 1})
+    if duplicates:
+        errors.append(f"duplicate HTML report skill names: {', '.join(duplicates)}")
+    return len(items)
+
+
 def validate_prompt_cases(errors: list[str], prompt_names: set[str]) -> None:
     path = ROOT / "evals/cases/prompts.json"
     if not path.is_file():
@@ -293,6 +356,7 @@ def main() -> int:
 
     recommendation_count = validate_structured_catalog(errors)
     prompt_count = validate_prompt_catalog(errors)
+    html_report_count = validate_html_report_catalog(errors)
     validate_local_links(errors)
 
     if len(all_urls) < 30:
@@ -307,7 +371,7 @@ def main() -> int:
     print(
         "Catalog validation passed: "
         f"{len(REQUIRED_FILES)} files, {recommendation_count} structured recommendations, "
-        f"{prompt_count} prompts, "
+        f"{prompt_count} prompts, {html_report_count} HTML report skills, "
         f"{len(all_urls)} distinct URLs."
     )
     return 0

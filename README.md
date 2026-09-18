@@ -2,7 +2,7 @@
 
 面向算法工程师的 Agent Skill 与 Agent Harness 实用清单，重点考虑 **Pi Coding Agent** 和 **OpenCode**。这里不按 star 数堆链接，而是按真实工作环节整理：数据、训练、评测、调试、代码审查、安全、自动化、可观测性与 Harness 工程。
 
-> 最近核验：2026-09-18。Skill 本质上是会被 Agent 读取的指令和代码，使用第三方 Skill 前请先审查 `SKILL.md`、脚本、依赖和网络行为。
+> 最近核验：2026-09-19。Skill 本质上是会被 Agent 读取的指令和代码，使用第三方 Skill 前请先审查 `SKILL.md`、脚本、依赖和网络行为。
 
 ## 从这里开始
 
@@ -10,6 +10,7 @@
 |---|---|
 | 直接安装一组经过筛选的 Skill | [算法工程师精选组合](catalog/recommended-stack.md) |
 | 复制可直接使用的算法工程 Prompt | [Prompt Library](prompts/README.md) |
+| 生成好看的 HTML、技术报告和演示 | [HTML 报告与可视化 Skills](catalog/html-report-skills.md) |
 | 查找开源 Prompt 库和评测工具 | [开源 Prompt 资源](catalog/prompt-libraries.md) |
 | 看真实工作场景如何使用 Skill/Prompt | [可复现实战案例](case-studies/README.md) |
 | 找适合算法工程的 Skill | [分类清单](catalog/skills.md) |
@@ -19,7 +20,7 @@
 | 关注新项目和低成熟度项目 | [观察清单](catalog/watchlist.md) |
 | 了解收录与每日更新规则 | [维护规则](MAINTENANCE.md) |
 
-可搜索的网页目录已经上线：[Useful Agent Skills](https://123abc-123.github.io/useful-agent-skills/)。其中 [Prompt Library](docs/prompts.html) 可按分类搜索 10 个原创模板。页面直接读取机器可读的 [`data/recommended-skills.json`](data/recommended-skills.json) 和 [`data/prompts.json`](data/prompts.json)。
+可搜索的网页目录已经上线：[Useful Agent Skills](https://123abc-123.github.io/useful-agent-skills/)。其中 [Prompt Library](https://123abc-123.github.io/useful-agent-skills/prompts.html) 可按分类搜索 10 个原创模板，[HTML Reports & Visuals](docs/html-reports.html) 单独收录 HTML 报告、可视化和演示 Skill。页面读取机器可读的 [`data/recommended-skills.json`](data/recommended-skills.json)、[`data/prompts.json`](data/prompts.json) 和 [`data/html-report-skills.json`](data/html-report-skills.json)。
 
 ## Prompt Library
 
