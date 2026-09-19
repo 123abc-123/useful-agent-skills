@@ -1,4 +1,4 @@
-![Useful Agent Skills for Algorithm Engineers](docs/assets/hero.svg)
+![Useful Agent Skills for Algorithm Engineers](site/assets/hero.svg)
 
 # Useful Agent Skills for Algorithm Engineers
 
@@ -33,34 +33,39 @@ npx skills add 123abc-123/useful-agent-skills \
 
 | 目标 | 推荐入口 |
 |---|---|
-| 直接安装一组经过筛选的 Skill | [算法工程师精选组合](catalog/recommended-stack.md) |
-| 复制可直接使用的算法工程 Prompt | [Prompt Library](prompts/README.md) |
-| 浏览报告、自动化、评测和安全工具 | [Tools 分类](catalog/tools/README.md) |
-| 生成好看的 HTML、技术报告和演示 | [HTML 报告与可视化](catalog/tools/html-reports/README.md) |
-| 查找开源 Prompt 库和评测工具 | [开源 Prompt 资源](catalog/prompt-libraries.md) |
-| 看真实工作场景如何使用 Skill/Prompt | [可复现实战案例](case-studies/README.md) |
-| 找适合算法工程的 Skill | [分类清单](catalog/skills.md) |
-| 理解 Harness、搭建团队工作流 | [Harness 专题](catalog/harness.md) |
-| 系统学习 Skill、MCP、Agent、评测 | [学习资源](catalog/learning-resources.md) |
-| 查看安装榜、趋势榜和发现渠道 | [榜单与发现源](catalog/discovery-sources.md) |
-| 关注新项目和低成熟度项目 | [观察清单](catalog/watchlist.md) |
+| 直接安装一组经过筛选的 Skill | [算法工程师精选组合](content/catalog/recommended-stack.md) |
+| 复制可直接使用的算法工程 Prompt | [Prompt Library](content/prompts/README.md) |
+| 浏览报告、自动化、评测和安全工具 | [Tools 分类](content/catalog/tools/README.md) |
+| 生成好看的 HTML、技术报告和演示 | [HTML 报告与可视化](content/catalog/tools/html-reports/README.md) |
+| 查找开源 Prompt 库和评测工具 | [开源 Prompt 资源](content/catalog/prompt-libraries.md) |
+| 看真实工作场景如何使用 Skill/Prompt | [可复现实战案例](content/case-studies/README.md) |
+| 找适合算法工程的 Skill | [分类清单](content/catalog/skills.md) |
+| 理解 Harness、搭建团队工作流 | [Harness 专题](content/catalog/harness.md) |
+| 系统学习 Skill、MCP、Agent、评测 | [学习资源](content/catalog/learning-resources.md) |
+| 查看安装榜、趋势榜和发现渠道 | [榜单与发现源](content/catalog/discovery-sources.md) |
+| 关注新项目和低成熟度项目 | [观察清单](content/catalog/watchlist.md) |
 | 了解收录与每日更新规则 | [维护规则](MAINTENANCE.md) |
 
-可搜索的网页目录已经上线：[Useful Agent Skills](https://123abc-123.github.io/useful-agent-skills/)。其中 [Prompt Library](https://123abc-123.github.io/useful-agent-skills/prompts.html) 可按分类搜索 10 个原创模板，[Tools](https://123abc-123.github.io/useful-agent-skills/tools/) 负责工具型分类，[HTML Reports & Visuals](https://123abc-123.github.io/useful-agent-skills/tools/html-reports/) 是其第一个子栏目。页面读取机器可读的 [`data/recommended-skills.json`](data/recommended-skills.json)、[`data/prompts.json`](data/prompts.json) 和 [`data/tools/html-reports.json`](data/tools/html-reports.json)。
+可搜索的网页目录已经上线：[Useful Agent Skills](https://123abc-123.github.io/useful-agent-skills/)。其中 [Prompt Library](https://123abc-123.github.io/useful-agent-skills/prompts.html) 可按分类搜索 10 个原创模板，[Tools](https://123abc-123.github.io/useful-agent-skills/tools/) 负责工具型分类，[HTML Reports & Visuals](https://123abc-123.github.io/useful-agent-skills/tools/html-reports/) 是其第一个子栏目。页面读取机器可读的 [`recommended-skills.json`](content/data/recommended-skills.json)、[`prompts.json`](content/data/prompts.json) 和 [`html-reports.json`](content/data/tools/html-reports.json)。
 
 ## 仓库结构
 
 ```text
-catalog/                         人工整理的分类、判断与采用边界
-  tools/<category>/README.md     工具型子栏目
-data/                            网页与自动化读取的结构化数据
-  tools/<category>.json          工具型子栏目数据
-docs/                            GitHub Pages
-  tools/<category>/index.html    工具型子栏目页面
-skills/<skill-name>/SKILL.md     本仓库自己维护的可安装 Skill
+content/                         人工维护的内容
+  catalog/                       分类、判断与采用边界
+  prompts/                       原创 Prompt 模板
+  case-studies/                  可复现实战案例
+  reports/                       周报与变更记录
+  data/                          结构化数据源
+site/                            GitHub Pages 静态站点
+skills/<skill-name>/SKILL.md     可被 Skills CLI 发现的自研 Skill
+tooling/                         维护工具
+  scripts/                       生成、校验与链接检查脚本
+  evals/                         Prompt 回归用例
+  tests/                         Pi/OpenCode 实机证据
 ```
 
-`data/` 是结构化事实来源，Tools 的 Markdown 和网页由 `scripts/build_catalog.py` 自动生成。安装到 Pi/OpenCode 时仍使用扁平的 `.agents/skills/<skill-name>/`。
+`content/data/` 是结构化事实来源，Tools 的 Markdown 和网页由 `tooling/scripts/build_catalog.py` 自动生成。根目录只保留入口、站点、可安装 Skill 和维护工具；`skills/` 必须留在根目录，方便 Skills CLI 发现。安装到 Pi/OpenCode 时仍使用扁平的 `.agents/skills/<skill-name>/`。
 
 ## 按工作场景选择
 
@@ -79,9 +84,9 @@ skills/<skill-name>/SKILL.md     本仓库自己维护的可安装 Skill
 
 Prompt 适合一次性的明确任务，Skill 适合需要 Agent 自动发现并反复执行的工作流。本仓库先提供 10 个算法工程模板，覆盖陌生仓库理解、数据泄漏、实验设计、训练故障、模型对比、RAG 评测、论文验证、代码审查、推理性能和每周 AI 技术分享。
 
-每个模板都要求证据、未知项和可执行输出，变量使用 `{{variable}}` 标记。模板均为本仓库原创；第三方项目只在[开源 Prompt 资源](catalog/prompt-libraries.md)中作为学习和发现来源。
+每个模板都要求证据、未知项和可执行输出，变量使用 `{{variable}}` 标记。模板均为本仓库原创；第三方项目只在[开源 Prompt 资源](content/catalog/prompt-libraries.md)中作为学习和发现来源。
 
-网页支持搜索、分类和一键复制。模板的结构一致性由 CI 检查，轻量回归边界见 [`evals/cases/prompts.json`](evals/cases/prompts.json)。
+网页支持搜索、分类和一键复制。模板的结构一致性由 CI 检查，轻量回归边界见 [`tooling/evals/cases/prompts.json`](tooling/evals/cases/prompts.json)。
 
 ## 最值得先试的 15 个来源
 

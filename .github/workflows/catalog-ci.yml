@@ -22,8 +22,8 @@ jobs:
         with:
           python-version: "3.12"
       - name: Validate catalog and local skills
-        run: python scripts/validate_catalog.py
+        run: python tooling/scripts/validate_catalog.py
       - name: Check generated Tools pages
-        run: python scripts/build_catalog.py --check
+        run: python tooling/scripts/build_catalog.py --check
       - name: Check external links
-        run: python scripts/check_links.py --timeout 15 --workers 8
+        run: python tooling/scripts/check_links.py --timeout 15 --workers 8

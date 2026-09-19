@@ -2,16 +2,18 @@
 
 ## 2026-09-19
 
+- 将顶层内容归并为 `content/`、`site/` 和 `tooling/` 三层；根目录保留可安装的 `skills/`，公开网页 URL 不变。
+- 今日新增 Elastic LLM 可观测、AWS Skill Eval 和 Datadog Agent Observability 三个观察项；均核对了固定 commit、许可证和具体 `SKILL.md`，但未执行第三方脚本或写成 Pi/OpenCode 实机通过。
 - 精选清单由 24 项扩展到 32 项，新增代码评审、上下文工程、TDD、本地模型、视觉训练、实验追踪、测试缺口审计和 MCP 安全审计。
 - Tools 扩展为 4 个子栏目、24 个条目，新增浏览器自动化、评测与可观测性、Skill 与 Agent 安全。
 - 数据升级到 schema v2，每项独立记录 `last_verified`、`pinning_status` 和 `runtime_evidence`。
-- 新增 `scripts/build_catalog.py`，由 `data/tools/` 自动生成 Tools Markdown 与网页；CI 检查生成结果是否过期。
+- 新增 `tooling/scripts/build_catalog.py`，由 `content/data/tools/` 自动生成 Tools Markdown 与网页；CI 检查生成结果是否过期。
 - 重做 README 与 Pages 首页，增加快速安装、任务入口、信任说明、运行状态筛选和复制安装命令。
 - 新增 `SECURITY.md`、主机运行环境证据和 2026-W38 周报。
 - GitHub Actions 固定到具体 commit，Pages 构建改为自动复制全部 Tools 数据。
-- 将仓库整理为 `catalog`、`data`、`docs` 三层，并新增 Tools 一级目录索引。
+- 将仓库的内容、结构化数据和站点入口分层，并新增 Tools 一级目录索引。
 - HTML 报告栏目移动到 `tools/html-reports` 子目录；旧网页地址保留自动跳转。
-- Pages 构建改为递归复制 `docs/`，后续新增 Tools 子栏目无需逐个登记页面文件。
+- Pages 构建改为递归复制 `site/`，后续新增 Tools 子栏目无需逐个登记页面文件。
 - 新增独立的 HTML 报告与可视化栏目、7 项机器可读清单和可搜索 GitHub Pages 页面。
 - 首批覆盖通用技术报告、研究报告、中文领导汇报、视觉设计、复杂交互页面、HTML 幻灯片和 Mermaid 图表。
 - 每项记录固定 commit、许可证、输出类型、安装状态、Pi/OpenCode 实机状态、适配成本和风险。

@@ -4,12 +4,12 @@ on:
   push:
     branches: [main]
     paths:
-      - "docs/**"
-      - "data/recommended-skills.json"
-      - "data/prompts.json"
-      - "data/tools/**"
-      - "prompts/**"
-      - "scripts/build_catalog.py"
+      - "site/**"
+      - "content/data/recommended-skills.json"
+      - "content/data/prompts.json"
+      - "content/data/tools/**"
+      - "content/prompts/**"
+      - "tooling/scripts/build_catalog.py"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
 
@@ -36,15 +36,15 @@ jobs:
           python-version: "3.12"
       - name: Build static artifact
         run: |
-          python scripts/build_catalog.py
+          python tooling/scripts/build_catalog.py
           mkdir _site
-          cp -r docs/. _site/
-          cp data/recommended-skills.json _site/skills.json
-          cp data/prompts.json _site/prompts.json
+          cp -r site/. _site/
+          cp content/data/recommended-skills.json _site/skills.json
+          cp content/data/prompts.json _site/prompts.json
           mkdir -p _site/data/tools
-          cp -r data/tools/. _site/data/tools/
+          cp -r content/data/tools/. _site/data/tools/
           mkdir -p _site/prompts
-          cp prompts/*.prompt.md _site/prompts/
+          cp content/prompts/*.prompt.md _site/prompts/
           touch _site/.nojekyll
       - name: Configure Pages
         uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
