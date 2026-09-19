@@ -132,6 +132,21 @@
 
 ## 推荐组合
 
+## 8. 近期新增的高频实用 Skill
+
+| Skill | 作用 | 适用场景 | Pi / OpenCode | 成熟度 | 链接 |
+|---|---|---|---|---|---|
+| `context-engineering` | 组织规则、架构、源码和运行证据 | Agent 上下文质量、Harness 建设 | 标准；上游提供 OpenCode 指南 | B | [固定源码](https://github.com/addyosmani/agent-skills/blob/c004a74784a08295d52749b04cda634125b9a581/skills/context-engineering/SKILL.md) |
+| `test-driven-development` | 红—绿—重构并使用仓库自己的测试命令 | 功能开发、Bug 修复 | 标准；纯指令型 | B | [固定源码](https://github.com/addyosmani/agent-skills/blob/c004a74784a08295d52749b04cda634125b9a581/skills/test-driven-development/SKILL.md) |
+| `code-review-and-quality` | 正确性、可读性、架构、安全和性能审查 | Agent 代码合并前 | 标准；纯指令型 | B | [固定源码](https://github.com/addyosmani/agent-skills/blob/c004a74784a08295d52749b04cda634125b9a581/skills/code-review-and-quality/SKILL.md) |
+| `huggingface-local-models` | 选择 GGUF 和量化并启动 llama.cpp | 本地推理和模型选型 | 标准；需本地运行时与模型下载 | A | [固定源码](https://github.com/huggingface/skills/blob/abc20ae526d8b4c0e4dff89f904adce28a4a0eb6/skills/huggingface-local-models/SKILL.md) |
+| `huggingface-vision-trainer` | 训练分类、检测和分割模型 | 视觉算法实验 | 标准；云训练涉及付费与凭据 | A | [固定源码](https://github.com/huggingface/skills/blob/abc20ae526d8b4c0e4dff89f904adce28a4a0eb6/skills/huggingface-vision-trainer/SKILL.md) |
+| `huggingface-trackio` | 记录指标、告警和查询实验 | 训练监控、异常定位 | 标准；检查远端 Space 隐私 | A | [固定源码](https://github.com/huggingface/skills/blob/abc20ae526d8b4c0e4dff89f904adce28a4a0eb6/skills/huggingface-trackio/SKILL.md) |
+| `test-gap-audit` | 只读审计测试缺口 | PR、功能和全仓库测试规划 | 标准；默认只读 | A | [固定源码](https://github.com/github/awesome-copilot/blob/4f4796f0bf30e105700f97ed8408c12b6aa95e06/skills/test-gap-audit/SKILL.md) |
+| `mcp-security-audit` | 审计 MCP 密钥、注入和版本固定 | MCP 配置上线前 | 标准；修复操作需另行确认 | A | [固定源码](https://github.com/github/awesome-copilot/blob/4f4796f0bf30e105700f97ed8408c12b6aa95e06/skills/mcp-security-audit/SKILL.md) |
+
+对应的浏览器、评测和安全专题见 [Tools](tools/README.md)。
+
 ### 算法实验组合
 
 `huggingface-datasets` + `huggingface-llm-trainer`/`trl-training` + `designing-leakage-safe-experiments` + `phoenix-evals` + `verification-before-completion`

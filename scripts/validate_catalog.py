@@ -25,13 +25,13 @@ REQUIRED_FILES = (
     "catalog/watchlist.md",
     "catalog/README.md",
     "catalog/tools/README.md",
-    "catalog/tools/html-reports/README.md",
     "data/recommended-skills.json",
-    "data/tools/html-reports.json",
+    "data/tools/index.json",
     "data/prompts.json",
     "docs/tools/index.html",
-    "docs/tools/html-reports/index.html",
     "docs/html-reports.html",
+    "scripts/build_catalog.py",
+    "SECURITY.md",
     "prompts/README.md",
     "evals/README.md",
     "evals/cases/prompts.json",
@@ -43,9 +43,11 @@ REQUIRED_FILES = (
 MARKDOWN_LINK = re.compile(r"\[[^\]]+\]\((https?://[^)]+)\)")
 LOCAL_MARKDOWN_LINK = re.compile(r"\[[^\]]+\]\((?!https?://|mailto:|#)([^)]+)\)")
 SHA40 = re.compile(r"^[0-9a-f]{40}$")
+ISO_DATE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 NAME = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 STATUSES = {"verified", "not-run", "passed", "failed", "needs-adaptation"}
 RISKS = {"low", "medium", "high"}
+PINNING_STATUSES = {"verified", "pending-upstream-commit-verification", "local-main"}
 PROMPT_VARIABLE = re.compile(r"\{\{([a-z][a-z0-9_]*)\}\}")
 HTML_REPORT_STATUSES = {"recommended", "trial", "needs-adaptation"}
 
@@ -76,8 +78,8 @@ def validate_structured_catalog(errors: list[str]) -> int:
         errors.append(f"invalid data/recommended-skills.json: {exc}")
         return 0
 
-    if payload.get("schema_version") != 1:
-        errors.append("recommended catalog schema_version must be 1")
+    if payload.get("schema_version") != 2:
+        errors.append("recommended catalog schema_version must be 2")
     skills = payload.get("skills")
     if not isinstance(skills, list) or not skills:
         errors.append("recommended catalog must contain a non-empty skills list")
@@ -86,7 +88,7 @@ def validate_structured_catalog(errors: list[str]) -> int:
     required = {
         "name", "category", "source", "path", "commit", "license", "purpose",
         "score", "risk", "source_path", "install_syntax", "runtime_pi",
-        "runtime_opencode",
+        "runtime_opencode", "last_verified", "pinning_status", "runtime_evidence",
     }
     names: list[str] = []
     for index, skill in enumerate(skills, start=1):
@@ -109,6 +111,12 @@ def validate_structured_catalog(errors: list[str]) -> int:
         for field in ("source_path", "install_syntax", "runtime_pi", "runtime_opencode"):
             if skill[field] not in STATUSES:
                 errors.append(f"invalid {field} for {name}: {skill[field]}")
+        if not ISO_DATE.fullmatch(str(skill["last_verified"])):
+            errors.append(f"invalid last_verified for {name}: {skill['last_verified']}")
+        if skill["pinning_status"] not in PINNING_STATUSES:
+            errors.append(f"invalid pinning_status for {name}: {skill['pinning_status']}")
+        if (skill["runtime_pi"] == "passed" or skill["runtime_opencode"] == "passed") and not skill["runtime_evidence"]:
+            errors.append(f"passed runtime needs evidence for {name}")
         if not str(skill["path"]).endswith("/SKILL.md"):
             errors.append(f"skill path must end in /SKILL.md: {name}")
 
@@ -223,63 +231,96 @@ def validate_prompt_catalog(errors: list[str]) -> int:
     return len(prompts)
 
 
-def validate_html_report_catalog(errors: list[str]) -> int:
-    path = ROOT / "data/tools/html-reports.json"
-    if not path.is_file():
-        return 0
+def validate_tools_catalog(errors: list[str]) -> tuple[int, int]:
+    index_path = ROOT / "data/tools/index.json"
+    if not index_path.is_file():
+        return 0, 0
     try:
-        payload = json.loads(path.read_text(encoding="utf-8"))
+        tool_index = json.loads(index_path.read_text(encoding="utf-8"))
     except (json.JSONDecodeError, UnicodeDecodeError) as exc:
-        errors.append(f"invalid data/tools/html-reports.json: {exc}")
-        return 0
-
-    if payload.get("schema_version") != 1:
-        errors.append("HTML report catalog schema_version must be 1")
-    items = payload.get("items")
-    if not isinstance(items, list) or not items:
-        errors.append("HTML report catalog must contain a non-empty items list")
-        return 0
+        errors.append(f"invalid data/tools/index.json: {exc}")
+        return 0, 0
+    categories = tool_index.get("categories")
+    if not isinstance(categories, list) or not categories:
+        errors.append("Tools index must contain categories")
+        return 0, 0
 
     required = {
         "name", "category", "source", "path", "commit", "license", "purpose",
         "output", "compatibility", "score", "status", "risk", "source_path",
         "install_syntax", "runtime_pi", "runtime_opencode", "install",
+        "last_verified", "pinning_status", "runtime_evidence",
     }
-    names: list[str] = []
-    markdown_path = ROOT / "catalog/tools/html-reports/README.md"
-    markdown_text = markdown_path.read_text(encoding="utf-8") if markdown_path.is_file() else ""
-    for index, item in enumerate(items, start=1):
-        if not isinstance(item, dict):
-            errors.append(f"HTML report item #{index} is not an object")
+    total = 0
+    slugs: list[str] = []
+    for category in categories:
+        slug = category.get("slug")
+        if not isinstance(slug, str) or not NAME.fullmatch(slug):
+            errors.append(f"invalid Tools category slug: {slug!r}")
             continue
-        missing = sorted(required - set(item))
-        if missing:
-            errors.append(f"HTML report item #{index} missing: {', '.join(missing)}")
+        slugs.append(slug)
+        data_path = ROOT / f"data/tools/{slug}.json"
+        markdown_path = ROOT / f"catalog/tools/{slug}/README.md"
+        page_path = ROOT / f"docs/tools/{slug}/index.html"
+        for path in (data_path, markdown_path, page_path):
+            if not path.is_file():
+                errors.append(f"missing Tools category file: {path.relative_to(ROOT)}")
+        if not data_path.is_file():
             continue
-        name = item["name"]
-        names.append(name)
-        if not isinstance(name, str) or not NAME.fullmatch(name):
-            errors.append(f"invalid HTML report skill name: {name!r}")
-        if not isinstance(item["score"], int) or not 0 <= item["score"] <= 100:
-            errors.append(f"invalid HTML report score for {name}")
-        if item["status"] not in HTML_REPORT_STATUSES:
-            errors.append(f"invalid HTML report status for {name}: {item['status']}")
-        if item["risk"] not in RISKS:
-            errors.append(f"invalid HTML report risk for {name}: {item['risk']}")
-        for field in ("source_path", "install_syntax", "runtime_pi", "runtime_opencode"):
-            if item[field] not in STATUSES:
-                errors.append(f"invalid {field} for HTML report skill {name}: {item[field]}")
-        if not str(item["path"]).endswith("SKILL.md"):
-            errors.append(f"HTML report source path must end in SKILL.md: {name}")
-        if not SHA40.fullmatch(str(item["commit"])):
-            errors.append(f"HTML report commit must be a 40-character SHA: {name}")
-        if f"`{name}`" not in markdown_text:
-            errors.append(f"catalog/tools/html-reports/README.md does not mention: {name}")
-
-    duplicates = sorted({name for name in names if names.count(name) > 1})
-    if duplicates:
-        errors.append(f"duplicate HTML report skill names: {', '.join(duplicates)}")
-    return len(items)
+        try:
+            payload = json.loads(data_path.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, UnicodeDecodeError) as exc:
+            errors.append(f"invalid data/tools/{slug}.json: {exc}")
+            continue
+        if payload.get("schema_version") != 2:
+            errors.append(f"Tools category {slug} schema_version must be 2")
+        items = payload.get("items")
+        if not isinstance(items, list) or not items:
+            errors.append(f"Tools category {slug} must contain items")
+            continue
+        total += len(items)
+        markdown_text = markdown_path.read_text(encoding="utf-8") if markdown_path.is_file() else ""
+        names: list[str] = []
+        for item_index, item in enumerate(items, start=1):
+            if not isinstance(item, dict):
+                errors.append(f"Tools {slug} item #{item_index} is not an object")
+                continue
+            missing = sorted(required - set(item))
+            if missing:
+                errors.append(f"Tools {slug} item #{item_index} missing: {', '.join(missing)}")
+                continue
+            name = item["name"]
+            names.append(name)
+            if not isinstance(name, str) or not NAME.fullmatch(name):
+                errors.append(f"invalid Tools skill name in {slug}: {name!r}")
+            if not isinstance(item["score"], int) or not 0 <= item["score"] <= 100:
+                errors.append(f"invalid Tools score for {name}")
+            if item["status"] not in HTML_REPORT_STATUSES:
+                errors.append(f"invalid Tools status for {name}: {item['status']}")
+            if item["risk"] not in RISKS:
+                errors.append(f"invalid Tools risk for {name}: {item['risk']}")
+            for field in ("source_path", "install_syntax", "runtime_pi", "runtime_opencode"):
+                if item[field] not in STATUSES:
+                    errors.append(f"invalid {field} for Tools skill {name}: {item[field]}")
+            if not str(item["path"]).endswith("SKILL.md"):
+                errors.append(f"Tools source path must end in SKILL.md: {name}")
+            if not SHA40.fullmatch(str(item["commit"])):
+                errors.append(f"Tools commit must be a 40-character SHA: {name}")
+            if not ISO_DATE.fullmatch(str(item["last_verified"])):
+                errors.append(f"invalid Tools last_verified for {name}")
+            if item["pinning_status"] not in PINNING_STATUSES:
+                errors.append(f"invalid Tools pinning_status for {name}")
+            if (item["runtime_pi"] == "passed" or item["runtime_opencode"] == "passed") and not item["runtime_evidence"]:
+                errors.append(f"passed Tools runtime needs evidence for {name}")
+            if f"`{name}`" not in markdown_text:
+                errors.append(f"catalog/tools/{slug}/README.md does not mention: {name}")
+        duplicates = sorted({name for name in names if names.count(name) > 1})
+        if duplicates:
+            errors.append(f"duplicate Tools names in {slug}: {', '.join(duplicates)}")
+    duplicate_slugs = sorted({slug for slug in slugs if slugs.count(slug) > 1})
+    if duplicate_slugs:
+        errors.append(f"duplicate Tools category slugs: {', '.join(duplicate_slugs)}")
+    return len(slugs), total
 
 
 def validate_prompt_cases(errors: list[str], prompt_names: set[str]) -> None:
@@ -360,7 +401,7 @@ def main() -> int:
 
     recommendation_count = validate_structured_catalog(errors)
     prompt_count = validate_prompt_catalog(errors)
-    html_report_count = validate_html_report_catalog(errors)
+    tool_category_count, tool_item_count = validate_tools_catalog(errors)
     validate_local_links(errors)
 
     if len(all_urls) < 30:
@@ -375,7 +416,7 @@ def main() -> int:
     print(
         "Catalog validation passed: "
         f"{len(REQUIRED_FILES)} files, {recommendation_count} structured recommendations, "
-        f"{prompt_count} prompts, {html_report_count} HTML report skills, "
+        f"{prompt_count} prompts, {tool_category_count} Tools categories with {tool_item_count} entries, "
         f"{len(all_urls)} distinct URLs."
     )
     return 0

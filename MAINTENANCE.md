@@ -69,17 +69,17 @@ site:github.com SKILL.md HTML report visualization slides
 
 ## Tools 子栏目数据规则
 
-Tools 使用一致的三层结构：
+Tools 使用一致的三层结构，其中 JSON 是唯一数据源：
 
 ```text
-catalog/tools/<category>/README.md
-data/tools/<category>.json
-docs/tools/<category>/index.html
+data/tools/<category>.json           # 人工维护
+catalog/tools/<category>/README.md   # 自动生成
+docs/tools/<category>/index.html     # 自动生成
 ```
 
 新增或更新工具子栏目时必须：
 
-- 保持分类说明、结构化数据和网页卡片的条目一致；
+- 修改 JSON 后运行 `python scripts/build_catalog.py`，保持分类说明、结构化数据和网页卡片一致；
 - 记录固定 commit、许可证、输出类型、适配说明、评分、状态和风险；
 - 分别记录 `source_path`、`install_syntax`、`runtime_pi` 和 `runtime_opencode`；
 - 实机未运行时保持 `not-run`，不把源码可移植推断写成通过；

@@ -16,18 +16,21 @@
 
 ## 修改流程
 
-1. 更新 `data/recommended-skills.json` 或对应 `catalog/` 文档；工具子栏目同时更新 `catalog/tools/<category>/`、`data/tools/<category>.json` 和 `docs/tools/<category>/`。
+1. 更新 `data/recommended-skills.json` 或对应 `catalog/` 文档；工具子栏目只编辑 `data/tools/index.json` 与 `data/tools/<category>.json`，然后运行生成器。
 2. 如果修改仓库内 Skill，保持目录名、frontmatter `name` 和触发描述一致。
 3. 更新 `CHANGELOG.md` 和核验日期。
 4. 运行：
 
    ```bash
    python scripts/validate_catalog.py
+   python scripts/build_catalog.py --check
    python scripts/check_links.py
    git diff --check
    ```
 
 5. 不要在评估阶段执行候选 Skill 自带的脚本。
+
+Tools 的 `catalog/tools/` 和 `docs/tools/` 是生成文件。运行 `python scripts/build_catalog.py` 更新，不要分别手工维护三份相同条目。
 
 ## 描述写法
 

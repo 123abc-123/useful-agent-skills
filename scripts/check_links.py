@@ -7,6 +7,7 @@ import concurrent.futures
 import re
 import sys
 import urllib.error
+import urllib.parse
 import urllib.request
 from pathlib import Path
 
@@ -15,6 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 LINK = re.compile(r"\[[^\]]+\]\((https?://[^)]+)\)")
 SOFT_STATUSES = {401, 403, 405, 429}
 HARD_STATUSES = {404, 410}
+SITE_PREFIX = "https://123abc-123.github.io/useful-agent-skills/"
 
 
 def collect_links() -> list[str]:
@@ -27,6 +29,12 @@ def collect_links() -> list[str]:
 
 
 def check(url: str, timeout: float) -> tuple[str, str, int | None]:
+    if url.startswith(SITE_PREFIX):
+        relative = urllib.parse.unquote(url[len(SITE_PREFIX):]).split("#", 1)[0].split("?", 1)[0]
+        local = ROOT / "docs" / relative
+        if not relative or relative.endswith("/"):
+            local = local / "index.html"
+        return url, "ok" if local.is_file() else "broken", 200 if local.is_file() else 404
     headers = {"User-Agent": "useful-agent-skills-link-check/1.0"}
     for method in ("HEAD", "GET"):
         request = urllib.request.Request(url, headers=headers, method=method)

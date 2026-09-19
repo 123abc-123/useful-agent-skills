@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "last_verified": "2026-09-19",
+  "categories": [
+    {
+      "slug": "html-reports",
+      "title": "HTML Reports & Visuals",
+      "title_zh": "HTML 报告与可视化",
+      "description": "技术报告、领导汇报、交互式 HTML、幻灯片和架构图。",
+      "icon": "◫"
+    },
+    {
+      "slug": "browser-automation",
+      "title": "Browser & Automation",
+      "title_zh": "浏览器与自动化",
+      "description": "真实浏览器检查、UI 调试、页面探索和 Playwright 测试生成。",
+      "icon": "◎"
+    },
+    {
+      "slug": "evals-observability",
+      "title": "Evals & Observability",
+      "title_zh": "评测与可观测性",
+      "description": "Agent/LLM 评测、Tracing、训练监控和测试缺口审计。",
+      "icon": "⌁"
+    },
+    {
+      "slug": "skill-security",
+      "title": "Skill Security",
+      "title_zh": "Skill 与 Agent 安全",
+      "description": "MCP 配置、密钥、供应链完整性和 Agent 安全基线。",
+      "icon": "◇"
+    }
+  ]
+}

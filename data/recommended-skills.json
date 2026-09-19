@@ -1,8 +1,6 @@
 {
-  "schema_version": 1,
-  "last_verified": "2026-09-18",
-  "pinning_status": "pending-upstream-commit-verification",
-  "pinning_note": "The observed commit values are retained as audit metadata. Stable clickable links use the exact path on main until each commit resolves through both GitHub API and web access.",
+  "schema_version": 2,
+  "last_verified": "2026-09-19",
   "skills": [
     {
       "name": "huggingface-datasets",
@@ -17,7 +15,10 @@
       "source_path": "verified",
       "install_syntax": "verified",
       "runtime_pi": "not-run",
-      "runtime_opencode": "not-run"
+      "runtime_opencode": "not-run",
+      "last_verified": "2026-09-18",
+      "pinning_status": "pending-upstream-commit-verification",
+      "runtime_evidence": null
     },
     {
       "name": "huggingface-community-evals",
@@ -32,7 +33,10 @@
       "source_path": "verified",
       "install_syntax": "verified",
       "runtime_pi": "not-run",
-      "runtime_opencode": "not-run"
+      "runtime_opencode": "not-run",
+      "last_verified": "2026-09-18",
+      "pinning_status": "pending-upstream-commit-verification",
+      "runtime_evidence": null
     },
     {
       "name": "trl-training",
@@ -47,7 +51,10 @@
       "source_path": "verified",
       "install_syntax": "verified",
       "runtime_pi": "not-run",
-      "runtime_opencode": "not-run"
+      "runtime_opencode": "not-run",
+      "last_verified": "2026-09-18",
+      "pinning_status": "pending-upstream-commit-verification",
+      "runtime_evidence": null
     },
     {
       "name": "train-sentence-transformers",
@@ -62,7 +69,10 @@
       "source_path": "verified",
       "install_syntax": "verified",
       "runtime_pi": "not-run",
-      "runtime_opencode": "not-run"
+      "runtime_opencode": "not-run",
+      "last_verified": "2026-09-18",
+      "pinning_status": "pending-upstream-commit-verification",
+      "runtime_evidence": null
     },
     {
       "name": "pytorch-lightning",
@@ -77,7 +87,10 @@
       "source_path": "verified",
       "install_syntax": "verified",
       "runtime_pi": "not-run",
-      "runtime_opencode": "not-run"
+      "runtime_opencode": "not-run",
+      "last_verified": "2026-09-18",
+      "pinning_status": "pending-upstream-commit-verification",
+      "runtime_evidence": null
     },
     {
       "name": "scikit-learn",
@@ -92,7 +105,10 @@
       "source_path": "verified",
       "install_syntax": "verified",
       "runtime_pi": "not-run",
-      "runtime_opencode": "not-run"
+      "runtime_opencode": "not-run",
+      "last_verified": "2026-09-18",
+      "pinning_status": "pending-upstream-commit-verification",
+      "runtime_evidence": null
     },
     {
       "name": "systematic-debugging",
@@ -107,7 +123,10 @@
       "source_path": "verified",
       "install_syntax": "verified",
       "runtime_pi": "not-run",
-      "runtime_opencode": "not-run"
+      "runtime_opencode": "not-run",
+      "last_verified": "2026-09-18",
+      "pinning_status": "pending-upstream-commit-verification",
+      "runtime_evidence": null
     },
     {
       "name": "verification-before-completion",
@@ -122,7 +141,10 @@
       "source_path": "verified",
       "install_syntax": "verified",
       "runtime_pi": "not-run",
-      "runtime_opencode": "not-run"
+      "runtime_opencode": "not-run",
+      "last_verified": "2026-09-18",
+      "pinning_status": "pending-upstream-commit-verification",
+      "runtime_evidence": null
     },
     {
       "name": "acquire-codebase-knowledge",
@@ -137,7 +159,10 @@
       "source_path": "verified",
       "install_syntax": "verified",
       "runtime_pi": "not-run",
-      "runtime_opencode": "not-run"
+      "runtime_opencode": "not-run",
+      "last_verified": "2026-09-18",
+      "pinning_status": "pending-upstream-commit-verification",
+      "runtime_evidence": null
     },
     {
       "name": "create-implementation-plan",
@@ -152,14 +177,17 @@
       "source_path": "verified",
       "install_syntax": "verified",
       "runtime_pi": "not-run",
-      "runtime_opencode": "not-run"
+      "runtime_opencode": "not-run",
+      "last_verified": "2026-09-18",
+      "pinning_status": "pending-upstream-commit-verification",
+      "runtime_evidence": null
     },
     {
       "name": "phoenix-evals",
       "category": "evaluation",
       "source": "github/awesome-copilot",
       "path": "skills/phoenix-evals/SKILL.md",
-      "commit": "2df57c95fc29b6fc5c5b423947205daf52ad80e3",
+      "commit": "4f4796f0bf30e105700f97ed8408c12b6aa95e06",
       "license": "Apache-2.0",
       "purpose": "构建 LLM、RAG 和 Agent 的代码或模型评测。",
       "score": 92,
@@ -167,14 +195,17 @@
       "source_path": "verified",
       "install_syntax": "verified",
       "runtime_pi": "not-run",
-      "runtime_opencode": "not-run"
+      "runtime_opencode": "not-run",
+      "last_verified": "2026-09-19",
+      "pinning_status": "verified",
+      "runtime_evidence": null
     },
     {
       "name": "phoenix-tracing",
       "category": "observability",
       "source": "github/awesome-copilot",
       "path": "skills/phoenix-tracing/SKILL.md",
-      "commit": "2df57c95fc29b6fc5c5b423947205daf52ad80e3",
+      "commit": "4f4796f0bf30e105700f97ed8408c12b6aa95e06",
       "license": "MIT",
       "purpose": "用 OpenInference 给 LLM、RAG 和 Agent 链路加 tracing。",
       "score": 91,
@@ -182,7 +213,10 @@
       "source_path": "verified",
       "install_syntax": "verified",
       "runtime_pi": "not-run",
-      "runtime_opencode": "not-run"
+      "runtime_opencode": "not-run",
+      "last_verified": "2026-09-19",
+      "pinning_status": "verified",
+      "runtime_evidence": null
     },
     {
       "name": "google-agents-cli-eval",
@@ -197,7 +231,10 @@
       "source_path": "verified",
       "install_syntax": "verified",
       "runtime_pi": "not-run",
-      "runtime_opencode": "not-run"
+      "runtime_opencode": "not-run",
+      "last_verified": "2026-09-18",
+      "pinning_status": "verified",
+      "runtime_evidence": null
     },
     {
       "name": "google-agents-cli-observability",
@@ -212,7 +249,10 @@
       "source_path": "verified",
       "install_syntax": "verified",
       "runtime_pi": "not-run",
-      "runtime_opencode": "not-run"
+      "runtime_opencode": "not-run",
+      "last_verified": "2026-09-18",
+      "pinning_status": "verified",
+      "runtime_evidence": null
     },
     {
       "name": "agent-evaluation",
@@ -227,7 +267,10 @@
       "source_path": "verified",
       "install_syntax": "verified",
       "runtime_pi": "not-run",
-      "runtime_opencode": "not-run"
+      "runtime_opencode": "not-run",
+      "last_verified": "2026-09-18",
+      "pinning_status": "verified",
+      "runtime_evidence": null
     },
     {
       "name": "instrumenting-with-mlflow-tracing",
@@ -242,7 +285,10 @@
       "source_path": "verified",
       "install_syntax": "verified",
       "runtime_pi": "not-run",
-      "runtime_opencode": "not-run"
+      "runtime_opencode": "not-run",
+      "last_verified": "2026-09-18",
+      "pinning_status": "verified",
+      "runtime_evidence": null
     },
     {
       "name": "agent-harness",
@@ -257,14 +303,17 @@
       "source_path": "verified",
       "install_syntax": "verified",
       "runtime_pi": "not-run",
-      "runtime_opencode": "not-run"
+      "runtime_opencode": "not-run",
+      "last_verified": "2026-09-18",
+      "pinning_status": "pending-upstream-commit-verification",
+      "runtime_evidence": null
     },
     {
       "name": "playwright-cli",
       "category": "browser-testing",
       "source": "microsoft/playwright-cli",
       "path": "skills/playwright-cli/SKILL.md",
-      "commit": "c123741988fbed9e48f6e57ec22d608622549636",
+      "commit": "12228454ed024c9ac89abd59df3b706ed9135fd9",
       "license": "Apache-2.0",
       "purpose": "让 Coding Agent 执行浏览器探索、页面检查和回归测试。",
       "score": 89,
@@ -272,22 +321,28 @@
       "source_path": "verified",
       "install_syntax": "verified",
       "runtime_pi": "not-run",
-      "runtime_opencode": "not-run"
+      "runtime_opencode": "not-run",
+      "last_verified": "2026-09-19",
+      "pinning_status": "verified",
+      "runtime_evidence": null
     },
     {
       "name": "supply-chain-risk-auditor",
       "category": "security",
       "source": "trailofbits/skills",
       "path": "plugins/supply-chain-risk-auditor/skills/supply-chain-risk-auditor/SKILL.md",
-      "commit": "54ba31c166880a258378506f4be97f85cbbf0266",
-      "license": "AGPL-3.0",
+      "commit": "123037ec8aed26f0d86327cc39137ee5043e5deb",
+      "license": "CC-BY-SA-4.0",
       "purpose": "检查依赖维护、所有权和供应链风险。",
       "score": 86,
       "risk": "medium",
       "source_path": "verified",
       "install_syntax": "verified",
       "runtime_pi": "not-run",
-      "runtime_opencode": "not-run"
+      "runtime_opencode": "not-run",
+      "last_verified": "2026-09-19",
+      "pinning_status": "verified",
+      "runtime_evidence": null
     },
     {
       "name": "data-leakage-audit",
@@ -302,7 +357,10 @@
       "source_path": "verified",
       "install_syntax": "verified",
       "runtime_pi": "not-run",
-      "runtime_opencode": "not-run"
+      "runtime_opencode": "not-run",
+      "last_verified": "2026-09-18",
+      "pinning_status": "local-main",
+      "runtime_evidence": null
     },
     {
       "name": "experiment-review",
@@ -317,7 +375,10 @@
       "source_path": "verified",
       "install_syntax": "verified",
       "runtime_pi": "not-run",
-      "runtime_opencode": "not-run"
+      "runtime_opencode": "not-run",
+      "last_verified": "2026-09-18",
+      "pinning_status": "local-main",
+      "runtime_evidence": null
     },
     {
       "name": "model-eval-report",
@@ -332,7 +393,10 @@
       "source_path": "verified",
       "install_syntax": "verified",
       "runtime_pi": "not-run",
-      "runtime_opencode": "not-run"
+      "runtime_opencode": "not-run",
+      "last_verified": "2026-09-18",
+      "pinning_status": "local-main",
+      "runtime_evidence": null
     },
     {
       "name": "training-failure-debug",
@@ -347,7 +411,10 @@
       "source_path": "verified",
       "install_syntax": "verified",
       "runtime_pi": "not-run",
-      "runtime_opencode": "not-run"
+      "runtime_opencode": "not-run",
+      "last_verified": "2026-09-18",
+      "pinning_status": "local-main",
+      "runtime_evidence": null
     },
     {
       "name": "paper-to-technical-spike",
@@ -362,7 +429,154 @@
       "source_path": "verified",
       "install_syntax": "verified",
       "runtime_pi": "not-run",
-      "runtime_opencode": "not-run"
+      "runtime_opencode": "not-run",
+      "last_verified": "2026-09-18",
+      "pinning_status": "local-main",
+      "runtime_evidence": null
+    },
+    {
+      "name": "code-review-and-quality",
+      "category": "quality",
+      "source": "addyosmani/agent-skills",
+      "path": "skills/code-review-and-quality/SKILL.md",
+      "commit": "c004a74784a08295d52749b04cda634125b9a581",
+      "license": "MIT",
+      "purpose": "在合并前从正确性、可读性、架构、安全和性能五个维度审查人或 Agent 生成的代码。",
+      "score": 91,
+      "risk": "low",
+      "source_path": "verified",
+      "install_syntax": "verified",
+      "runtime_pi": "not-run",
+      "runtime_opencode": "not-run",
+      "last_verified": "2026-09-19",
+      "pinning_status": "verified",
+      "runtime_evidence": null
+    },
+    {
+      "name": "context-engineering",
+      "category": "harness",
+      "source": "addyosmani/agent-skills",
+      "path": "skills/context-engineering/SKILL.md",
+      "commit": "c004a74784a08295d52749b04cda634125b9a581",
+      "license": "MIT",
+      "purpose": "为编码 Agent 组织规则、架构文档、相关源码和运行证据，减少上下文不足与信息过载。",
+      "score": 92,
+      "risk": "low",
+      "source_path": "verified",
+      "install_syntax": "verified",
+      "runtime_pi": "not-run",
+      "runtime_opencode": "not-run",
+      "last_verified": "2026-09-19",
+      "pinning_status": "verified",
+      "runtime_evidence": null
+    },
+    {
+      "name": "test-driven-development",
+      "category": "quality",
+      "source": "addyosmani/agent-skills",
+      "path": "skills/test-driven-development/SKILL.md",
+      "commit": "c004a74784a08295d52749b04cda634125b9a581",
+      "license": "MIT",
+      "purpose": "让 Agent 先复现失败，再按红—绿—重构循环实现功能或修复缺陷，并使用仓库自己的测试命令验收。",
+      "score": 92,
+      "risk": "low",
+      "source_path": "verified",
+      "install_syntax": "verified",
+      "runtime_pi": "not-run",
+      "runtime_opencode": "not-run",
+      "last_verified": "2026-09-19",
+      "pinning_status": "verified",
+      "runtime_evidence": null
+    },
+    {
+      "name": "huggingface-local-models",
+      "category": "inference",
+      "source": "huggingface/skills",
+      "path": "skills/huggingface-local-models/SKILL.md",
+      "commit": "abc20ae526d8b4c0e4dff89f904adce28a4a0eb6",
+      "license": "Apache-2.0",
+      "purpose": "选择适合本机硬件的 GGUF 与量化版本，并用 llama.cpp 启动本地模型或 OpenAI 兼容服务。",
+      "score": 91,
+      "risk": "medium",
+      "source_path": "verified",
+      "install_syntax": "verified",
+      "runtime_pi": "not-run",
+      "runtime_opencode": "not-run",
+      "last_verified": "2026-09-19",
+      "pinning_status": "verified",
+      "runtime_evidence": null
+    },
+    {
+      "name": "huggingface-vision-trainer",
+      "category": "training",
+      "source": "huggingface/skills",
+      "path": "skills/huggingface-vision-trainer/SKILL.md",
+      "commit": "abc20ae526d8b4c0e4dff89f904adce28a4a0eb6",
+      "license": "Apache-2.0",
+      "purpose": "准备视觉数据并训练分类、目标检测和 SAM/SAM2 分割模型，包含评测、硬件与成本检查。",
+      "score": 90,
+      "risk": "high",
+      "source_path": "verified",
+      "install_syntax": "verified",
+      "runtime_pi": "not-run",
+      "runtime_opencode": "not-run",
+      "last_verified": "2026-09-19",
+      "pinning_status": "verified",
+      "runtime_evidence": null
+    },
+    {
+      "name": "huggingface-trackio",
+      "category": "observability",
+      "source": "huggingface/skills",
+      "path": "skills/huggingface-trackio/SKILL.md",
+      "commit": "abc20ae526d8b4c0e4dff89f904adce28a4a0eb6",
+      "license": "Apache-2.0",
+      "purpose": "记录训练指标、配置训练异常告警，并通过 CLI 或 Dashboard 查询和分析实验结果。",
+      "score": 89,
+      "risk": "medium",
+      "source_path": "verified",
+      "install_syntax": "verified",
+      "runtime_pi": "not-run",
+      "runtime_opencode": "not-run",
+      "last_verified": "2026-09-19",
+      "pinning_status": "verified",
+      "runtime_evidence": null
+    },
+    {
+      "name": "test-gap-audit",
+      "category": "evaluation",
+      "source": "github/awesome-copilot",
+      "path": "skills/test-gap-audit/SKILL.md",
+      "commit": "4f4796f0bf30e105700f97ed8408c12b6aa95e06",
+      "license": "MIT",
+      "purpose": "只读检查仓库、PR 或功能中的缺失测试和弱断言，按代码路径与风险给出可执行测试建议。",
+      "score": 89,
+      "risk": "low",
+      "source_path": "verified",
+      "install_syntax": "verified",
+      "runtime_pi": "not-run",
+      "runtime_opencode": "not-run",
+      "last_verified": "2026-09-19",
+      "pinning_status": "verified",
+      "runtime_evidence": null
+    },
+    {
+      "name": "mcp-security-audit",
+      "category": "security",
+      "source": "github/awesome-copilot",
+      "path": "skills/mcp-security-audit/SKILL.md",
+      "commit": "4f4796f0bf30e105700f97ed8408c12b6aa95e06",
+      "license": "MIT",
+      "purpose": "审查 MCP 配置中的明文密钥、Shell 注入、未固定版本和未经批准的服务器。",
+      "score": 88,
+      "risk": "low",
+      "source_path": "verified",
+      "install_syntax": "verified",
+      "runtime_pi": "not-run",
+      "runtime_opencode": "not-run",
+      "last_verified": "2026-09-19",
+      "pinning_status": "verified",
+      "runtime_evidence": null
     }
   ]
 }

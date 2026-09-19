@@ -2,6 +2,13 @@
 
 ## 2026-09-19
 
+- 精选清单由 24 项扩展到 32 项，新增代码评审、上下文工程、TDD、本地模型、视觉训练、实验追踪、测试缺口审计和 MCP 安全审计。
+- Tools 扩展为 4 个子栏目、24 个条目，新增浏览器自动化、评测与可观测性、Skill 与 Agent 安全。
+- 数据升级到 schema v2，每项独立记录 `last_verified`、`pinning_status` 和 `runtime_evidence`。
+- 新增 `scripts/build_catalog.py`，由 `data/tools/` 自动生成 Tools Markdown 与网页；CI 检查生成结果是否过期。
+- 重做 README 与 Pages 首页，增加快速安装、任务入口、信任说明、运行状态筛选和复制安装命令。
+- 新增 `SECURITY.md`、主机运行环境证据和 2026-W38 周报。
+- GitHub Actions 固定到具体 commit，Pages 构建改为自动复制全部 Tools 数据。
 - 将仓库整理为 `catalog`、`data`、`docs` 三层，并新增 Tools 一级目录索引。
 - HTML 报告栏目移动到 `tools/html-reports` 子目录；旧网页地址保留自动跳转。
 - Pages 构建改为递归复制 `docs/`，后续新增 Tools 子栏目无需逐个登记页面文件。

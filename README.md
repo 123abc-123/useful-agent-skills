@@ -1,8 +1,33 @@
+![Useful Agent Skills for Algorithm Engineers](docs/assets/hero.svg)
+
 # Useful Agent Skills for Algorithm Engineers
 
-面向算法工程师的 Agent Skill 与 Agent Harness 实用清单，重点考虑 **Pi Coding Agent** 和 **OpenCode**。这里不按 star 数堆链接，而是按真实工作环节整理：数据、训练、评测、调试、代码审查、安全、自动化、可观测性与 Harness 工程。
+[![Catalog CI](https://github.com/123abc-123/useful-agent-skills/actions/workflows/catalog-ci.yml/badge.svg)](https://github.com/123abc-123/useful-agent-skills/actions/workflows/catalog-ci.yml)
+[![GitHub Pages](https://github.com/123abc-123/useful-agent-skills/actions/workflows/pages.yml/badge.svg)](https://123abc-123.github.io/useful-agent-skills/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-16825d.svg)](LICENSE)
+[![Pi + OpenCode](https://img.shields.io/badge/targets-Pi%20%2B%20OpenCode-315bea.svg)](https://123abc-123.github.io/useful-agent-skills/)
 
-> 最近核验：2026-09-19。Skill 本质上是会被 Agent 读取的指令和代码，使用第三方 Skill 前请先审查 `SKILL.md`、脚本、依赖和网络行为。
+面向算法工程师的 Agent Skill 与 Agent Harness 实用清单，重点考虑 **Pi Coding Agent** 和 **OpenCode**。当前包含 **32 项结构化精选、10 个原创 Prompt、4 个 Tools 专题和 5 个可直接安装的自研 Skill**。
+
+每个精选项都记录具体 `SKILL.md`、固定 commit、许可证、安装状态、Pi/OpenCode 运行状态和风险。热度只用于发现候选，源码和证据决定是否采用。
+
+> 最近核验：2026-09-19。`passed` 才表示有实机测试证据；`verified` 只表示路径、版本或命令已经核验。
+
+## 30 秒开始
+
+先安装本仓库维护的五个无脚本 Skill：
+
+```bash
+npx skills add 123abc-123/useful-agent-skills \
+  --skill data-leakage-audit \
+  --skill experiment-review \
+  --skill model-eval-report \
+  --skill training-failure-debug \
+  --skill paper-to-technical-spike \
+  -a pi -a opencode --copy
+```
+
+然后打开[可搜索目录](https://123abc-123.github.io/useful-agent-skills/)，按工作场景、风险和运行状态继续筛选。
 
 ## 从这里开始
 
@@ -35,7 +60,20 @@ docs/                            GitHub Pages
 skills/<skill-name>/SKILL.md     本仓库自己维护的可安装 Skill
 ```
 
-`catalog/` 和 `docs/` 负责分类；安装到 Pi/OpenCode 时仍使用扁平的 `.agents/skills/<skill-name>/`。
+`data/` 是结构化事实来源，Tools 的 Markdown 和网页由 `scripts/build_catalog.py` 自动生成。安装到 Pi/OpenCode 时仍使用扁平的 `.agents/skills/<skill-name>/`。
+
+## 按工作场景选择
+
+| 你的任务 | 建议先装 |
+|---|---|
+| 训练失败、出现 NaN 或指标异常 | `training-failure-debug` + `systematic-debugging` + `huggingface-trackio` |
+| 做数据集、训练和模型评测 | `huggingface-datasets` + `trl-training` + `model-eval-report` |
+| 在本机选择并运行开源模型 | `huggingface-local-models` |
+| 接手陌生仓库并安全修改 | `acquire-codebase-knowledge` + `context-engineering` + `test-driven-development` |
+| 合并 Agent 生成的代码 | `code-review-and-quality` + `test-gap-audit` + `verification-before-completion` |
+| 评测和诊断 LLM/RAG/Agent | `phoenix-evals` + `phoenix-tracing` 或 MLflow 组合 |
+| 检查 MCP 与 Skill 供应链 | `mcp-security-audit` + `supply-chain-risk-auditor` |
+| 生成技术报告或领导汇报 | [HTML Reports & Visuals](https://123abc-123.github.io/useful-agent-skills/tools/html-reports/) |
 
 ## Prompt Library
 
@@ -45,22 +83,23 @@ Prompt 适合一次性的明确任务，Skill 适合需要 Agent 自动发现并
 
 网页支持搜索、分类和一键复制。模板的结构一致性由 CI 检查，轻量回归边界见 [`evals/cases/prompts.json`](evals/cases/prompts.json)。
 
-## 最值得先试的 14 组
+## 最值得先试的 15 个来源
 
 1. [Hugging Face Skills](https://github.com/huggingface/skills)：数据集、训练、评测、论文、Spaces 与本地模型。
 2. [Scientific Agent Skills](https://github.com/K-Dense-AI/scientific-agent-skills)：科研与机器学习工具链覆盖面广。
 3. [Superpowers](https://github.com/obra/superpowers)：系统调试、计划、验证、代码评审与 Git worktree。
-4. [GitHub Awesome Copilot Skills](https://github.com/github/awesome-copilot)：代码库理解、技术调研、实现计划、Phoenix 评测与 tracing。
-5. [Google Agents CLI](https://github.com/google/agents-cli)：Agent 评测、失败分析、prompt 优化和线上可观测性。
-6. [MLflow Skills](https://github.com/mlflow/skills)：为 LLM/Agent 应用补齐数据集评测、scorer、失败分析和 tracing。
-7. [Trail of Bits Skills](https://github.com/trailofbits/skills)：静态分析、供应链、模糊测试、属性测试和安全审计。
-8. [Playwright CLI](https://github.com/microsoft/playwright-cli)：让 Coding Agent 执行浏览器测试和页面检查。
-9. [Cloudflare Skills](https://github.com/cloudflare/skills)：明确支持 Pi 与 OpenCode 的云端部署和 Agent SDK Skill。
-10. [Sentry for AI](https://github.com/getsentry/sentry-for-ai)：错误追踪、告警、AI 应用调试。
-11. [Agents Best Practices](https://github.com/DenisSergeevitch/agents-best-practices)：完整的 Agent Harness 架构知识。
-12. [Agent Harness Skill](https://github.com/netresearch/agent-harness-skill)：给代码仓库补齐可验证的 Agent Harness。
-13. [Skillet](https://github.com/getsentry/skillet)：创建、校验和评测自己的 Skill。
-14. [Agent Skills 规范](https://agentskills.io/)：理解 `SKILL.md` 的标准结构和可移植性。
+4. [Agent Skills Engineering Workflows](https://github.com/addyosmani/agent-skills)：上下文工程、TDD、代码评审、性能、安全和发布流程，提供 OpenCode 使用说明。
+5. [GitHub Awesome Copilot Skills](https://github.com/github/awesome-copilot)：代码库理解、测试缺口、技术调研、Phoenix 评测与 tracing。
+6. [Google Agents CLI](https://github.com/google/agents-cli)：Agent 评测、失败分析、prompt 优化和线上可观测性。
+7. [MLflow Skills](https://github.com/mlflow/skills)：为 LLM/Agent 应用补齐数据集评测、scorer、失败分析和 tracing。
+8. [Trail of Bits Skills](https://github.com/trailofbits/skills)：静态分析、供应链、模糊测试、属性测试和安全审计。
+9. [Playwright CLI](https://github.com/microsoft/playwright-cli)：让 Coding Agent 执行浏览器测试和页面检查。
+10. [Cloudflare Skills](https://github.com/cloudflare/skills)：明确支持 Pi 与 OpenCode 的云端部署和 Agent SDK Skill。
+11. [Sentry for AI](https://github.com/getsentry/sentry-for-ai)：错误追踪、告警、AI 应用调试。
+12. [Agents Best Practices](https://github.com/DenisSergeevitch/agents-best-practices)：完整的 Agent Harness 架构知识。
+13. [Agent Harness Skill](https://github.com/netresearch/agent-harness-skill)：给代码仓库补齐可验证的 Agent Harness。
+14. [Skillet](https://github.com/getsentry/skillet)：创建、校验和评测自己的 Skill。
+15. [Agent Skills 规范](https://agentskills.io/)：理解 `SKILL.md` 的标准结构和可移植性。
 
 ## Pi 与 OpenCode 怎么安装
 

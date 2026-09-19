@@ -28,8 +28,10 @@
 - `install_syntax`：安装命令是否符合当前官方 CLI 文档；
 - `runtime_pi`：是否在 Pi 中实际加载和运行；
 - `runtime_opencode`：是否在 OpenCode 中实际加载和运行；
+- `runtime_evidence`：实机状态为 `passed` 时对应的测试记录；
 - `risk`：低、中、高风险；
 - `last_verified`：最近核验日期；
-- `commit`：审查时观察到的第三方 commit；只有 `pinning_status` 为 `verified` 时才可作为可安装固定版本。
+- `commit`：审查时观察到的第三方 commit；
+- `pinning_status`：每个条目独立记录固定版本是已验证、待验证还是本仓库 `main`。
 
 “路径已核验”或“安装语法已核验”不能写成“实机测试通过”。

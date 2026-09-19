@@ -1,33 +1,24 @@
 # Tools 分类
 
-Tools 用于归档“能直接产出或增强工作结果”的工具型 Skill。这里负责分类和选型；真正安装到 Pi/OpenCode 时，每个 Skill 仍保持独立目录。
+Tools 收录能直接产出、验证或保护工作结果的 Skill。目录由 `data/tools/` 自动生成；真正安装到 Pi/OpenCode 时，每个 Skill 仍保持独立目录。
+
+> 最近核验：2026-09-19。在线入口：[Tools](https://123abc-123.github.io/useful-agent-skills/tools/)。
 
 ## 当前子栏目
 
-| 子栏目 | 覆盖内容 | 状态 |
-|---|---|---|
-| [HTML 报告与可视化](html-reports/README.md) | 技术报告、领导汇报、交互 HTML、幻灯片、架构图 | 已上线 |
-| 浏览器与自动化 | 浏览器测试、页面取证、工作流自动化 | 使用 [完整分类清单](../skills.md) |
-| Skill 创建与评测 | 创建、校验、路由评测和回归测试 | 使用 [完整分类清单](../skills.md) |
-| 可观测性 | tracing、日志、评测结果分析 | 使用 [完整分类清单](../skills.md) |
-| 安全扫描 | Skill、依赖和供应链审查 | 使用 [完整分类清单](../skills.md) |
+| 子栏目 | 覆盖内容 | 数量 |
+|---|---|---:|
+| [HTML 报告与可视化](html-reports/README.md) | 技术报告、领导汇报、交互式 HTML、幻灯片和架构图。 | 7 项 |
+| [浏览器与自动化](browser-automation/README.md) | 真实浏览器检查、UI 调试、页面探索和 Playwright 测试生成。 | 5 项 |
+| [评测与可观测性](evals-observability/README.md) | Agent/LLM 评测、Tracing、训练监控和测试缺口审计。 | 7 项 |
+| [Skill 与 Agent 安全](skill-security/README.md) | MCP 配置、密钥、供应链完整性和 Agent 安全基线。 | 5 项 |
 
-新的工具类资源只有在条目足够形成独立筛选和维护规则时才建立子栏目，避免为单个链接创建空目录。
-
-## 推荐目录形态
+## 目录约定
 
 ```text
-catalog/tools/<category>/README.md   # 人工分类、说明和采用建议
-data/tools/<category>.json           # 机器可读数据
-docs/tools/<category>/index.html     # GitHub Pages 子栏目
+catalog/tools/<category>/README.md   # 自动生成的人类可读目录
+data/tools/<category>.json           # 唯一数据源
+docs/tools/<category>/index.html     # 自动生成的网页入口
 ```
 
-安装目录保持扁平：
-
-```text
-.agents/skills/create-report/SKILL.md
-.agents/skills/onepage/SKILL.md
-.agents/skills/beautiful-mermaid/SKILL.md
-```
-
-不要安装成 `.agents/skills/tools/html-reports/<skill>/`。部分 Harness 会递归扫描，但扁平的单 Skill 目录更符合跨平台使用和 Skills CLI 的识别方式。
+安装目录保持扁平：`.agents/skills/<skill-name>/SKILL.md`。运行 `python scripts/build_catalog.py` 可重建本栏目。

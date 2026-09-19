@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "last_verified": "2026-09-19",
   "items": [
     {
@@ -19,7 +19,10 @@
       "install_syntax": "verified",
       "runtime_pi": "not-run",
       "runtime_opencode": "not-run",
-      "install": "npx skills add maxedapps/agent-skills --skill create-report -a pi -a opencode --copy"
+      "install": "npx skills add maxedapps/agent-skills --skill create-report -a pi -a opencode --copy",
+      "last_verified": "2026-09-19",
+      "pinning_status": "verified",
+      "runtime_evidence": null
     },
     {
       "name": "html-research-reports",
@@ -38,7 +41,10 @@
       "install_syntax": "verified",
       "runtime_pi": "not-run",
       "runtime_opencode": "not-run",
-      "install": "npx skills add f-labs-io/agent-html-skills --skill html-research-reports -a pi -a opencode --copy"
+      "install": "npx skills add f-labs-io/agent-html-skills --skill html-research-reports -a pi -a opencode --copy",
+      "last_verified": "2026-09-19",
+      "pinning_status": "verified",
+      "runtime_evidence": null
     },
     {
       "name": "onepage",
@@ -57,7 +63,10 @@
       "install_syntax": "not-run",
       "runtime_pi": "not-run",
       "runtime_opencode": "not-run",
-      "install": "npx skills add wjhuang88/onepage-skill --skill onepage -a pi -a opencode --copy"
+      "install": "npx skills add wjhuang88/onepage-skill --skill onepage -a pi -a opencode --copy",
+      "last_verified": "2026-09-19",
+      "pinning_status": "verified",
+      "runtime_evidence": null
     },
     {
       "name": "frontend-design",
@@ -76,7 +85,10 @@
       "install_syntax": "not-run",
       "runtime_pi": "not-run",
       "runtime_opencode": "not-run",
-      "install": "npx skills add anthropics/skills --skill frontend-design -a pi -a opencode --copy"
+      "install": "npx skills add anthropics/skills --skill frontend-design -a pi -a opencode --copy",
+      "last_verified": "2026-09-19",
+      "pinning_status": "verified",
+      "runtime_evidence": null
     },
     {
       "name": "web-artifacts-builder",
@@ -95,7 +107,10 @@
       "install_syntax": "not-run",
       "runtime_pi": "not-run",
       "runtime_opencode": "not-run",
-      "install": "npx skills add anthropics/skills --skill web-artifacts-builder -a pi -a opencode --copy"
+      "install": "npx skills add anthropics/skills --skill web-artifacts-builder -a pi -a opencode --copy",
+      "last_verified": "2026-09-19",
+      "pinning_status": "verified",
+      "runtime_evidence": null
     },
     {
       "name": "html-slides",
@@ -114,7 +129,10 @@
       "install_syntax": "not-run",
       "runtime_pi": "not-run",
       "runtime_opencode": "not-run",
-      "install": "npx skills add bluedusk/html-slides -a pi -a opencode --copy"
+      "install": "npx skills add bluedusk/html-slides -a pi -a opencode --copy",
+      "last_verified": "2026-09-19",
+      "pinning_status": "verified",
+      "runtime_evidence": null
     },
     {
       "name": "beautiful-mermaid",
@@ -133,7 +151,10 @@
       "install_syntax": "verified",
       "runtime_pi": "not-run",
       "runtime_opencode": "not-run",
-      "install": "npx skills add okooo5km/beautiful-mermaid-cli --skill beautiful-mermaid -a pi -a opencode --copy"
+      "install": "npx skills add okooo5km/beautiful-mermaid-cli --skill beautiful-mermaid -a pi -a opencode --copy",
+      "last_verified": "2026-09-19",
+      "pinning_status": "verified",
+      "runtime_evidence": null
     }
   ]
 }

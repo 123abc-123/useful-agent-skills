@@ -138,6 +138,40 @@ npx skills add \
 | `playwright-cli` | [精确路径](https://github.com/microsoft/playwright-cli/blob/main/skills/playwright-cli/SKILL.md) | 89 | 中：浏览器可产生外部副作用 |
 | `supply-chain-risk-auditor` | [精确路径](https://github.com/trailofbits/skills/blob/main/plugins/supply-chain-risk-auditor/skills/supply-chain-risk-auditor/SKILL.md) | 86 | 中：会调用审计工具和网络 |
 
+### 5. 2026-09 新增的高频工作流
+
+这组补齐日常开发质量、本地模型、视觉训练和实验追踪。上游均提供标准 `SKILL.md`；固定版本、许可证和安装语法已核验，Pi/OpenCode 实机状态仍为 `not-run`。
+
+```bash
+npx skills add addyosmani/agent-skills \
+  --skill context-engineering \
+  --skill test-driven-development \
+  --skill code-review-and-quality \
+  -a pi -a opencode --copy
+
+npx skills add huggingface/skills \
+  --skill huggingface-local-models \
+  --skill huggingface-vision-trainer \
+  --skill huggingface-trackio \
+  -a pi -a opencode --copy
+
+npx skills add github/awesome-copilot \
+  --skill test-gap-audit \
+  --skill mcp-security-audit \
+  -a pi -a opencode --copy
+```
+
+| Skill | 最适合解决的问题 | 分数 | 风险 | 固定源码 |
+|---|---|---:|---|---|
+| `context-engineering` | Agent 忽略规范、上下文过多或在陌生仓库中判断不稳 | 92 | 低 | [commit](https://github.com/addyosmani/agent-skills/blob/c004a74784a08295d52749b04cda634125b9a581/skills/context-engineering/SKILL.md) |
+| `test-driven-development` | 功能修改和 Bug 修复缺少可持续的回归证据 | 92 | 低 | [commit](https://github.com/addyosmani/agent-skills/blob/c004a74784a08295d52749b04cda634125b9a581/skills/test-driven-development/SKILL.md) |
+| `code-review-and-quality` | 合并人或 Agent 生成代码前做五维审查 | 91 | 低 | [commit](https://github.com/addyosmani/agent-skills/blob/c004a74784a08295d52749b04cda634125b9a581/skills/code-review-and-quality/SKILL.md) |
+| `huggingface-local-models` | 按 CPU、Metal、CUDA 或 ROCm 选择 GGUF 并启动本地模型 | 91 | 中 | [commit](https://github.com/huggingface/skills/blob/abc20ae526d8b4c0e4dff89f904adce28a4a0eb6/skills/huggingface-local-models/SKILL.md) |
+| `huggingface-vision-trainer` | 分类、检测、SAM/SAM2 分割训练与成本检查 | 90 | 高 | [commit](https://github.com/huggingface/skills/blob/abc20ae526d8b4c0e4dff89f904adce28a4a0eb6/skills/huggingface-vision-trainer/SKILL.md) |
+| `huggingface-trackio` | 训练指标、异常告警和实验结果查询 | 89 | 中 | [commit](https://github.com/huggingface/skills/blob/abc20ae526d8b4c0e4dff89f904adce28a4a0eb6/skills/huggingface-trackio/SKILL.md) |
+| `test-gap-audit` | 只读找出缺失测试、弱断言和未覆盖的高风险路径 | 89 | 低 | [commit](https://github.com/github/awesome-copilot/blob/4f4796f0bf30e105700f97ed8408c12b6aa95e06/skills/test-gap-audit/SKILL.md) |
+| `mcp-security-audit` | 检查 MCP 配置中的密钥、注入和未固定依赖 | 88 | 低 | [commit](https://github.com/github/awesome-copilot/blob/4f4796f0bf30e105700f97ed8408c12b6aa95e06/skills/mcp-security-audit/SKILL.md) |
+
 ## 团队试点顺序
 
 1. 第一周只安装 `systematic-debugging`、`verification-before-completion` 和本仓库五个算法 Skill。

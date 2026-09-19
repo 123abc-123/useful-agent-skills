@@ -18,6 +18,7 @@
 | pi-open-agents | 用同一套定义管理 Pi 主 Agent、子 Agent、模型、权限和 OpenCode 兼容配置 | MIT、新项目约 16 stars；涉及子进程与工具权限，需先做隔离实测 | [GitHub](https://github.com/andrea-tomassi/pi-open-agents) |
 | agent-skill-eval | 通过真实 OpenCode、Codex 或 Claude Harness 做启用/禁用 Skill 的基线对比，记录 pass@k、状态差异、token、成本和耗时 | 新项目、采用度低；需要已认证的 Agent CLI 和裁判模型 API，执行时使用跳过权限参数且暂不支持 Pi | [GitHub](https://github.com/tardigrde/agent-skill-eval) |
 | agent-skills-creator | 覆盖 Skill 创建、审计、路由评测和结构验证，适合学习完整生命周期 | 依赖 Bash、Ruby 和 Perl；尚无 Pi/OpenCode 实机证据，Windows 可移植性需验证 | [GitHub](https://github.com/mblode/agent-skills/blob/main/skills/agent-skills-creator/SKILL.md) |
+| `eval-driven-dev` | 为 Python LLM 应用建立真实模型调用、数据注入和 evaluator 驱动的质量闭环 | 安装脚本会升级自身与依赖并启动后台 Web 服务，自动副作用较大；需在隔离项目审查后试用 | [固定源码](https://github.com/github/awesome-copilot/blob/4f4796f0bf30e105700f97ed8408c12b6aa95e06/skills/eval-driven-dev/SKILL.md) |
 
 ## 晋级条件
 
