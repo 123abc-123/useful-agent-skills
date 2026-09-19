@@ -2,10 +2,12 @@
 
 ## 2026-09-19
 
+- 新增“Coding Agent 增强”栏目，首批收录 11 个上下文、需求澄清、计划、隔离执行、调试、测试、评审和完成验证 Skill；网页支持按子类型筛选。
+- Tools 扩展为 5 个栏目、35 个条目，首页增加 Coding Agent 增强入口。
 - 将顶层内容归并为 `content/`、`site/` 和 `tooling/` 三层；根目录保留可安装的 `skills/`，公开网页 URL 不变。
 - 今日新增 Elastic LLM 可观测、AWS Skill Eval 和 Datadog Agent Observability 三个观察项；均核对了固定 commit、许可证和具体 `SKILL.md`，但未执行第三方脚本或写成 Pi/OpenCode 实机通过。
 - 精选清单由 24 项扩展到 32 项，新增代码评审、上下文工程、TDD、本地模型、视觉训练、实验追踪、测试缺口审计和 MCP 安全审计。
-- Tools 扩展为 4 个子栏目、24 个条目，新增浏览器自动化、评测与可观测性、Skill 与 Agent 安全。
+- Tools 扩展浏览器自动化、评测与可观测性、Skill 与 Agent 安全等专题。
 - 数据升级到 schema v2，每项独立记录 `last_verified`、`pinning_status` 和 `runtime_evidence`。
 - 新增 `tooling/scripts/build_catalog.py`，由 `content/data/tools/` 自动生成 Tools Markdown 与网页；CI 检查生成结果是否过期。
 - 重做 README 与 Pages 首页，增加快速安装、任务入口、信任说明、运行状态筛选和复制安装命令。

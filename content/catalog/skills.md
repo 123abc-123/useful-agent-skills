@@ -107,6 +107,8 @@
 
 精美 HTML 技术报告、领导汇报、交互式可视化和 HTML 幻灯片已归入 [Tools / HTML 报告与可视化](tools/html-reports/README.md) 子栏目。
 
+让 Coding Agent 更稳定的上下文、需求澄清、计划、隔离执行、调试、测试、评审和完成验证流程已归入 [Tools / Coding Agent 增强](tools/coding-agent-upgrades/README.md) 子栏目。
+
 | Skill | 作用 | 适用场景 | Pi / OpenCode | 成熟度 | 链接 |
 |---|---|---|---|---|---|
 | `docx` | 创建、编辑和检查 Word 文档 | 技术方案、报告 | 标准；检查依赖与许可证 | A | [Anthropic Skills](https://github.com/anthropics/skills) |
@@ -145,7 +147,7 @@
 | `test-gap-audit` | 只读审计测试缺口 | PR、功能和全仓库测试规划 | 标准；默认只读 | A | [固定源码](https://github.com/github/awesome-copilot/blob/4f4796f0bf30e105700f97ed8408c12b6aa95e06/skills/test-gap-audit/SKILL.md) |
 | `mcp-security-audit` | 审计 MCP 密钥、注入和版本固定 | MCP 配置上线前 | 标准；修复操作需另行确认 | A | [固定源码](https://github.com/github/awesome-copilot/blob/4f4796f0bf30e105700f97ed8408c12b6aa95e06/skills/mcp-security-audit/SKILL.md) |
 
-对应的浏览器、评测和安全专题见 [Tools](tools/README.md)。
+对应的 Coding Agent 增强、浏览器、评测和安全专题见 [Tools](tools/README.md)。
 
 ### 算法实验组合
 

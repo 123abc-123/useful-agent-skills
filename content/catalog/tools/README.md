@@ -12,6 +12,7 @@ Tools 收录能直接产出、验证或保护工作结果的 Skill。目录由 `
 | [浏览器与自动化](browser-automation/README.md) | 真实浏览器检查、UI 调试、页面探索和 Playwright 测试生成。 | 5 项 |
 | [评测与可观测性](evals-observability/README.md) | Agent/LLM 评测、Tracing、训练监控和测试缺口审计。 | 7 项 |
 | [Skill 与 Agent 安全](skill-security/README.md) | MCP 配置、密钥、供应链完整性和 Agent 安全基线。 | 5 项 |
+| [Coding Agent 增强](coding-agent-upgrades/README.md) | 通过上下文、计划、调试、测试、评审和完成验证，让 Coding Agent 更稳定、更少返工。 | 11 项 |
 
 ## 目录约定
 

@@ -77,6 +77,7 @@ NOTES = {
     "browser-automation": "优先使用 `playwright-cli` 做可复现检查。MCP 型 Skill 只有在 Pi/OpenCode 已配置对应服务器时才会工作。",
     "evals-observability": "先确定评测目标和数据集，再选择 Phoenix、MLflow 或 Google Agents CLI。训练指标同步到远端前检查项目是否公开。",
     "skill-security": "安全 Skill 给出审计证据和整改建议，不等同于安全认证。任何自动修复、签名或密钥处置仍需人工复核。",
+    "coding-agent-upgrades": "建议先装 `context-engineering`、`writing-plans`、`systematic-debugging` 和 `verification-before-completion`。按任务补充 TDD、测试缺口、代码评审或 worktree；强触发 Skill 过多会增加上下文和流程开销。",
 }
 
 
@@ -137,7 +138,7 @@ BASE_CSS = r"""
     h1 { margin:8px 0 10px; font-size:clamp(32px,5vw,56px); line-height:1.05; letter-spacing:-.045em; }
     .lede { max-width:760px; margin:0; color:#dfe7ff; font-size:17px; }
     main { max-width:1160px; margin:auto; padding:28px 24px 68px; }
-    .controls { display:grid; grid-template-columns:minmax(240px,1fr) repeat(2,minmax(150px,220px)); gap:12px; margin-bottom:14px; }
+    .controls { display:grid; grid-template-columns:minmax(240px,1fr) repeat(3,minmax(140px,200px)); gap:12px; margin-bottom:14px; }
     input,select { width:100%; padding:11px 12px; border:1px solid var(--line); border-radius:10px; background:#fff; color:var(--ink); font:inherit; }
     .summary { margin:10px 0 20px; color:var(--muted); }
     .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(310px,1fr)); gap:15px; }
@@ -171,17 +172,17 @@ CATEGORY_TEMPLATE = r"""<!doctype html>
     <div class="eyebrow">Tools / @@SLUG@@</div><h1>@@TITLE@@</h1><p class="lede">@@DESCRIPTION@@</p>
   </div></header>
   <main>
-    <div class="controls"><input id="query" type="search" placeholder="搜索名称、用途或来源" aria-label="搜索"><select id="status" aria-label="建议"><option value="">全部建议</option><option value="recommended">推荐</option><option value="trial">小范围试用</option><option value="needs-adaptation">需要适配</option></select><select id="risk" aria-label="风险"><option value="">全部风险</option><option value="low">低风险</option><option value="medium">中风险</option><option value="high">高风险</option></select></div>
+    <div class="controls"><input id="query" type="search" placeholder="搜索名称、用途或来源" aria-label="搜索"><select id="kind" aria-label="类型"><option value="">全部类型</option></select><select id="status" aria-label="建议"><option value="">全部建议</option><option value="recommended">推荐</option><option value="trial">小范围试用</option><option value="needs-adaptation">需要适配</option></select><select id="risk" aria-label="风险"><option value="">全部风险</option><option value="low">低风险</option><option value="medium">中风险</option><option value="high">高风险</option></select></div>
     <div id="summary" class="summary">正在读取目录…</div><section id="grid" class="grid" aria-live="polite"></section>
     <footer>数据来自 <a href="https://github.com/123abc-123/useful-agent-skills/blob/main/content/data/tools/@@SLUG@@.json">content/data/tools/@@SLUG@@.json</a>。安装前请检查固定源码、依赖、权限和运行状态。</footer>
   </main>
   <script>
     const labels={low:"低风险",medium:"中风险",high:"高风险",recommended:"推荐",trial:"小范围试用","needs-adaptation":"需要适配"};
-    let items=[]; const q=document.querySelector("#query"),status=document.querySelector("#status"),risk=document.querySelector("#risk"),grid=document.querySelector("#grid"),summary=document.querySelector("#summary");
+    let items=[]; const q=document.querySelector("#query"),kind=document.querySelector("#kind"),status=document.querySelector("#status"),risk=document.querySelector("#risk"),grid=document.querySelector("#grid"),summary=document.querySelector("#summary");
     const esc=v=>String(v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"})[c]);
     function url(x){const ref=x.pinning_status==="verified"?x.commit:"main";return `https://github.com/${x.source}/blob/${ref}/${x.path}`}
-    function render(){const term=q.value.trim().toLowerCase();const found=items.filter(x=>(!term||`${x.name} ${x.purpose} ${x.source}`.toLowerCase().includes(term))&&(!status.value||x.status===status.value)&&(!risk.value||x.risk===risk.value));summary.textContent=`显示 ${found.length} / ${items.length} 项；passed 才表示已有实机测试证据。`;grid.innerHTML=found.map(x=>`<article><h2>${esc(x.name)}</h2><p>${esc(x.purpose)}</p><div class="meta"><span class="tag">${esc(x.category)}</span><span class="tag">评分 ${x.score}</span><span class="tag">${esc(labels[x.status]||x.status)}</span><span class="tag risk-${esc(x.risk)}">${esc(labels[x.risk])}</span><span class="tag">Pi ${esc(x.runtime_pi)}</span><span class="tag">OpenCode ${esc(x.runtime_opencode)}</span></div><div class="actions"><a href="${url(x)}">固定源码</a><a href="https://github.com/${esc(x.source)}">仓库</a><button data-install="${esc(x.install)}">复制安装命令</button></div></article>`).join("")||'<div class="empty">没有符合条件的条目。</div>';document.querySelectorAll("[data-install]").forEach(button=>button.addEventListener("click",async()=>{await navigator.clipboard.writeText(button.dataset.install);button.textContent="已复制";setTimeout(()=>button.textContent="复制安装命令",1200)}))}
-    fetch("../../data/tools/@@SLUG@@.json").then(r=>{if(!r.ok)throw new Error(r.status);return r.json()}).then(data=>{items=data.items;render()}).catch(()=>summary.textContent="目录读取失败，请前往 GitHub 查看原始数据。");[q,status,risk].forEach(x=>x.addEventListener("input",render));
+    function render(){const term=q.value.trim().toLowerCase();const found=items.filter(x=>(!term||`${x.name} ${x.purpose} ${x.source} ${x.category}`.toLowerCase().includes(term))&&(!kind.value||x.category===kind.value)&&(!status.value||x.status===status.value)&&(!risk.value||x.risk===risk.value));summary.textContent=`显示 ${found.length} / ${items.length} 项；passed 才表示已有实机测试证据。`;grid.innerHTML=found.map(x=>`<article><h2>${esc(x.name)}</h2><p>${esc(x.purpose)}</p><div class="meta"><span class="tag">${esc(x.category)}</span><span class="tag">评分 ${x.score}</span><span class="tag">${esc(labels[x.status]||x.status)}</span><span class="tag risk-${esc(x.risk)}">${esc(labels[x.risk])}</span><span class="tag">Pi ${esc(x.runtime_pi)}</span><span class="tag">OpenCode ${esc(x.runtime_opencode)}</span></div><div class="actions"><a href="${url(x)}">固定源码</a><a href="https://github.com/${esc(x.source)}">仓库</a><button data-install="${esc(x.install)}">复制安装命令</button></div></article>`).join("")||'<div class="empty">没有符合条件的条目。</div>';document.querySelectorAll("[data-install]").forEach(button=>button.addEventListener("click",async()=>{await navigator.clipboard.writeText(button.dataset.install);button.textContent="已复制";setTimeout(()=>button.textContent="复制安装命令",1200)}))}
+    fetch("../../data/tools/@@SLUG@@.json").then(r=>{if(!r.ok)throw new Error(r.status);return r.json()}).then(data=>{items=data.items;[...new Set(items.map(x=>x.category))].sort().forEach(value=>{const option=document.createElement("option");option.value=value;option.textContent=value;kind.appendChild(option)});render()}).catch(()=>summary.textContent="目录读取失败，请前往 GitHub 查看原始数据。");[q,kind,status,risk].forEach(x=>x.addEventListener("input",render));
   </script>
 </body></html>
 """
@@ -190,8 +191,8 @@ CATEGORY_TEMPLATE = r"""<!doctype html>
 TOOLS_TEMPLATE = r"""<!doctype html>
 <html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="面向算法工程师的 Pi 与 OpenCode 实用工具型 Skills"><title>Tools · Useful Agent Skills</title><style>@@CSS@@
     .stats{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}.stat{padding:9px 13px;border:1px solid rgba(255,255,255,.22);border-radius:10px;background:rgba(255,255,255,.1)}
-    .category-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.category{position:relative;min-height:210px}.icon{font-size:30px;color:var(--blue)}.category h2{font-size:23px}.count{margin-top:13px;color:var(--muted)}.open{margin-top:12px}@media(max-width:720px){.category-grid{grid-template-columns:1fr}}
-  </style></head><body><header><div class="hero"><nav><a href="../index.html">Skills</a><a href="../prompts.html">Prompt Library</a><a href="./index.html">Tools</a><a href="https://github.com/123abc-123/useful-agent-skills">GitHub</a></nav><div class="eyebrow">Curated for Pi + OpenCode</div><h1>Tools</h1><p class="lede">从“能做什么”出发选择 Skill：生成报告、验证页面、评测 Agent、追踪训练，或审查供应链。</p><div class="stats">@@STATS@@</div></div></header><main><section class="category-grid">@@CARDS@@</section><footer>目录由 <a href="https://github.com/123abc-123/useful-agent-skills/tree/main/content/data/tools">content/data/tools</a> 自动生成。每个条目都区分源码核验、安装语法和实机运行状态。</footer></main></body></html>
+    .category-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}.category{position:relative;min-height:210px}.icon{font-size:30px;color:var(--blue)}.category h2{font-size:23px}.count{margin-top:13px;color:var(--muted)}.open{margin-top:12px}@media(max-width:720px){.category-grid{grid-template-columns:1fr}}
+  </style></head><body><header><div class="hero"><nav><a href="../index.html">Skills</a><a href="../prompts.html">Prompt Library</a><a href="./index.html">Tools</a><a href="https://github.com/123abc-123/useful-agent-skills">GitHub</a></nav><div class="eyebrow">Curated for Pi + OpenCode</div><h1>Tools</h1><p class="lede">从“能做什么”出发选择 Skill：增强 Coding Agent、生成报告、验证页面、评测系统、追踪训练或审查供应链。</p><div class="stats">@@STATS@@</div></div></header><main><section class="category-grid">@@CARDS@@</section><footer>目录由 <a href="https://github.com/123abc-123/useful-agent-skills/tree/main/content/data/tools">content/data/tools</a> 自动生成。每个条目都区分源码核验、安装语法和实机运行状态。</footer></main></body></html>
 """
 
 

@@ -7,7 +7,7 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-16825d.svg)](LICENSE)
 [![Pi + OpenCode](https://img.shields.io/badge/targets-Pi%20%2B%20OpenCode-315bea.svg)](https://123abc-123.github.io/useful-agent-skills/)
 
-面向算法工程师的 Agent Skill 与 Agent Harness 实用清单，重点考虑 **Pi Coding Agent** 和 **OpenCode**。当前包含 **32 项结构化精选、10 个原创 Prompt、4 个 Tools 专题和 5 个可直接安装的自研 Skill**。
+面向算法工程师的 Agent Skill 与 Agent Harness 实用清单，重点考虑 **Pi Coding Agent** 和 **OpenCode**。当前包含 **32 项结构化精选、10 个原创 Prompt、5 个 Tools 专题和 5 个可直接安装的自研 Skill**。
 
 每个精选项都记录具体 `SKILL.md`、固定 commit、许可证、安装状态、Pi/OpenCode 运行状态和风险。热度只用于发现候选，源码和证据决定是否采用。
 
@@ -36,6 +36,7 @@ npx skills add 123abc-123/useful-agent-skills \
 | 直接安装一组经过筛选的 Skill | [算法工程师精选组合](content/catalog/recommended-stack.md) |
 | 复制可直接使用的算法工程 Prompt | [Prompt Library](content/prompts/README.md) |
 | 浏览报告、自动化、评测和安全工具 | [Tools 分类](content/catalog/tools/README.md) |
+| 让 Coding Agent 更稳定、更少返工 | [Coding Agent 增强](content/catalog/tools/coding-agent-upgrades/README.md) |
 | 生成好看的 HTML、技术报告和演示 | [HTML 报告与可视化](content/catalog/tools/html-reports/README.md) |
 | 查找开源 Prompt 库和评测工具 | [开源 Prompt 资源](content/catalog/prompt-libraries.md) |
 | 看真实工作场景如何使用 Skill/Prompt | [可复现实战案例](content/case-studies/README.md) |
@@ -46,7 +47,7 @@ npx skills add 123abc-123/useful-agent-skills \
 | 关注新项目和低成熟度项目 | [观察清单](content/catalog/watchlist.md) |
 | 了解收录与每日更新规则 | [维护规则](MAINTENANCE.md) |
 
-可搜索的网页目录已经上线：[Useful Agent Skills](https://123abc-123.github.io/useful-agent-skills/)。其中 [Prompt Library](https://123abc-123.github.io/useful-agent-skills/prompts.html) 可按分类搜索 10 个原创模板，[Tools](https://123abc-123.github.io/useful-agent-skills/tools/) 负责工具型分类，[HTML Reports & Visuals](https://123abc-123.github.io/useful-agent-skills/tools/html-reports/) 是其第一个子栏目。页面读取机器可读的 [`recommended-skills.json`](content/data/recommended-skills.json)、[`prompts.json`](content/data/prompts.json) 和 [`html-reports.json`](content/data/tools/html-reports.json)。
+可搜索的网页目录已经上线：[Useful Agent Skills](https://123abc-123.github.io/useful-agent-skills/)。其中 [Prompt Library](https://123abc-123.github.io/useful-agent-skills/prompts.html) 可按分类搜索 10 个原创模板，[Tools](https://123abc-123.github.io/useful-agent-skills/tools/) 负责工具型分类，[Coding Agent Upgrades](https://123abc-123.github.io/useful-agent-skills/tools/coding-agent-upgrades/) 集中整理上下文、规划、调试、测试、评审和完成验证 Skill。页面读取机器可读的 [`recommended-skills.json`](content/data/recommended-skills.json)、[`prompts.json`](content/data/prompts.json) 和 [`Tools 数据`](content/data/tools/index.json)。
 
 ## 仓库结构
 
@@ -75,6 +76,7 @@ tooling/                         维护工具
 | 做数据集、训练和模型评测 | `huggingface-datasets` + `trl-training` + `model-eval-report` |
 | 在本机选择并运行开源模型 | `huggingface-local-models` |
 | 接手陌生仓库并安全修改 | `acquire-codebase-knowledge` + `context-engineering` + `test-driven-development` |
+| 让 Coding Agent 少猜测、少返工 | [`context-engineering` + `writing-plans` + `systematic-debugging` + `verification-before-completion`](https://123abc-123.github.io/useful-agent-skills/tools/coding-agent-upgrades/) |
 | 合并 Agent 生成的代码 | `code-review-and-quality` + `test-gap-audit` + `verification-before-completion` |
 | 评测和诊断 LLM/RAG/Agent | `phoenix-evals` + `phoenix-tracing` 或 MLflow 组合 |
 | 检查 MCP 与 Skill 供应链 | `mcp-security-audit` + `supply-chain-risk-auditor` |
