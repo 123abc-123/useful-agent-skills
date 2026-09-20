@@ -2,13 +2,13 @@
 
 Tools 收录能直接产出、验证或保护工作结果的 Skill。目录由 `content/data/tools/` 自动生成；真正安装到 Pi/OpenCode 时，每个 Skill 仍保持独立目录。
 
-> 最近核验：2026-09-19。在线入口：[Tools](https://123abc-123.github.io/useful-agent-skills/tools/)。
+> 最近核验：2026-09-20。在线入口：[Tools](https://123abc-123.github.io/useful-agent-skills/tools/)。
 
 ## 当前子栏目
 
 | 子栏目 | 覆盖内容 | 数量 |
 |---|---|---:|
-| [HTML 报告与可视化](html-reports/README.md) | 技术报告、领导汇报、交互式 HTML、幻灯片和架构图。 | 7 项 |
+| [HTML 报告与可视化](html-reports/README.md) | 技术报告、领导汇报、交互式 HTML、幻灯片和架构图。 | 8 项 |
 | [浏览器与自动化](browser-automation/README.md) | 真实浏览器检查、UI 调试、页面探索和 Playwright 测试生成。 | 5 项 |
 | [评测与可观测性](evals-observability/README.md) | Agent/LLM 评测、Tracing、训练监控和测试缺口审计。 | 7 项 |
 | [Skill 与 Agent 安全](skill-security/README.md) | MCP 配置、密钥、供应链完整性和 Agent 安全基线。 | 5 项 |

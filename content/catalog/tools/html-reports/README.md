@@ -2,7 +2,7 @@
 
 技术报告、领导汇报、交互式 HTML、幻灯片和架构图。 机器可读数据见 [`content/data/tools/html-reports.json`](../../../data/tools/html-reports.json)，网页入口见 [HTML Reports & Visuals](https://123abc-123.github.io/useful-agent-skills/tools/html-reports/)。
 
-> 最近核验：2026-09-19。`passed` 才表示有实机证据；当前运行状态请查看 JSON 或网页卡片。
+> 最近核验：2026-09-20。`passed` 才表示有实机证据；当前运行状态请查看 JSON 或网页卡片。
 
 ## 先选你要解决的问题
 
@@ -10,6 +10,7 @@
 |---|---|
 | 把技术资料整理成 HTML 报告 | [按需求查看首选与备选](https://123abc-123.github.io/useful-agent-skills/tools/html-reports/?task=report#results) |
 | 页面不好看，改善视觉设计 | [按需求查看首选与备选](https://123abc-123.github.io/useful-agent-skills/tools/html-reports/?task=design#results) |
+| 画架构图、流程图或数据图 | [按需求查看首选与备选](https://123abc-123.github.io/useful-agent-skills/tools/html-reports/?task=diagram#results) |
 | 给领导汇报或做演示 | [按需求查看首选与备选](https://123abc-123.github.io/useful-agent-skills/tools/html-reports/?task=present#results) |
 
 网页默认筛选编辑评分 ≥85、来源仓库 ≥1,000 Star、来源已核验且未归档的推荐项；不足门槛的候选可手动展开。评分是编辑选型分，Star 是仓库热度，两者都不是实机效果证明。
@@ -24,6 +25,7 @@
 | `frontend-design` | 为网页、Dashboard 和报告建立有主题依据的字体、色彩、布局与响应式视觉系统。 | 指令型 Skill，通常可移植；来源以 Claude 为主，许可证需单独审查。 | trial | 88 | low | [固定源码](https://github.com/anthropics/skills/blob/34040c9c568585f6929bedeaad110ad08f079624/skills/frontend-design/SKILL.md) |
 | `web-artifacts-builder` | 用 React、Tailwind 和 shadcn/ui 构建多组件交互页面，并打包成一个 HTML 文件。 | 依赖 Bash、Node、Vite、Parcel 和 npm 安装；Windows 与 Pi/OpenCode 需要适配。 | needs-adaptation | 84 | high | [固定源码](https://github.com/anthropics/skills/blob/34040c9c568585f6929bedeaad110ad08f079624/skills/web-artifacts-builder/SKILL.md) |
 | `html-slides` | 生成适合技术分享、培训和路演的零构建、可交互 HTML 幻灯片。 | 明确提供非 Claude Agent 的问答降级方式；Pi/OpenCode 尚未实测。 | trial | 83 | low | [固定源码](https://github.com/bluedusk/html-slides/blob/d8289f4c317905cc5d0ca265d32b791e6cb387b7/SKILL.md) |
+| `diagram-design` | 生成品牌化的架构图、流程图、数据模型、时序图和 40 余种编辑式图表，也可重绘 Mermaid、draw.io 与 Excalidraw。 | 上游明确支持 Pi；OpenCode 可复制标准 Skill 目录。默认静态 HTML 无构建步骤，品牌抓取、导入和 PNG 导出会按需使用网络或本地脚本。 | recommended | 93 | medium | [固定源码](https://github.com/cathrynlavery/diagram-design/blob/dc1ace47b99a419e42d01a03cb6ace5346efa8ae/skills/diagram-design/SKILL.md) |
 | `beautiful-mermaid` | 为报告生成主题一致的流程图、时序图、架构图和 ER 图，并导出 SVG 或 PNG。 | 标准 Skill 配合 Node CLI；适合作为报告 Skill 的辅助组件。 | trial | 81 | medium | [固定源码](https://github.com/okooo5km/beautiful-mermaid-cli/blob/5d4411697796aa2dcceffec5901c65e76fee7357/skills/beautiful-mermaid/SKILL.md) |
 
 ## 安装命令
@@ -46,6 +48,9 @@ npx skills add anthropics/skills --skill web-artifacts-builder -a pi -a opencode
 
 # html-slides
 npx skills add bluedusk/html-slides -a pi -a opencode --copy
+
+# diagram-design
+npx skills add cathrynlavery/diagram-design --skill diagram-design -a pi -a opencode --copy
 
 # beautiful-mermaid
 npx skills add okooo5km/beautiful-mermaid-cli --skill beautiful-mermaid -a pi -a opencode --copy

@@ -1,5 +1,10 @@
 # 更新记录
 
+## 2026-09-20
+
+- HTML 报告与可视化栏目新增 `diagram-design`：覆盖 40 余种品牌化架构图、流程图和数据图，来源仓库约 4.1 万 Star，MIT 许可证；上游明确支持 Pi，OpenCode 使用标准 Skill 目录。
+- 需求导航新增“画架构图、流程图或数据图”场景，以 `diagram-design` 为首选、`beautiful-mermaid` 为轻量备选；两者的 Pi/OpenCode 实机状态仍为 `not-run`。
+
 ## 2026-09-19
 
 - 将首页和 Tools 页面重做为“需求 → 场景 → 首选 Skill＋备选”的选择路径，覆盖 6 组需求、19 个具体场景。

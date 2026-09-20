@@ -116,6 +116,7 @@
 | `pptx` | 创建和编辑演示文稿 | 技术分享、汇报 | 标准；检查依赖与许可证 | A | [Anthropic Skills](https://github.com/anthropics/skills) |
 | `xlsx` | 创建、分析和检查表格 | 实验结果、指标报表 | 标准；检查依赖与许可证 | A | [Anthropic Skills](https://github.com/anthropics/skills) |
 | `webapp-testing` | 检查 Web 应用行为 | Demo 和内部工具验收 | 标准；检查依赖与许可证 | A | [Anthropic Skills](https://github.com/anthropics/skills) |
+| `diagram-design` | 生成品牌化架构图、流程图、数据图与自包含 HTML/SVG | 技术报告、架构文档、领导汇报 | 上游明确支持 Pi；OpenCode 标准目录；未实机测试 | B | [固定源码](https://github.com/cathrynlavery/diagram-design/blob/dc1ace47b99a419e42d01a03cb6ace5346efa8ae/skills/diagram-design/SKILL.md) |
 | `skill-creator` | 设计和迭代团队 Skill | 把 SOP 固化成 Skill | 适配 | A | [OpenAI Skills](https://github.com/openai/skills) |
 
 ## 7. Harness 与 Skill 元工具

@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "last_verified": "2026-09-19",
+  "last_verified": "2026-09-20",
   "items": [
     {
       "name": "create-report",
@@ -131,6 +131,28 @@
       "runtime_opencode": "not-run",
       "install": "npx skills add bluedusk/html-slides -a pi -a opencode --copy",
       "last_verified": "2026-09-19",
+      "pinning_status": "verified",
+      "runtime_evidence": null
+    },
+    {
+      "name": "diagram-design",
+      "category": "diagram",
+      "source": "cathrynlavery/diagram-design",
+      "path": "skills/diagram-design/SKILL.md",
+      "commit": "dc1ace47b99a419e42d01a03cb6ace5346efa8ae",
+      "license": "MIT",
+      "purpose": "生成品牌化的架构图、流程图、数据模型、时序图和 40 余种编辑式图表，也可重绘 Mermaid、draw.io 与 Excalidraw。",
+      "output": "自包含 HTML、SVG 或 PNG",
+      "compatibility": "上游明确支持 Pi；OpenCode 可复制标准 Skill 目录。默认静态 HTML 无构建步骤，品牌抓取、导入和 PNG 导出会按需使用网络或本地脚本。",
+      "score": 93,
+      "status": "recommended",
+      "risk": "medium",
+      "source_path": "verified",
+      "install_syntax": "verified",
+      "runtime_pi": "not-run",
+      "runtime_opencode": "not-run",
+      "install": "npx skills add cathrynlavery/diagram-design --skill diagram-design -a pi -a opencode --copy",
+      "last_verified": "2026-09-20",
       "pinning_status": "verified",
       "runtime_evidence": null
     },

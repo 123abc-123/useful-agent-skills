@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_verified": "2026-09-19",
+  "last_verified": "2026-09-20",
   "navigation": {
   "score_min": 85,
   "stars_min": 1000,
@@ -233,6 +233,33 @@
           ]
         },
         {
+          "id": "diagram",
+          "title": "画架构图、流程图或数据图",
+          "description": "需要可以直接放进报告、文档或演示的品牌化技术图。",
+          "keywords": [
+            "架构图",
+            "流程图",
+            "时序图",
+            "数据图",
+            "diagram",
+            "svg",
+            "mermaid",
+            "drawio"
+          ],
+          "picks": [
+            {
+              "source": "cathrynlavery/diagram-design",
+              "name": "diagram-design",
+              "reason": "首选：40 余种编辑式图表，自包含 HTML/SVG，支持品牌样式和多种已有图格式重绘。"
+            },
+            {
+              "source": "okooo5km/beautiful-mermaid-cli",
+              "name": "beautiful-mermaid",
+              "reason": "备选：已有 Mermaid 文本且只需快速导出 SVG 或 PNG 时更轻量。"
+            }
+          ]
+        },
+        {
           "id": "present",
           "title": "给领导汇报或做演示",
           "description": "需要一页重点、HTML 幻灯片或架构图。",
@@ -242,7 +269,7 @@
             "ppt",
             "幻灯片",
             "架构图",
-            "mermaid"
+            "汇报"
           ],
           "picks": [
             {
@@ -254,11 +281,6 @@
               "source": "bluedusk/html-slides",
               "name": "html-slides",
               "reason": "适合 HTML 演示稿，需要先检查输出与浏览器效果。"
-            },
-            {
-              "source": "okooo5km/beautiful-mermaid-cli",
-              "name": "beautiful-mermaid",
-              "reason": "适合把架构关系和流程转成图表。"
             }
           ]
         }
