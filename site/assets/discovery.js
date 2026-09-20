@@ -27,7 +27,7 @@
       `<a class="search-result" href="${data.prefix}${g.page}?task=${t.id}#results"><strong>${escape(t.title)}</strong><span>${escape(g.title)} · ${escape(t.description)}</span></a>`).join('')
       : '<strong>暂时没有匹配到具体场景</strong><p class="muted">可以换成“修 Bug”“微调”“HTML 报告”等关键词，或从下面的需求组开始。</p>';
   }
-  query.addEventListener('input', search);
+  query?.addEventListener('input', search);
   document.querySelectorAll('[data-search]').forEach(button => button.addEventListener('click', () => {query.value=button.dataset.search; search(); query.focus();}));
 
   const runtime = x => x === 'passed' ? '实机通过' : x === 'failed' ? '实机失败' : x === 'needs-adaptation' ? '需适配' : '未实测';
@@ -35,7 +35,7 @@
     const status = p.status === 'recommended' ? '推荐候选' : p.status === 'trial' ? '小范围试用' : '需要适配';
     const badge = mode === 'quality' ? (index === 0 ? '先试这个' : '按需补充 / 备选') : status;
     const compatibility = p.compatibility || `按上游说明准备环境；${p.risk === 'high' ? '涉及高影响操作，需单独审查。' : '安装前检查脚本、依赖和项目权限。'}`;
-    return `<article class="recommendation ${index === 0 ? 'primary' : ''}"><div class="rec-top"><span class="rec-tag">${index+1 < 10 ? '0' : ''}${index+1} / ${badge}</span><a class="repo" href="https://github.com/${escape(p.source)}">${escape(p.source)} ↗</a></div><h3>${escape(p.name)}</h3><p class="reason">${escape(p.reason)}</p><div class="metrics"><a class="metric" href="https://github.com/123abc-123/useful-agent-skills/blob/main/SCORING.md">编辑评分 <strong>${p.score}</strong>/100</a><a class="metric" title="GitHub API 采集于 ${escape(p.stars_checked)}；仓库总 Star，不是该 Skill 的安装量" href="https://github.com/${escape(p.source)}/stargazers">仓库 ★ <strong>${number(p.stars)}</strong></a><span class="runtime">Pi ${runtime(p.runtime_pi)} · OpenCode ${runtime(p.runtime_opencode)}</span></div><div class="actions"><a href="${escape(p.source_url)}">${p.pinning_status === 'verified' ? '查看已固定的 Skill 源码' : '查看 Skill 源码（版本待核验）'} ↗</a><span class="muted">${{low:'低',medium:'中',high:'高'}[p.risk]}风险${p.archived ? ' · 仓库已归档' : ''}</span></div><details class="install"><summary class="install-toggle">适配说明与安装命令</summary><p>${escape(compatibility)}</p><p>许可证：${escape(p.license)} · 内容核验：${escape(p.last_verified)} · Star 采集：${escape(p.stars_checked.slice(0,10))}</p><p>命令安装上游当前版本；上面的固定源码用于审查，不代表此命令锁定了该提交。</p><pre><code>${escape(p.install)}</code></pre><button class="copy" data-copy="${escape(p.install)}">复制安装命令</button><span class="copy-status" role="status"></span></details></article>`;
+    return `<article class="recommendation ${index === 0 ? 'primary' : 'secondary'}"><div class="rec-top"><span class="rec-tag">${index+1 < 10 ? '0' : ''}${index+1} / ${badge}</span><a class="repo" href="https://github.com/${escape(p.source)}">${escape(p.source)} ↗</a></div><h3>${escape(p.name)}</h3><p class="reason">${escape(p.reason)}</p><div class="metrics"><a class="metric" href="https://github.com/123abc-123/useful-agent-skills/blob/main/SCORING.md">编辑评分 <strong>${p.score}</strong>/100</a><a class="metric" title="GitHub API 采集于 ${escape(p.stars_checked)}；仓库总 Star，不是该 Skill 的安装量" href="https://github.com/${escape(p.source)}/stargazers">仓库 ★ <strong>${number(p.stars)}</strong></a><span class="runtime">Pi ${runtime(p.runtime_pi)} · OpenCode ${runtime(p.runtime_opencode)}</span></div><div class="actions"><a class="source-action" href="${escape(p.source_url)}">${p.pinning_status === 'verified' ? '查看已固定的 Skill 源码' : '查看 Skill 源码（版本待核验）'} ↗</a>${index === 0 ? `<button class="copy quick-copy" data-copy="${escape(p.install)}">复制安装命令</button><span class="copy-status" role="status"></span>` : ''}<span class="muted">${{low:'低',medium:'中',high:'高'}[p.risk]}风险${p.archived ? ' · 仓库已归档' : ''}</span></div><details class="install"><summary class="install-toggle">适配说明与安装命令</summary><p>${escape(compatibility)}</p><p>许可证：${escape(p.license)} · 内容核验：${escape(p.last_verified)} · Star 采集：${escape(p.stars_checked.slice(0,10))}</p><p>命令安装上游当前版本；上面的固定源码用于审查，不代表此命令锁定了该提交。</p><pre><code>${escape(p.install)}</code></pre><button class="copy" data-copy="${escape(p.install)}">复制安装命令</button><span class="copy-status" role="status"></span></details></article>`;
   }
 
   function render() {
@@ -81,7 +81,7 @@
   }
   if (group) {
     document.querySelectorAll('[data-task]').forEach(a => a.addEventListener('click', event => {
-      event.preventDefault(); selected=a.dataset.task; updateUrl(); render(); document.querySelector('#results').scrollIntoView({behavior:'smooth'});
+      event.preventDefault(); selected=a.dataset.task; updateUrl(); render(); document.querySelector('.scenario-switcher').open=false; document.querySelector('#results').scrollIntoView({behavior:'smooth'});
     }));
     document.querySelectorAll('[data-mode]').forEach(b => b.addEventListener('click', () => {mode=b.dataset.mode; updateUrl(); render();}));
     document.querySelector('#sort').addEventListener('change', render);

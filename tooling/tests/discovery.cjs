@@ -35,6 +35,7 @@ const server=http.createServer((req,res)=>{
     await page.goto(base);
     await page.waitForSelector('.group-card');
     assert.equal(await page.locator('.group-card').count(),6);
+    assert.equal(await page.locator('.shortcut').count(),20);
     await page.screenshot({path:path.join(out,'home-desktop.png'),fullPage:true});
     const search=page.locator('#need-search');
     for(const [query,expected] of [['修 Bug','debug'],['RAG 回答不好','rag'],['生成 HTML 报告','report'],['上下文','understand'],['systematic-debugging','debug']]){
@@ -67,11 +68,17 @@ const server=http.createServer((req,res)=>{
     }
     await page.goto(`${base}/tools/coding-agent-upgrades/?task=debug`);
     await page.waitForSelector('.recommendation');
+    assert.equal(await page.locator('.scenario-switcher').getAttribute('open'),null);
+    const firstPickBox=await page.locator('.recommendation').first().boundingBox();
+    const switcherBox=await page.locator('.scenario-switcher').boundingBox();
+    assert.ok(firstPickBox.y<switcherBox.y,'first recommendation must appear before scenario switcher');
+    assert.ok((await page.locator('.recommendation.primary .rec-tag').textContent()).includes('先试这个'));
     await page.locator('.install summary').first().click();
     const command=await page.locator('.copy').first().getAttribute('data-copy');
     await page.locator('.copy').first().click();
     await page.waitForFunction(()=>document.querySelector('.copy-status').textContent==='已复制');
     assert.equal(await page.evaluate(()=>navigator.clipboard.readText()),command);
+    await page.locator('.scenario-switcher summary').click();
     await page.locator('[data-task="review"]').click();
     assert.ok(page.url().includes('task=review'));
     await page.goBack();
