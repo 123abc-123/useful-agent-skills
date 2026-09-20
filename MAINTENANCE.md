@@ -43,6 +43,8 @@ site:github.com SKILL.md HTML report visualization slides
 8. 运行 `python tooling/scripts/validate_catalog.py`。
 9. 只有发现有意义变化时才提交；纯排名波动不更新。
 
+需求导航所用的来源仓库 Star、归档状态和采集时间保存在 `content/data/tools/sources.json`。需要更新时运行 `python tooling/scripts/refresh_sources.py`，再运行目录生成器与校验器。Star 的小幅日常波动不构成单独提交理由；来源越过 1,000 Star 门槛、归档状态变化或其他内容同时更新时再提交快照。
+
 ## 精选清单的数据规则
 
 `content/data/recommended-skills.json` 是精选层的机器可读数据。新增或更新精选项时必须同步检查：
@@ -84,6 +86,7 @@ site/tools/<category>/index.html             # 自动生成
 - 分别记录 `source_path`、`install_syntax`、`runtime_pi` 和 `runtime_opencode`；
 - 实机未运行时保持 `not-run`，不把源码可移植推断写成通过；
 - 页面或数据结构变化后检查桌面、移动端、搜索、筛选和复制功能；
+- 确保“需求 → 场景 → 首选＋备选”的每个引用都能解析到结构化目录中的真实条目；
 - 保留已经公开的旧 URL 跳转，避免外部链接失效。
 
 Tools 只负责分类。真正安装到 Pi/OpenCode 时，仍使用 `.agents/skills/<skill-name>/SKILL.md`，不在安装目录中复制 `tools/<category>/` 层级。

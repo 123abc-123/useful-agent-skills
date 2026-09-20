@@ -9,7 +9,7 @@ on:
       - "content/data/prompts.json"
       - "content/data/tools/**"
       - "content/prompts/**"
-      - "tooling/scripts/build_catalog.py"
+      - "tooling/scripts/**"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
 

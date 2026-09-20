@@ -1,6 +1,562 @@
 {
   "schema_version": 1,
   "last_verified": "2026-09-19",
+  "navigation": {
+  "score_min": 85,
+  "stars_min": 1000,
+  "groups": [
+    {
+      "id": "coding-agent-upgrades",
+      "title": "让 Agent 更会写代码",
+      "subtitle": "读懂项目、规划需求、修 Bug、审查代码",
+      "icon": "01",
+      "page": "tools/coding-agent-upgrades/index.html",
+      "tasks": [
+        {
+          "id": "debug",
+          "title": "修 Bug，总在反复猜",
+          "description": "适合报错、测试失败、修了又坏；先定位根因，再验证修复。",
+          "keywords": [
+            "bug",
+            "debug",
+            "报错",
+            "调试",
+            "死循环",
+            "修复",
+            "失败"
+          ],
+          "picks": [
+            {
+              "source": "obra/superpowers",
+              "name": "systematic-debugging",
+              "reason": "先建立最小复现与证据，再验证假设，适合修复反复失败的 Bug。"
+            },
+            {
+              "source": "obra/superpowers",
+              "name": "verification-before-completion",
+              "reason": "修复后检查实际命令输出，减少未经验证就声称完成。"
+            }
+          ]
+        },
+        {
+          "id": "understand",
+          "title": "接手陌生仓库，先读懂代码",
+          "description": "建立入口、模块和依赖地图，准备后续修改所需的上下文。",
+          "keywords": [
+            "仓库",
+            "代码库",
+            "上下文",
+            "context",
+            "架构",
+            "读懂",
+            "接手",
+            "理解",
+            "harness",
+            "记忆"
+          ],
+          "picks": [
+            {
+              "source": "github/awesome-copilot",
+              "name": "acquire-codebase-knowledge",
+              "reason": "为明确的仓库梳理任务生成代码地图，适合第一次接手项目。"
+            },
+            {
+              "source": "addyosmani/agent-skills",
+              "name": "context-engineering",
+              "reason": "整理规则、相关文件和验证入口，适合上下文混乱或多次换任务。"
+            }
+          ]
+        },
+        {
+          "id": "feature",
+          "title": "做新功能，先把步骤想清楚",
+          "description": "需求已经大致明确，希望把跨文件改动拆成可执行步骤。",
+          "keywords": [
+            "新功能",
+            "计划",
+            "需求",
+            "规划",
+            "重构",
+            "plan",
+            "设计"
+          ],
+          "picks": [
+            {
+              "source": "obra/superpowers",
+              "name": "writing-plans",
+              "reason": "把需求拆成具体文件、实施步骤和验证命令，适合多阶段开发。"
+            },
+            {
+              "source": "github/awesome-copilot",
+              "name": "create-implementation-plan",
+              "reason": "适合按统一文档格式沉淀功能、升级或重构计划。"
+            },
+            {
+              "source": "obra/superpowers",
+              "name": "brainstorming",
+              "reason": "需求还模糊时先澄清设计；交互较多，带可选本地视觉服务。"
+            }
+          ]
+        },
+        {
+          "id": "test",
+          "title": "写代码时就防住回归",
+          "description": "已有测试入口，希望修改逻辑前先证明问题，再补实现。",
+          "keywords": [
+            "测试",
+            "tdd",
+            "单元测试",
+            "回归",
+            "开发"
+          ],
+          "picks": [
+            {
+              "source": "addyosmani/agent-skills",
+              "name": "test-driven-development",
+              "reason": "以失败测试驱动实现，适合逻辑修改和可复现缺陷。"
+            },
+            {
+              "source": "github/awesome-copilot",
+              "name": "test-gap-audit",
+              "reason": "已有改动后，找遗漏的边界、失败路径和薄弱测试。"
+            }
+          ]
+        },
+        {
+          "id": "review",
+          "title": "提交前检查，别漏问题",
+          "description": "检查代码质量、测试缺口与完成证据，准备交付。",
+          "keywords": [
+            "审查",
+            "review",
+            "pr",
+            "提交",
+            "合并",
+            "交付",
+            "验证"
+          ],
+          "picks": [
+            {
+              "source": "addyosmani/agent-skills",
+              "name": "code-review-and-quality",
+              "reason": "先做多维度代码审查，适合准备合并的人类或 Agent 代码。"
+            },
+            {
+              "source": "github/awesome-copilot",
+              "name": "test-gap-audit",
+              "reason": "关注测试缺口，适合作为代码评审的补充。"
+            },
+            {
+              "source": "obra/superpowers",
+              "name": "verification-before-completion",
+              "reason": "检查交付声明是否有新鲜的测试、构建或诊断证据。"
+            }
+          ]
+        },
+        {
+          "id": "isolate",
+          "title": "多任务并行，隔离代码改动",
+          "description": "在不同工作区开展任务，适合已有未提交改动时另开功能。",
+          "keywords": [
+            "并行",
+            "worktree",
+            "分支",
+            "隔离",
+            "多任务"
+          ],
+          "picks": [
+            {
+              "source": "obra/superpowers",
+              "name": "using-git-worktrees",
+              "reason": "提供隔离工作区流程；涉及创建目录与分支，属于小范围试用项。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "html-reports",
+      "title": "做漂亮的报告与页面",
+      "subtitle": "技术报告、领导汇报、HTML、幻灯片",
+      "icon": "02",
+      "page": "tools/html-reports/index.html",
+      "tasks": [
+        {
+          "id": "report",
+          "title": "把技术资料整理成 HTML 报告",
+          "description": "需要一份有结论、证据、风险和行动项的可分享报告。",
+          "keywords": [
+            "报告",
+            "html",
+            "可视化",
+            "周报",
+            "总结",
+            "研究"
+          ],
+          "picks": [
+            {
+              "source": "maxedapps/agent-skills",
+              "name": "create-report",
+              "reason": "适合以证据组织技术或决策报告，可产出离线 HTML。"
+            },
+            {
+              "source": "f-labs-io/agent-html-skills",
+              "name": "html-research-reports",
+              "reason": "适合资料较多的研究报告，需适配 Claude 专属工作流。"
+            }
+          ]
+        },
+        {
+          "id": "design",
+          "title": "页面不好看，改善视觉设计",
+          "description": "已有网页或仪表盘，想改善布局、字体与视觉层级。",
+          "keywords": [
+            "美化",
+            "漂亮",
+            "前端",
+            "页面",
+            "ui",
+            "设计",
+            "dashboard"
+          ],
+          "picks": [
+            {
+              "source": "anthropics/skills",
+              "name": "frontend-design",
+              "reason": "适合网页与仪表盘的视觉设计；采用前查看上游特定许可证。"
+            },
+            {
+              "source": "anthropics/skills",
+              "name": "web-artifacts-builder",
+              "reason": "适合复杂交互页面，需要前端构建环境和依赖。"
+            }
+          ]
+        },
+        {
+          "id": "present",
+          "title": "给领导汇报或做演示",
+          "description": "需要一页重点、HTML 幻灯片或架构图。",
+          "keywords": [
+            "领导",
+            "演示",
+            "ppt",
+            "幻灯片",
+            "架构图",
+            "mermaid"
+          ],
+          "picks": [
+            {
+              "source": "wjhuang88/onepage-skill",
+              "name": "onepage",
+              "reason": "适合中文单页汇报；当前属于小范围试用。"
+            },
+            {
+              "source": "bluedusk/html-slides",
+              "name": "html-slides",
+              "reason": "适合 HTML 演示稿，需要先检查输出与浏览器效果。"
+            },
+            {
+              "source": "okooo5km/beautiful-mermaid-cli",
+              "name": "beautiful-mermaid",
+              "reason": "适合把架构关系和流程转成图表。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "model-training",
+      "title": "做数据、训练与推理",
+      "subtitle": "数据集、微调、向量模型、本地模型",
+      "icon": "03",
+      "page": "needs/model-training/index.html",
+      "tasks": [
+        {
+          "id": "data",
+          "title": "检查和处理数据集",
+          "description": "读取数据、分析样本，准备建模或训练所需的数据。",
+          "keywords": [
+            "数据",
+            "清洗",
+            "dataset",
+            "标签",
+            "泄漏"
+          ],
+          "picks": [
+            {
+              "source": "huggingface/skills",
+              "name": "huggingface-datasets",
+              "reason": "适合 Hugging Face 数据集查询和处理，先检查数据访问权限。"
+            },
+            {
+              "source": "123abc-123/useful-agent-skills",
+              "name": "data-leakage-audit",
+              "reason": "适合切分和特征泄漏审查，是本仓库的低热度原创候选。"
+            }
+          ]
+        },
+        {
+          "id": "finetune",
+          "title": "训练或微调模型",
+          "description": "准备 SFT、对齐或视觉任务的训练与验证流程。",
+          "keywords": [
+            "训练",
+            "微调",
+            "sft",
+            "trl",
+            "视觉",
+            "lora"
+          ],
+          "picks": [
+            {
+              "source": "huggingface/skills",
+              "name": "trl-training",
+              "reason": "适合基于 TRL 的训练与对齐任务；检查模型、算力和预算。"
+            },
+            {
+              "source": "huggingface/skills",
+              "name": "huggingface-vision-trainer",
+              "reason": "适合视觉模型训练流程，可能涉及远程资源。"
+            },
+            {
+              "source": "huggingface/skills",
+              "name": "huggingface-trackio",
+              "reason": "已有实验需要记录曲线与告警时使用；留意远端项目隐私。"
+            }
+          ]
+        },
+        {
+          "id": "local",
+          "title": "用本地模型或训练向量模型",
+          "description": "选择本地模型运行，或为检索任务准备文本向量模型。",
+          "keywords": [
+            "本地",
+            "离线",
+            "推理",
+            "embedding",
+            "向量",
+            "检索",
+            "模型"
+          ],
+          "picks": [
+            {
+              "source": "huggingface/skills",
+              "name": "huggingface-local-models",
+              "reason": "适合本机模型选型与运行，需要检查硬件和模型下载。"
+            },
+            {
+              "source": "huggingface/skills",
+              "name": "train-sentence-transformers",
+              "reason": "适合检索、相似度和语义匹配的向量模型训练。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "evals-observability",
+      "title": "评测 RAG、模型与 Agent",
+      "subtitle": "建立评测集、比较版本、追踪失败调用",
+      "icon": "04",
+      "page": "tools/evals-observability/index.html",
+      "tasks": [
+        {
+          "id": "rag",
+          "title": "RAG 回答不好，建立评测",
+          "description": "区分检索、上下文和回答质量，建立可重复的评测。",
+          "keywords": [
+            "rag",
+            "幻觉",
+            "回答",
+            "评估",
+            "评测",
+            "检索"
+          ],
+          "picks": [
+            {
+              "source": "github/awesome-copilot",
+              "name": "phoenix-evals",
+              "reason": "适合 RAG / LLM 的 evaluator 与数据集设计，需要 Python 和相关依赖。"
+            },
+            {
+              "source": "github/awesome-copilot",
+              "name": "phoenix-tracing",
+              "reason": "需要定位检索或模型调用链时，补充 tracing。"
+            }
+          ]
+        },
+        {
+          "id": "compare",
+          "title": "比较 Agent 两个版本",
+          "description": "用同一数据集和指标判断改动是否带来改善。",
+          "keywords": [
+            "agent",
+            "对比",
+            "版本",
+            "benchmark",
+            "模型对比",
+            "质量"
+          ],
+          "picks": [
+            {
+              "source": "mlflow/skills",
+              "name": "agent-evaluation",
+              "reason": "适合已有 MLflow 工作流的团队，用数据集、scorer 和 trace 比较版本。"
+            },
+            {
+              "source": "google/agents-cli",
+              "name": "google-agents-cli-eval",
+              "reason": "适合采用 Agents CLI 的评测与失败分析，需要额外 CLI 环境。"
+            }
+          ]
+        },
+        {
+          "id": "trace",
+          "title": "定位调用慢、失败与成本问题",
+          "description": "为调用链补充观测，找出异常步骤和延迟来源。",
+          "keywords": [
+            "慢",
+            "延迟",
+            "性能",
+            "成本",
+            "trace",
+            "观测",
+            "链路"
+          ],
+          "picks": [
+            {
+              "source": "github/awesome-copilot",
+              "name": "phoenix-tracing",
+              "reason": "适合为 LLM / RAG 接入 tracing 并定位链路问题。"
+            },
+            {
+              "source": "mlflow/skills",
+              "name": "instrumenting-with-mlflow-tracing",
+              "reason": "使用 MLflow 时可补充应用埋点，会修改代码，需谨慎试用。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "browser-automation",
+      "title": "测试网页与浏览器自动化",
+      "subtitle": "验证页面、排查 UI、生成浏览器测试",
+      "icon": "05",
+      "page": "tools/browser-automation/index.html",
+      "tasks": [
+        {
+          "id": "browser",
+          "title": "让 Agent 操作并验证网页",
+          "description": "真实浏览器操作、页面检查和可复现测试。",
+          "keywords": [
+            "浏览器",
+            "自动化",
+            "网页",
+            "playwright",
+            "点击",
+            "截图"
+          ],
+          "picks": [
+            {
+              "source": "microsoft/playwright-cli",
+              "name": "playwright-cli",
+              "reason": "适合通过 CLI 执行浏览器操作与页面验证，先配置浏览器环境。"
+            },
+            {
+              "source": "github/awesome-copilot",
+              "name": "playwright-generate-test",
+              "reason": "已有流程要沉淀为自动化回归时使用。"
+            }
+          ]
+        },
+        {
+          "id": "ui",
+          "title": "排查页面、网络或交互故障",
+          "description": "需要开发者工具和页面现场信息定位问题。",
+          "keywords": [
+            "ui",
+            "网络",
+            "交互",
+            "devtools",
+            "白屏",
+            "前端故障"
+          ],
+          "picks": [
+            {
+              "source": "addyosmani/agent-skills",
+              "name": "browser-testing-with-devtools",
+              "reason": "适合结合开发者工具排查页面行为；需要对应工具支持。"
+            },
+            {
+              "source": "github/awesome-copilot",
+              "name": "chrome-devtools",
+              "reason": "适合已有 Chrome DevTools MCP 环境的页面诊断。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skill-security",
+      "title": "检查 Skill、MCP 与依赖安全",
+      "subtitle": "安装前审查、权限配置、供应链风险",
+      "icon": "06",
+      "page": "tools/skill-security/index.html",
+      "tasks": [
+        {
+          "id": "mcp",
+          "title": "审查 MCP 与 Agent 权限",
+          "description": "检查工具配置和访问边界，准备团队采用。",
+          "keywords": [
+            "mcp",
+            "权限",
+            "配置",
+            "安全",
+            "审计"
+          ],
+          "picks": [
+            {
+              "source": "github/awesome-copilot",
+              "name": "mcp-security-audit",
+              "reason": "适合检查 MCP 配置、权限与工具暴露风险。"
+            },
+            {
+              "source": "github/awesome-copilot",
+              "name": "agent-owasp-compliance",
+              "reason": "适合按 Agent 安全基线梳理现状与缺口。"
+            }
+          ]
+        },
+        {
+          "id": "supply",
+          "title": "安装前检查依赖和 Skill 来源",
+          "description": "审查外部依赖、源码完整性和供应链风险。",
+          "keywords": [
+            "供应链",
+            "依赖",
+            "安装",
+            "恶意",
+            "密钥",
+            "来源"
+          ],
+          "picks": [
+            {
+              "source": "trailofbits/skills",
+              "name": "supply-chain-risk-auditor",
+              "reason": "适合对依赖与维护风险做证据审查。"
+            },
+            {
+              "source": "github/awesome-copilot",
+              "name": "agent-supply-chain",
+              "reason": "适合梳理 Agent 相关制品与供应链完整性。"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+},
   "categories": [
     {
       "slug": "html-reports",

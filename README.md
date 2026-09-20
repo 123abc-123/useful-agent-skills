@@ -27,12 +27,15 @@ npx skills add 123abc-123/useful-agent-skills \
   -a pi -a opencode --copy
 ```
 
-然后打开[可搜索目录](https://123abc-123.github.io/useful-agent-skills/)，按工作场景、风险和运行状态继续筛选。
+然后打开[需求导航](https://123abc-123.github.io/useful-agent-skills/)，先选需求，再选具体场景，页面会给出首选 Skill 和备选方案。
+
+默认“高分高热度”视图只显示编辑评分 ≥85、来源仓库 ≥1,000 Star、来源路径已核验且仓库未归档的条目。Star 标注采集时间，表示来源仓库的社区热度，不是单个 Skill 的效果分；Pi/OpenCode 实机状态单独展示。
 
 ## 从这里开始
 
 | 目标 | 推荐入口 |
 |---|---|
+| 不知道 Skill 名，只知道自己要解决什么问题 | [按需求与场景找 Skill](https://123abc-123.github.io/useful-agent-skills/) |
 | 直接安装一组经过筛选的 Skill | [算法工程师精选组合](content/catalog/recommended-stack.md) |
 | 复制可直接使用的算法工程 Prompt | [Prompt Library](content/prompts/README.md) |
 | 浏览报告、自动化、评测和安全工具 | [Tools 分类](content/catalog/tools/README.md) |

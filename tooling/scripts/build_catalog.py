@@ -3,10 +3,10 @@
 from __future__ import annotations
 
 import argparse
-import html
 import json
 import sys
 from pathlib import Path
+from build_discovery import outputs as discovery_outputs
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -82,6 +82,12 @@ NOTES = {
 
 
 def render_category_markdown(category: dict, payload: dict) -> str:
+    scenarios = []
+    if category.get('tasks'):
+        scenarios = ['## 先选你要解决的问题', '', '| 我的需求 | 推荐路径 |', '|---|---|']
+        for task in category['tasks']:
+            scenarios.append(f"| {markdown_escape(task['title'])} | [按需求查看首选与备选](https://123abc-123.github.io/useful-agent-skills/tools/{category['slug']}/?task={task['id']}#results) |")
+        scenarios += ['', '网页默认筛选编辑评分 ≥85、来源仓库 ≥1,000 Star、来源已核验且未归档的推荐项；不足门槛的候选可手动展开。评分是编辑选型分，Star 是仓库热度，两者都不是实机效果证明。', '']
     rows = []
     commands = []
     for item in payload["items"]:
@@ -105,6 +111,7 @@ def render_category_markdown(category: dict, payload: dict) -> str:
             "",
             f"> 最近核验：{payload['last_verified']}。`passed` 才表示有实机证据；当前运行状态请查看 JSON 或网页卡片。",
             "",
+            *scenarios,
             "## 精选条目",
             "",
             "| Skill | 作用 | 兼容性 | 建议 | 评分 | 风险 | 来源 |",
@@ -126,103 +133,6 @@ def render_category_markdown(category: dict, payload: dict) -> str:
     )
 
 
-BASE_CSS = r"""
-    :root { color-scheme: light; --ink:#152033; --muted:#607087; --line:#dce3ed; --paper:#f6f8fb; --card:#fff; --navy:#14295f; --blue:#315bea; --cyan:#22a6b3; --soft:#edf2ff; --low:#137447; --medium:#966500; --high:#b42318; }
-    * { box-sizing:border-box; }
-    body { margin:0; font:15px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif; color:var(--ink); background:var(--paper); }
-    a { color:var(--blue); text-decoration:none; font-weight:650; } a:hover { text-decoration:underline; }
-    header { color:#fff; background:radial-gradient(circle at 80% 10%,rgba(69,203,218,.32),transparent 28%),linear-gradient(135deg,#10204c,#315bea 72%); }
-    .hero { max-width:1160px; margin:auto; padding:48px 24px 44px; }
-    nav { display:flex; flex-wrap:wrap; gap:18px; margin-bottom:38px; } nav a { color:#eef3ff; }
-    .eyebrow { color:#aeeaf0; font-size:12px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; }
-    h1 { margin:8px 0 10px; font-size:clamp(32px,5vw,56px); line-height:1.05; letter-spacing:-.045em; }
-    .lede { max-width:760px; margin:0; color:#dfe7ff; font-size:17px; }
-    main { max-width:1160px; margin:auto; padding:28px 24px 68px; }
-    .controls { display:grid; grid-template-columns:minmax(240px,1fr) repeat(3,minmax(140px,200px)); gap:12px; margin-bottom:14px; }
-    input,select { width:100%; padding:11px 12px; border:1px solid var(--line); border-radius:10px; background:#fff; color:var(--ink); font:inherit; }
-    .summary { margin:10px 0 20px; color:var(--muted); }
-    .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(310px,1fr)); gap:15px; }
-    article { display:flex; flex-direction:column; padding:19px; border:1px solid var(--line); border-radius:15px; background:var(--card); box-shadow:0 8px 26px rgba(21,32,51,.055); }
-    article h2 { margin:0 0 7px; font-size:19px; letter-spacing:-.02em; }
-    article p { flex:1; margin:0 0 14px; color:var(--muted); }
-    .meta { display:flex; flex-wrap:wrap; gap:7px; margin-bottom:14px; }
-    .tag { padding:3px 8px; border-radius:999px; background:var(--soft); color:#2949aa; font-size:12px; }
-    .risk-low { color:var(--low); background:#e7f6ee; } .risk-medium { color:var(--medium); background:#fff4d3; } .risk-high { color:var(--high); background:#ffebe9; }
-    .actions { display:flex; flex-wrap:wrap; gap:9px; align-items:center; }
-    button { padding:7px 10px; border:1px solid #c8d4f5; border-radius:8px; color:#2449b7; background:#f2f5ff; cursor:pointer; font:600 13px/1.2 inherit; }
-    button:hover { background:#e7edff; }
-    .empty { grid-column:1/-1; padding:40px; text-align:center; color:var(--muted); }
-    footer { margin-top:38px; padding-top:20px; border-top:1px solid var(--line); color:var(--muted); }
-    @media(max-width:720px){ .controls{grid-template-columns:1fr}.hero{padding-top:30px}nav{margin-bottom:28px}.grid{grid-template-columns:1fr} }
-"""
-
-
-CATEGORY_TEMPLATE = r"""<!doctype html>
-<html lang="zh-CN">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="@@DESCRIPTION@@">
-  <title>@@TITLE@@ · Useful Agent Skills</title>
-  <style>@@CSS@@</style>
-</head>
-<body>
-  <header><div class="hero">
-    <nav aria-label="目录导航"><a href="../../index.html">Skills</a><a href="../../prompts.html">Prompt Library</a><a href="../index.html">Tools</a><a href="https://github.com/123abc-123/useful-agent-skills">GitHub</a></nav>
-    <div class="eyebrow">Tools / @@SLUG@@</div><h1>@@TITLE@@</h1><p class="lede">@@DESCRIPTION@@</p>
-  </div></header>
-  <main>
-    <div class="controls"><input id="query" type="search" placeholder="搜索名称、用途或来源" aria-label="搜索"><select id="kind" aria-label="类型"><option value="">全部类型</option></select><select id="status" aria-label="建议"><option value="">全部建议</option><option value="recommended">推荐</option><option value="trial">小范围试用</option><option value="needs-adaptation">需要适配</option></select><select id="risk" aria-label="风险"><option value="">全部风险</option><option value="low">低风险</option><option value="medium">中风险</option><option value="high">高风险</option></select></div>
-    <div id="summary" class="summary">正在读取目录…</div><section id="grid" class="grid" aria-live="polite"></section>
-    <footer>数据来自 <a href="https://github.com/123abc-123/useful-agent-skills/blob/main/content/data/tools/@@SLUG@@.json">content/data/tools/@@SLUG@@.json</a>。安装前请检查固定源码、依赖、权限和运行状态。</footer>
-  </main>
-  <script>
-    const labels={low:"低风险",medium:"中风险",high:"高风险",recommended:"推荐",trial:"小范围试用","needs-adaptation":"需要适配"};
-    let items=[]; const q=document.querySelector("#query"),kind=document.querySelector("#kind"),status=document.querySelector("#status"),risk=document.querySelector("#risk"),grid=document.querySelector("#grid"),summary=document.querySelector("#summary");
-    const esc=v=>String(v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"})[c]);
-    function url(x){const ref=x.pinning_status==="verified"?x.commit:"main";return `https://github.com/${x.source}/blob/${ref}/${x.path}`}
-    function render(){const term=q.value.trim().toLowerCase();const found=items.filter(x=>(!term||`${x.name} ${x.purpose} ${x.source} ${x.category}`.toLowerCase().includes(term))&&(!kind.value||x.category===kind.value)&&(!status.value||x.status===status.value)&&(!risk.value||x.risk===risk.value));summary.textContent=`显示 ${found.length} / ${items.length} 项；passed 才表示已有实机测试证据。`;grid.innerHTML=found.map(x=>`<article><h2>${esc(x.name)}</h2><p>${esc(x.purpose)}</p><div class="meta"><span class="tag">${esc(x.category)}</span><span class="tag">评分 ${x.score}</span><span class="tag">${esc(labels[x.status]||x.status)}</span><span class="tag risk-${esc(x.risk)}">${esc(labels[x.risk])}</span><span class="tag">Pi ${esc(x.runtime_pi)}</span><span class="tag">OpenCode ${esc(x.runtime_opencode)}</span></div><div class="actions"><a href="${url(x)}">固定源码</a><a href="https://github.com/${esc(x.source)}">仓库</a><button data-install="${esc(x.install)}">复制安装命令</button></div></article>`).join("")||'<div class="empty">没有符合条件的条目。</div>';document.querySelectorAll("[data-install]").forEach(button=>button.addEventListener("click",async()=>{await navigator.clipboard.writeText(button.dataset.install);button.textContent="已复制";setTimeout(()=>button.textContent="复制安装命令",1200)}))}
-    fetch("../../data/tools/@@SLUG@@.json").then(r=>{if(!r.ok)throw new Error(r.status);return r.json()}).then(data=>{items=data.items;[...new Set(items.map(x=>x.category))].sort().forEach(value=>{const option=document.createElement("option");option.value=value;option.textContent=value;kind.appendChild(option)});render()}).catch(()=>summary.textContent="目录读取失败，请前往 GitHub 查看原始数据。");[q,kind,status,risk].forEach(x=>x.addEventListener("input",render));
-  </script>
-</body></html>
-"""
-
-
-TOOLS_TEMPLATE = r"""<!doctype html>
-<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="面向算法工程师的 Pi 与 OpenCode 实用工具型 Skills"><title>Tools · Useful Agent Skills</title><style>@@CSS@@
-    .stats{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}.stat{padding:9px 13px;border:1px solid rgba(255,255,255,.22);border-radius:10px;background:rgba(255,255,255,.1)}
-    .category-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}.category{position:relative;min-height:210px}.icon{font-size:30px;color:var(--blue)}.category h2{font-size:23px}.count{margin-top:13px;color:var(--muted)}.open{margin-top:12px}@media(max-width:720px){.category-grid{grid-template-columns:1fr}}
-  </style></head><body><header><div class="hero"><nav><a href="../index.html">Skills</a><a href="../prompts.html">Prompt Library</a><a href="./index.html">Tools</a><a href="https://github.com/123abc-123/useful-agent-skills">GitHub</a></nav><div class="eyebrow">Curated for Pi + OpenCode</div><h1>Tools</h1><p class="lede">从“能做什么”出发选择 Skill：增强 Coding Agent、生成报告、验证页面、评测系统、追踪训练或审查供应链。</p><div class="stats">@@STATS@@</div></div></header><main><section class="category-grid">@@CARDS@@</section><footer>目录由 <a href="https://github.com/123abc-123/useful-agent-skills/tree/main/content/data/tools">content/data/tools</a> 自动生成。每个条目都区分源码核验、安装语法和实机运行状态。</footer></main></body></html>
-"""
-
-
-def render_category_page(category: dict) -> str:
-    return (
-        CATEGORY_TEMPLATE.replace("@@CSS@@", BASE_CSS)
-        .replace("@@TITLE@@", html.escape(category["title"]))
-        .replace("@@DESCRIPTION@@", html.escape(category["description"]))
-        .replace("@@SLUG@@", category["slug"])
-    )
-
-
-def render_tools_page(index: dict, payloads: dict[str, dict]) -> str:
-    total = sum(len(value["items"]) for value in payloads.values())
-    stats = f'<span class="stat"><strong>{len(index["categories"])}</strong> 个分类</span><span class="stat"><strong>{total}</strong> 个精选工具 Skill</span><span class="stat">核验于 {html.escape(index["last_verified"])}</span>'
-    cards = []
-    for category in index["categories"]:
-        count = len(payloads[category["slug"]]["items"])
-        cards.append(
-            f'<article class="category"><div class="icon">{html.escape(category["icon"])}</div>'
-            f'<h2>{html.escape(category["title_zh"])}</h2><p>{html.escape(category["description"])}</p>'
-            f'<div class="count">{count} 个条目</div><div class="open"><a href="./{category["slug"]}/">打开栏目 →</a></div></article>'
-        )
-    return (
-        TOOLS_TEMPLATE.replace("@@CSS@@", BASE_CSS)
-        .replace("@@STATS@@", stats)
-        .replace("@@CARDS@@", "".join(cards))
-    )
-
-
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--check", action="store_true", help="fail if generated files are stale")
@@ -232,11 +142,12 @@ def main() -> int:
     stale: list[str] = []
 
     write_or_check(ROOT / "content" / "catalog" / "tools" / "README.md", render_catalog_index(index, payloads), args.check, stale)
-    write_or_check(ROOT / "site" / "tools" / "index.html", render_tools_page(index, payloads), args.check, stale)
+    for path, content in discovery_outputs(index, payloads):
+        write_or_check(path, content, args.check, stale)
     for category in index["categories"]:
         slug = category["slug"]
+        category['tasks'] = next(g['tasks'] for g in index['navigation']['groups'] if g['id'] == slug)
         write_or_check(ROOT / "content" / "catalog" / "tools" / slug / "README.md", render_category_markdown(category, payloads[slug]), args.check, stale)
-        write_or_check(ROOT / "site" / "tools" / slug / "index.html", render_category_page(category), args.check, stale)
 
     if stale:
         print("Generated catalog files are stale:")

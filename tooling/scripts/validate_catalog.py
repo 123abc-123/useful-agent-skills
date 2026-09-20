@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import re
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
 
 
@@ -27,6 +28,7 @@ REQUIRED_FILES = (
     "content/catalog/tools/README.md",
     "content/data/recommended-skills.json",
     "content/data/tools/index.json",
+    "content/data/tools/sources.json",
     "content/data/prompts.json",
     "site/tools/index.html",
     "site/html-reports.html",
@@ -323,6 +325,114 @@ def validate_tools_catalog(errors: list[str]) -> tuple[int, int]:
     return len(slugs), total
 
 
+def validate_discovery_navigation(errors: list[str]) -> tuple[int, int]:
+    index_path = ROOT / "content/data/tools/index.json"
+    sources_path = ROOT / "content/data/tools/sources.json"
+    if not index_path.is_file() or not sources_path.is_file():
+        return 0, 0
+
+    try:
+        tool_index = json.loads(index_path.read_text(encoding="utf-8"))
+        source_payload = json.loads(sources_path.read_text(encoding="utf-8"))
+        recommended = json.loads(
+            (ROOT / "content/data/recommended-skills.json").read_text(encoding="utf-8")
+        )
+    except (json.JSONDecodeError, UnicodeDecodeError) as exc:
+        errors.append(f"invalid discovery data: {exc}")
+        return 0, 0
+
+    navigation = tool_index.get("navigation")
+    if not isinstance(navigation, dict):
+        errors.append("Tools index must contain a navigation object")
+        return 0, 0
+    score_min = navigation.get("score_min")
+    stars_min = navigation.get("stars_min")
+    if not isinstance(score_min, int) or not 0 <= score_min <= 100:
+        errors.append("navigation score_min must be an integer from 0 to 100")
+    if not isinstance(stars_min, int) or stars_min < 0:
+        errors.append("navigation stars_min must be a non-negative integer")
+
+    repositories = source_payload.get("repositories")
+    if source_payload.get("schema_version") != 1 or not isinstance(repositories, dict):
+        errors.append("sources.json must use schema_version 1 and contain repositories")
+        return 0, 0
+
+    available: set[tuple[str, str]] = set()
+    required_sources: set[str] = set()
+    for item in recommended.get("skills", []):
+        available.add((item.get("source"), item.get("name")))
+        required_sources.add(item.get("source"))
+    for category in tool_index.get("categories", []):
+        data_path = ROOT / f"content/data/tools/{category.get('slug')}.json"
+        if not data_path.is_file():
+            continue
+        payload = json.loads(data_path.read_text(encoding="utf-8"))
+        for item in payload.get("items", []):
+            available.add((item.get("source"), item.get("name")))
+            required_sources.add(item.get("source"))
+
+    for source in sorted(required_sources - set(repositories)):
+        errors.append(f"missing source repository snapshot: {source}")
+    for source, snapshot in repositories.items():
+        if not isinstance(snapshot, dict):
+            errors.append(f"invalid repository snapshot: {source}")
+            continue
+        if not isinstance(snapshot.get("stars"), int) or snapshot["stars"] < 0:
+            errors.append(f"invalid star count for source repository: {source}")
+        if not isinstance(snapshot.get("archived"), bool):
+            errors.append(f"invalid archived state for source repository: {source}")
+        try:
+            checked_at = datetime.fromisoformat(str(snapshot.get("checked_at")))
+            if checked_at.tzinfo is None:
+                raise ValueError("timezone required")
+            age_days = (datetime.now(timezone.utc) - checked_at.astimezone(timezone.utc)).days
+            if age_days > 14:
+                errors.append(f"stale source repository snapshot ({age_days} days): {source}")
+        except ValueError:
+            errors.append(f"invalid checked_at for source repository: {source}")
+
+    groups = navigation.get("groups")
+    if not isinstance(groups, list) or not groups:
+        errors.append("navigation must contain needs groups")
+        return 0, 0
+    group_ids: list[str] = []
+    task_ids: list[str] = []
+    for group in groups:
+        group_id = group.get("id")
+        group_ids.append(group_id)
+        if not isinstance(group_id, str) or not NAME.fullmatch(group_id):
+            errors.append(f"invalid navigation group id: {group_id!r}")
+        page = group.get("page")
+        if not isinstance(page, str) or not (ROOT / "site" / page).is_file():
+            errors.append(f"missing navigation group page: {page!r}")
+        tasks = group.get("tasks")
+        if not isinstance(tasks, list) or not tasks:
+            errors.append(f"navigation group has no tasks: {group_id}")
+            continue
+        for task in tasks:
+            task_id = task.get("id")
+            scoped_id = f"{group_id}/{task_id}"
+            task_ids.append(scoped_id)
+            if not isinstance(task_id, str) or not NAME.fullmatch(task_id):
+                errors.append(f"invalid navigation task id: {scoped_id}")
+            picks = task.get("picks")
+            if not isinstance(picks, list) or not picks:
+                errors.append(f"navigation task has no picks: {scoped_id}")
+                continue
+            for pick in picks:
+                identity = (pick.get("source"), pick.get("name"))
+                if identity not in available:
+                    errors.append(f"navigation pick is not in a catalog: {identity}")
+                if not str(pick.get("reason", "")).strip():
+                    errors.append(f"navigation pick has no reason: {identity}")
+
+    if len(group_ids) != len(set(group_ids)):
+        errors.append("duplicate navigation group ids")
+    if len(task_ids) != len(set(task_ids)):
+        errors.append("duplicate navigation task ids")
+    return len(groups), len(task_ids)
+
+
 def validate_prompt_cases(errors: list[str], prompt_names: set[str]) -> None:
     path = ROOT / "tooling/evals/cases/prompts.json"
     if not path.is_file():
@@ -402,6 +512,7 @@ def main() -> int:
     recommendation_count = validate_structured_catalog(errors)
     prompt_count = validate_prompt_catalog(errors)
     tool_category_count, tool_item_count = validate_tools_catalog(errors)
+    discovery_group_count, discovery_task_count = validate_discovery_navigation(errors)
     validate_local_links(errors)
 
     if len(all_urls) < 30:
@@ -417,6 +528,7 @@ def main() -> int:
         "Catalog validation passed: "
         f"{len(REQUIRED_FILES)} files, {recommendation_count} structured recommendations, "
         f"{prompt_count} prompts, {tool_category_count} Tools categories with {tool_item_count} entries, "
+        f"{discovery_group_count} needs groups with {discovery_task_count} scenarios, "
         f"{len(all_urls)} distinct URLs."
     )
     return 0

@@ -4,6 +4,15 @@
 
 > 最近核验：2026-09-19。`passed` 才表示有实机证据；当前运行状态请查看 JSON 或网页卡片。
 
+## 先选你要解决的问题
+
+| 我的需求 | 推荐路径 |
+|---|---|
+| 让 Agent 操作并验证网页 | [按需求查看首选与备选](https://123abc-123.github.io/useful-agent-skills/tools/browser-automation/?task=browser#results) |
+| 排查页面、网络或交互故障 | [按需求查看首选与备选](https://123abc-123.github.io/useful-agent-skills/tools/browser-automation/?task=ui#results) |
+
+网页默认筛选编辑评分 ≥85、来源仓库 ≥1,000 Star、来源已核验且未归档的推荐项；不足门槛的候选可手动展开。评分是编辑选型分，Star 是仓库热度，两者都不是实机效果证明。
+
 ## 精选条目
 
 | Skill | 作用 | 兼容性 | 建议 | 评分 | 风险 | 来源 |
