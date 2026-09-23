@@ -6,7 +6,6 @@
 |---|---|---|---|
 | Agent Harness Skills | OpenCode 原生，按评估、契约、验证、trace、交付拆分得很清楚 | 项目较新，真实案例仍少 | [GitHub](https://github.com/yfge/agent-harness-skills) |
 | Better Harness | 自动审计仓库 Harness，社区关注增长较快 | 未明确支持 Pi/OpenCode，需要适配 | [GitHub](https://github.com/QoderAI/better-harness) |
-| Plain Concepts Agent Harness | 把 OpenSpec、代码图、记忆和并行 Agent 组合进 OpenCode | 引入范围大，更像完整方案 | [GitHub](https://github.com/PlainConceptsPlatform/agent-harness) |
 | Data Analysis & ML Agent Skills | 强调证据、防泄漏、结论验证和失败诊断 | 社区采用度低，需要验证内容深度 | [GitHub](https://github.com/aiopshwang/data-analysis-ml-agent-skills) |
 | Data Science Agent Skills | 覆盖数据科学生命周期和治理 | 社区项目，需逐项审查 | [GitHub](https://github.com/Emily2040/data-science-agent-skills) |
 | Agent Skill Scanner | 尝试自动发现 Skill 中的恶意或危险行为 | 扫描无法替代人工审查 | [GitHub](https://github.com/syntax-syndicate/agent-skill-scanner) |

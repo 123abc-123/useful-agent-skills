@@ -48,7 +48,6 @@ flowchart LR
 | Agent Harness Skill | 审计并补齐仓库的 Agent 入口、约束、验证命令和 CI 契约 | 适合把已有工程改造成 Agent 友好仓库 | [GitHub](https://github.com/netresearch/agent-harness-skill) |
 | Agent Harness Skills | 五个可组合 Skill：评估、边界、验证、运行证据、交付状态 | OpenCode 适配明确；项目较新，先试点 | [GitHub](https://github.com/yfge/agent-harness-skills) |
 | Better Harness | 扫描仓库并提出 Harness 改进 | 有较多关注，但未明确支持 Pi/OpenCode，作为参考或手工适配 | [GitHub](https://github.com/QoderAI/better-harness) |
-| Plain Concepts Agent Harness | OpenCode、规范、代码图、记忆和并行 Agent 的整套方案 | 偏完整框架，改动比单个 Skill 大 | [GitHub](https://github.com/PlainConceptsPlatform/agent-harness) |
 | madebywild/agent-harness | 在多种 Agent 配置之间同步 Harness 来源 | 适合研究跨客户端配置生成；Pi/OpenCode 需评估 | [GitHub](https://github.com/madebywild/agent-harness) |
 | SUNRNEHUI/agent-harness | 运行时中立的 Harness 契约和适配器思路 | 新项目，当前主要适配其他 Agent | [GitHub](https://github.com/SUNRNEHUI/agent-harness) |
 | Skillet | 用 `spec.md`、`SKILL.md` 和 eval cases 构建及验证 Skill | 适合团队做自己的可评测 Skill | [GitHub](https://github.com/getsentry/skillet) |
