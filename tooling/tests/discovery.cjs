@@ -34,6 +34,7 @@ const server=http.createServer((req,res)=>{
     page.on('response',r=>{if(r.url().startsWith(base)&&r.status()>=400)errors.push(`${r.status()} ${r.url()}`);});
     await page.goto(base);
     await page.waitForSelector('.group-card');
+    assert.equal(await page.locator('.must-banner').count(),1);
     assert.equal(await page.locator('.group-card').count(),6);
     assert.equal(await page.locator('.shortcut').count(),20);
     await page.screenshot({path:path.join(out,'home-desktop.png'),fullPage:true});
@@ -85,7 +86,7 @@ const server=http.createServer((req,res)=>{
     assert.equal(await page.locator('#task-title').textContent(),'修 Bug，总在反复猜');
     await page.screenshot({path:path.join(out,'coding-desktop.png'),fullPage:true});
     await page.setViewportSize({width:390,height:844});
-    for(const route of ['/', '/tools/',...config.groups.map(g=>'/'+g.page)]){
+    for(const route of ['/', '/tools/', '/must-have-skills/', '/prompts.html',...config.groups.map(g=>'/'+g.page)]){
       await page.goto(base+route);
       await page.waitForTimeout(80);
       assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),`mobile overflow: ${route}`);
@@ -101,6 +102,14 @@ const server=http.createServer((req,res)=>{
     await page.evaluate(()=>{Object.defineProperty(navigator,'clipboard',{value:{writeText:async()=>{throw new Error('denied');}},configurable:true});});
     await page.locator('.copy').first().click();
     await page.waitForFunction(()=>document.querySelector('.copy-status').textContent.includes('请复制上方命令'));
+    await page.goto(`${base}/must-have-skills/`);
+    await page.waitForSelector('.must-card');
+    assert.equal(await page.locator('#core .must-card').count(),5);
+    assert.equal(await page.locator('#role .must-card').count(),4);
+    assert.equal(await page.locator('.signal-card').count(),3);
+    await page.locator('[data-static-copy]').first().click();
+    await page.waitForFunction(()=>document.querySelector('.must-card .copy-status').textContent==='已复制');
+    await page.screenshot({path:path.join(out,'must-have-mobile.png'),fullPage:true});
     await page.goto(`${base}/prompts.html`);
     await page.waitForSelector('[data-path]');
     await page.locator('[data-path]').first().click();

@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "last_verified": "2026-09-23",
+  "title": "必装 Skill",
+  "subtitle": "从内容平台和公开榜单发现候选，再用源码、热度、维护、风险与 Pi/OpenCode 适配复核。",
+  "sources": [
+    {
+      "name": "抖音 · 天丁《本周 Codex Skill 安装榜》",
+      "type": "social",
+      "url": "https://v.douyin.com/MqBahOecs54/",
+      "note": "短视频榜单，只作为发现入口；具体名次和结论回到原始数据核验。"
+    },
+    {
+      "name": "小红书热门“必装 Skill”清单观察",
+      "type": "social-secondary",
+      "url": "https://post.smzdm.com/p/aomxd849/",
+      "note": "公开二次整理称热门清单累计收藏接近 12 万；无法稳定取得原帖结构，因此不把收藏数当质量分。"
+    },
+    {
+      "name": "skills.sh Leaderboard",
+      "type": "install-ranking",
+      "url": "https://skills.sh/",
+      "note": "Skills CLI 安装热度与趋势榜。"
+    },
+    {
+      "name": "Skillselion Codex Skills",
+      "type": "install-ranking",
+      "url": "https://skillselion.com/codex-skills",
+      "note": "Codex 适用 Skill 的安装量和近期增长视图。"
+    },
+    {
+      "name": "SkillSignal Rankings",
+      "type": "multi-signal-ranking",
+      "url": "https://skill-signal.org/rankings",
+      "note": "把总安装量、近 7 天、增长、活跃度和质量信号分开。"
+    },
+    {
+      "name": "The Skill Leaderboard",
+      "type": "repository-ranking",
+      "url": "https://www.skillleaderboard.com/agent/codex",
+      "note": "观察来源仓库 Star 与增长，仍需核对具体 SKILL.md。"
+    }
+  ],
+  "market_signals": [
+    {
+      "name": "find-skills",
+      "metric": "约 350 万次安装",
+      "note": "解决发现问题，但会把用户带到未审查的第三方 Skill；不自动列入必装。",
+      "url": "https://skills.sh/"
+    },
+    {
+      "name": "grill-me / grill-with-docs",
+      "metric": "均进入百万级安装区间",
+      "note": "适合需求澄清，但交互和流程开销较高，不适合所有任务。",
+      "url": "https://skillselion.com/codex-skills"
+    },
+    {
+      "name": "agent-browser",
+      "metric": "约 91 万次安装",
+      "note": "功能强，但会下载浏览器、启动守护进程，且 OpenCode 仍有发现兼容问题，暂留观察清单。",
+      "url": "https://github.com/vercel-labs/agent-browser"
+    }
+  ],
+  "sections": [
+    {
+      "id": "core",
+      "title": "通用必装：先装这 5 个",
+      "description": "覆盖理解上下文、定位问题、测试、审查和完成验证，适合绝大多数 Coding Agent 工作。",
+      "items": [
+        {
+          "source": "addyosmani/agent-skills",
+          "name": "context-engineering",
+          "need": "Agent 经常忘记规则、读错文件",
+          "reason": "把规则、架构、相关源码和验证入口组织成可用上下文。"
+        },
+        {
+          "source": "obra/superpowers",
+          "name": "systematic-debugging",
+          "need": "修 Bug 时反复猜",
+          "reason": "要求先复现、收集证据和验证假设，再动实现。"
+        },
+        {
+          "source": "addyosmani/agent-skills",
+          "name": "test-driven-development",
+          "need": "改代码容易产生回归",
+          "reason": "用失败测试锁定行为，再完成实现与重构。"
+        },
+        {
+          "source": "addyosmani/agent-skills",
+          "name": "code-review-and-quality",
+          "need": "Agent 代码能跑，但不敢合并",
+          "reason": "从正确性、可读性、架构、安全和性能做合并前审查。"
+        },
+        {
+          "source": "obra/superpowers",
+          "name": "verification-before-completion",
+          "need": "Agent 过早说“完成了”",
+          "reason": "让每个完成声明对应最新测试、构建或检查证据。"
+        }
+      ]
+    },
+    {
+      "id": "role",
+      "title": "按工作内容加装",
+      "description": "这些不是人人都需要；命中你的任务时，价值比盲装热门 Skill 更高。",
+      "items": [
+        {
+          "source": "microsoft/playwright-cli",
+          "name": "playwright-cli",
+          "need": "需要 Agent 操作和检查网页",
+          "reason": "用浏览器探索与回归检查验证真实页面行为。"
+        },
+        {
+          "source": "cathrynlavery/diagram-design",
+          "name": "diagram-design",
+          "need": "要生成好看的架构图和流程图",
+          "reason": "输出品牌化 HTML、SVG 和 PNG，适合技术方案与汇报。"
+        },
+        {
+          "source": "github/awesome-copilot",
+          "name": "phoenix-evals",
+          "need": "在做 LLM、RAG 或 Agent 评测",
+          "reason": "用代码评测或 LLM-as-a-judge 组织可重复的评测。"
+        },
+        {
+          "source": "trailofbits/skills",
+          "name": "supply-chain-risk-auditor",
+          "need": "要审查依赖和供应链风险",
+          "reason": "检查依赖维护、所有权和供应链风险信号。"
+        }
+      ]
+    }
+  ]
+}

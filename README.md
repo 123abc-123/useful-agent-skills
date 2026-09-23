@@ -35,6 +35,7 @@ npx skills add 123abc-123/useful-agent-skills \
 
 | 目标 | 推荐入口 |
 |---|---|
+| 第一次安装，不知道哪些最值得先装 | [必装 Skill：社交榜单发现 + 源码复核](https://123abc-123.github.io/useful-agent-skills/must-have-skills/) |
 | 不知道 Skill 名，只知道自己要解决什么问题 | [按需求与场景找 Skill](https://123abc-123.github.io/useful-agent-skills/) |
 | 直接安装一组经过筛选的 Skill | [算法工程师精选组合](content/catalog/recommended-stack.md) |
 | 复制可直接使用的算法工程 Prompt | [Prompt Library](content/prompts/README.md) |
@@ -50,7 +51,7 @@ npx skills add 123abc-123/useful-agent-skills \
 | 关注新项目和低成熟度项目 | [观察清单](content/catalog/watchlist.md) |
 | 了解收录与每日更新规则 | [维护规则](MAINTENANCE.md) |
 
-可搜索的网页目录已经上线：[Useful Agent Skills](https://123abc-123.github.io/useful-agent-skills/)。其中 [Prompt Library](https://123abc-123.github.io/useful-agent-skills/prompts.html) 可按分类搜索 10 个原创模板，[Tools](https://123abc-123.github.io/useful-agent-skills/tools/) 负责工具型分类，[Coding Agent Upgrades](https://123abc-123.github.io/useful-agent-skills/tools/coding-agent-upgrades/) 集中整理上下文、规划、调试、测试、评审和完成验证 Skill。页面读取机器可读的 [`recommended-skills.json`](content/data/recommended-skills.json)、[`prompts.json`](content/data/prompts.json) 和 [`Tools 数据`](content/data/tools/index.json)。
+可搜索的网页目录已经上线：[Useful Agent Skills](https://123abc-123.github.io/useful-agent-skills/)。[必装 Skill](https://123abc-123.github.io/useful-agent-skills/must-have-skills/) 从抖音、小红书公开内容和专业榜单发现候选，再按源码、热度、维护、风险与 Pi/OpenCode 适配复核；[Prompt Library](https://123abc-123.github.io/useful-agent-skills/prompts.html) 可按分类搜索 10 个原创模板，[Tools](https://123abc-123.github.io/useful-agent-skills/tools/) 负责工具型分类。页面读取机器可读的 [`must-have-skills.json`](content/data/must-have-skills.json)、[`recommended-skills.json`](content/data/recommended-skills.json)、[`prompts.json`](content/data/prompts.json) 和 [`Tools 数据`](content/data/tools/index.json)。
 
 ## 仓库结构
 

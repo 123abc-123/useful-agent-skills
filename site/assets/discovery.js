@@ -29,6 +29,11 @@
   }
   query?.addEventListener('input', search);
   document.querySelectorAll('[data-search]').forEach(button => button.addEventListener('click', () => {query.value=button.dataset.search; search(); query.focus();}));
+  document.querySelectorAll('[data-static-copy]').forEach(button => button.addEventListener('click', async () => {
+    const notice = button.nextElementSibling;
+    try {await navigator.clipboard.writeText(button.dataset.staticCopy); notice.textContent='已复制';}
+    catch {notice.textContent='浏览器未允许剪贴板访问，请复制展开后的命令。';}
+  }));
 
   const runtime = x => x === 'passed' ? '实机通过' : x === 'failed' ? '实机失败' : x === 'needs-adaptation' ? '需适配' : '未实测';
   function card(p, index) {

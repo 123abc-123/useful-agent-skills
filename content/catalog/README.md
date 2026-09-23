@@ -4,6 +4,7 @@
 
 | 分类 | 内容 | 入口 |
 |---|---|---|
+| 必装 Skill | 内容平台发现、专业榜单交叉验证与源码复核后的短清单 | [网页栏目](https://123abc-123.github.io/useful-agent-skills/must-have-skills/) |
 | 精选组合 | 评分较高、用途明确的安装组合 | [recommended-stack.md](recommended-stack.md) |
 | 完整分类 | 算法、训练、评测、调试、安全、云与文档 | [skills.md](skills.md) |
 | Tools | 报告、可视化及后续工具型子栏目 | [tools/](tools/README.md) |
