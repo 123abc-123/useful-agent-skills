@@ -22,6 +22,7 @@
 | Elastic `observability-llm-obs` | 从 Elastic 中已有的 APM/OTLP 遥测回答 LLM 延迟、错误率、token、成本字段、响应质量和 Agent 调用链问题 | Apache-2.0；需要 Elastic CLI ≥ 0.2 和已采集遥测的 Elasticsearch/Kibana 环境，尚无 Pi/OpenCode 实机证据 | [固定源码](https://github.com/elastic/agent-skills/blob/baa511126ba2dc37b52e273b52734f8e4e0d323c/plugins/observability/skills/llm-obs/SKILL.md) |
 | AWS `skill-eval` | 从安全、功能质量、触发精度和成本效率四个维度评测 Agent Skill，适合安装前审计和版本对比 | MIT-0；项目较新、采用度仍低，完整评测需要额外运行环境，尚未验证 Pi/OpenCode | [固定源码](https://github.com/aws-samples/sample-agent-skill-eval/blob/13b2277b300d2beafa09bbbe425ca0cc41f34c8d/SKILL.md) |
 | Datadog `agent-observability-trace-rca` | 沿生产 LLM trace 的 span 树从评测失败、运行错误或结构异常定位根因 | MIT；需要 Datadog LLM Observability MCP 或 Pup 后端及凭据，工具绑定较强，需隔离评估 | [固定源码](https://github.com/datadog-labs/agent-skills/blob/7f8b08f4fa57211ac1b2b42d9771c9e0c4d79124/agent-observability/agent-observability-trace-rca/SKILL.md) |
+| Vercel `agent-browser` | skills.sh 约 91.4 万次安装、来源仓库约 4.31 万 Star；提供浏览器、Electron、探索测试、HAR 与截图工作流 | Apache-2.0；安装会下载 Chrome，CLI 会启动浏览器守护进程并在运行时提供动态 Skill。当前 `SKILL.md` 含 `hidden: true`，OpenCode 有未关闭的无法发现问题，先留在观察清单 | [Skill 源码](https://github.com/vercel-labs/agent-browser/blob/main/skills/agent-browser/SKILL.md) · [兼容性 Issue](https://github.com/vercel-labs/agent-browser/issues/1337) |
 
 ## 晋级条件
 

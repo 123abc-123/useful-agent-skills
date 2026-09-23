@@ -1,5 +1,10 @@
 # 更新记录
 
+## 2026-09-23
+
+- 榜单复查发现 `vercel-labs/agent-browser` 已进入 skills.sh / Codex 热门前列（约 91.4 万次安装，来源仓库约 4.31 万 Star）。其功能与维护活跃度较强，但当前 Skill 使用 `hidden: true`，OpenCode 存在未关闭的发现兼容问题；同时安装会下载 Chrome、运行浏览器守护进程并动态加载指令，因此先加入观察清单，不进入默认推荐。
+- 重新核对 skills.sh、Skillselion、SkillSignal、LinklyAI、Skill Leaderboard 与 Ecosystem Dashboard，并继续区分安装量、GitHub Star、维护状态和兼容性证据。
+
 ## 2026-09-20
 
 - 首页完整展示 20 个具体需求入口，每个入口一键直达对应栏目与推荐结果。
