@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_verified": "2026-09-20",
+  "last_verified": "2026-09-25",
   "navigation": {
   "score_min": 85,
   "stars_min": 1000,
@@ -344,6 +344,33 @@
               "source": "huggingface/skills",
               "name": "huggingface-trackio",
               "reason": "已有实验需要记录曲线与告警时使用；留意远端项目隐私。"
+            }
+          ]
+        },
+        {
+          "id": "model-memory",
+          "title": "模型能不能放进我的显存",
+          "description": "在下载权重前估算模型参数与 KV cache 内存，判断本机或实例是否装得下。",
+          "keywords": [
+            "显存",
+            "内存",
+            "vram",
+            "memory",
+            "kv cache",
+            "gguf",
+            "safetensors",
+            "模型"
+          ],
+          "picks": [
+            {
+              "source": "huggingface/skills",
+              "name": "hf-mem",
+              "reason": "只读取模型元数据并估算权重和可选 KV cache 内存，适合下载大模型前做容量判断。"
+            },
+            {
+              "source": "huggingface/skills",
+              "name": "huggingface-local-models",
+              "reason": "容量合适后，再选择 GGUF、量化版本和本机运行方式。"
             }
           ]
         },

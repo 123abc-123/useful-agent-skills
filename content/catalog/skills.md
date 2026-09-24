@@ -1,6 +1,6 @@
 # Agent Skills 分类清单
 
-最近核验：2026-09-18。每一项给出实际用途、来源和 Pi/OpenCode 适配判断。名称为仓库中的 Skill 名或功能组；安装前请以来源仓库当前目录为准。
+最近核验：2026-09-25。每一项给出实际用途、来源和 Pi/OpenCode 适配判断。名称为仓库中的 Skill 名或功能组；安装前请以来源仓库当前目录为准。
 
 ## 1. 机器学习、数据与科研
 
@@ -13,6 +13,7 @@
 | `huggingface-vision-trainer` | 组织视觉模型训练 | 分类、检测和视觉微调 | 标准 | A | [Hugging Face Skills](https://github.com/huggingface/skills) |
 | `huggingface-community-evals` | 构建和运行社区评测 | 模型横评、回归评测 | 标准 | A | [Hugging Face Skills](https://github.com/huggingface/skills) |
 | `huggingface-local-models` | 管理本地模型使用流程 | 内网、离线推理、原型验证 | 标准 | A | [Hugging Face Skills](https://github.com/huggingface/skills) |
+| `hf-mem` | 不下载权重即可估算权重内存与可选 KV cache | 本地模型、GPU 实例和量化选型 | 标准；需要 `uv`，私有模型才需要 HF Token | A | [固定源码](https://github.com/huggingface/skills/blob/c68f1b08d9eb3af22cdc1d3fb60e9cdb78522556/skills/hf-mem/SKILL.md) |
 | `huggingface-papers` | 搜索、理解与跟踪论文 | 技术调研、论文分享 | 标准 | A | [Hugging Face Skills](https://github.com/huggingface/skills) |
 | `huggingface-spaces` | 创建和维护 Spaces 演示 | 模型 Demo、内部展示 | 标准 | A | [Hugging Face Skills](https://github.com/huggingface/skills) |
 | `huggingface-gradio` | 构建 Gradio 应用 | 快速做算法交互界面 | 标准 | A | [Hugging Face Skills](https://github.com/huggingface/skills) |
@@ -143,6 +144,7 @@
 | `test-driven-development` | 红—绿—重构并使用仓库自己的测试命令 | 功能开发、Bug 修复 | 标准；纯指令型 | B | [固定源码](https://github.com/addyosmani/agent-skills/blob/c004a74784a08295d52749b04cda634125b9a581/skills/test-driven-development/SKILL.md) |
 | `code-review-and-quality` | 正确性、可读性、架构、安全和性能审查 | Agent 代码合并前 | 标准；纯指令型 | B | [固定源码](https://github.com/addyosmani/agent-skills/blob/c004a74784a08295d52749b04cda634125b9a581/skills/code-review-and-quality/SKILL.md) |
 | `huggingface-local-models` | 选择 GGUF 和量化并启动 llama.cpp | 本地推理和模型选型 | 标准；需本地运行时与模型下载 | A | [固定源码](https://github.com/huggingface/skills/blob/abc20ae526d8b4c0e4dff89f904adce28a4a0eb6/skills/huggingface-local-models/SKILL.md) |
+| `hf-mem` | 预估模型权重与 KV cache 内存 | 下载大模型或租用 GPU 前 | 标准；通过 `uvx` 调用并访问 Hub | A | [固定源码](https://github.com/huggingface/skills/blob/c68f1b08d9eb3af22cdc1d3fb60e9cdb78522556/skills/hf-mem/SKILL.md) |
 | `huggingface-vision-trainer` | 训练分类、检测和分割模型 | 视觉算法实验 | 标准；云训练涉及付费与凭据 | A | [固定源码](https://github.com/huggingface/skills/blob/abc20ae526d8b4c0e4dff89f904adce28a4a0eb6/skills/huggingface-vision-trainer/SKILL.md) |
 | `huggingface-trackio` | 记录指标、告警和查询实验 | 训练监控、异常定位 | 标准；检查远端 Space 隐私 | A | [固定源码](https://github.com/huggingface/skills/blob/abc20ae526d8b4c0e4dff89f904adce28a4a0eb6/skills/huggingface-trackio/SKILL.md) |
 | `test-gap-audit` | 只读审计测试缺口 | PR、功能和全仓库测试规划 | 标准；默认只读 | A | [固定源码](https://github.com/github/awesome-copilot/blob/4f4796f0bf30e105700f97ed8408c12b6aa95e06/skills/test-gap-audit/SKILL.md) |

@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "last_verified": "2026-09-19",
+  "last_verified": "2026-09-25",
   "skills": [
     {
       "name": "huggingface-datasets",
@@ -503,6 +503,24 @@
       "runtime_pi": "not-run",
       "runtime_opencode": "not-run",
       "last_verified": "2026-09-19",
+      "pinning_status": "verified",
+      "runtime_evidence": null
+    },
+    {
+      "name": "hf-mem",
+      "category": "inference",
+      "source": "huggingface/skills",
+      "path": "skills/hf-mem/SKILL.md",
+      "commit": "c68f1b08d9eb3af22cdc1d3fb60e9cdb78522556",
+      "license": "Apache-2.0",
+      "purpose": "在不下载模型权重的情况下估算 Safetensors 或 GGUF 推理所需的权重内存，并可选估算 KV cache。",
+      "score": 90,
+      "risk": "medium",
+      "source_path": "verified",
+      "install_syntax": "verified",
+      "runtime_pi": "not-run",
+      "runtime_opencode": "not-run",
+      "last_verified": "2026-09-25",
       "pinning_status": "verified",
       "runtime_evidence": null
     },

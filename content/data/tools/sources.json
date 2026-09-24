@@ -65,9 +65,9 @@
       "api_url": "https://api.github.com/repos/google/agents-cli"
     },
     "huggingface/skills": {
-      "stars": 11066,
-      "checked_at": "2026-09-19T10:00:58+00:00",
-      "pushed_at": "2026-09-18T09:51:35Z",
+      "stars": 11093,
+      "checked_at": "2026-09-25T00:30:00+08:00",
+      "pushed_at": "2026-09-24T12:02:14Z",
       "archived": false,
       "api_url": "https://api.github.com/repos/huggingface/skills"
     },

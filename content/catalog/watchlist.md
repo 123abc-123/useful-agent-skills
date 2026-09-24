@@ -22,6 +22,8 @@
 | AWS `skill-eval` | 从安全、功能质量、触发精度和成本效率四个维度评测 Agent Skill，适合安装前审计和版本对比 | MIT-0；项目较新、采用度仍低，完整评测需要额外运行环境，尚未验证 Pi/OpenCode | [固定源码](https://github.com/aws-samples/sample-agent-skill-eval/blob/13b2277b300d2beafa09bbbe425ca0cc41f34c8d/SKILL.md) |
 | Datadog `agent-observability-trace-rca` | 沿生产 LLM trace 的 span 树从评测失败、运行错误或结构异常定位根因 | MIT；需要 Datadog LLM Observability MCP 或 Pup 后端及凭据，工具绑定较强，需隔离评估 | [固定源码](https://github.com/datadog-labs/agent-skills/blob/7f8b08f4fa57211ac1b2b42d9771c9e0c4d79124/agent-observability/agent-observability-trace-rca/SKILL.md) |
 | Vercel `agent-browser` | skills.sh 约 91.4 万次安装、来源仓库约 4.31 万 Star；提供浏览器、Electron、探索测试、HAR 与截图工作流 | Apache-2.0；安装会下载 Chrome，CLI 会启动浏览器守护进程并在运行时提供动态 Skill。当前 `SKILL.md` 含 `hidden: true`，OpenCode 有未关闭的无法发现问题，先留在观察清单 | [Skill 源码](https://github.com/vercel-labs/agent-browser/blob/main/skills/agent-browser/SKILL.md) · [兼容性 Issue](https://github.com/vercel-labs/agent-browser/issues/1337) |
+| Hugging Face `huggingface-best` | 从官方 benchmark leaderboard 找模型，补充参数量、许可证和设备适配，适合模型选型 | Apache-2.0；描述使用“Always use”强触发，执行时读取本机 HF token 并联网查询，且榜单缺失时会降级为热度搜索；先评估触发范围和凭据处理 | [固定源码](https://github.com/huggingface/skills/blob/cfcd0a8100524dd3b9680c3bd4418c6b2640853a/skills/huggingface-best/SKILL.md) |
+| Hugging Face UPskill | 从任务、现有 Skill 或 Agent trace 生成 Skill，并执行有/无 Skill 的基线对照评测 | Apache-2.0、约 750 Star；可调用模型 API 或 Hugging Face Jobs，涉及凭据、远程算力与费用，尚无 Pi/OpenCode 实机证据 | [固定 README](https://github.com/huggingface/upskill/blob/5462a245bed95aab3a5d2264197e893d27318663/README.md) |
 
 ## 晋级条件
 

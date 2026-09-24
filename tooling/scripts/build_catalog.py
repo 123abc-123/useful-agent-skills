@@ -33,7 +33,8 @@ def write_or_check(path: Path, content: str, check: bool, stale: list[str]) -> N
             stale.append(path.relative_to(ROOT).as_posix())
         return
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(content, encoding="utf-8")
+    newline = "\r\n" if path.is_file() and b"\r\n" in path.read_bytes() else "\n"
+    path.write_text(content, encoding="utf-8", newline=newline)
 
 
 def render_catalog_index(index: dict, payloads: dict[str, dict]) -> str:

@@ -1,6 +1,6 @@
 # 学习网站与资料
 
-最近核验：2026-09-15。优先列官方规范、官方文档和高质量工程文章。
+最近核验：2026-09-25。优先列官方规范、官方文档和高质量工程文章。
 
 ## Skill、上下文与工具协议
 
@@ -14,6 +14,7 @@
 | Skills.sh | 搜索社区 Skill 和查看使用趋势 | 发现入口；安装前单独审查 | [skills.sh](https://www.skills.sh/) |
 | Skill 榜单与发现源 | 对比 skills.sh、Codex 榜、近 7 天趋势和聚合榜的统计口径 | 日常发现新 Skill | [本项目整理](discovery-sources.md) |
 | Awesome Copilot Skills Catalog | 按类别查看大量标准 Skill | 选型参考 | [目录](https://github.com/github/awesome-copilot/blob/main/docs/README.skills.md) |
+| Hugging Face `hf skills` | 从官方市场列出、预览、安装和更新 HF Skills，默认写入 `.agents/skills/` | 算法工程 Skill 管理 | [CLI 文档](https://huggingface.co/docs/huggingface_hub/en/package_reference/cli) |
 
 ## Harness 与 Agent 工程
 
@@ -39,6 +40,8 @@
 | OpenCode Plugins | 插件机制与扩展方式 | [OpenCode 文档](https://opencode.ai/docs/plugins) |
 | OpenCode Tools | 内置工具与权限 | [OpenCode 文档](https://dev.opencode.ai/docs/tools/) |
 | pi-open-agents | 在 Pi 中统一主 Agent、子 Agent、模型与权限，并兼容 OpenCode Agent 定义 | [GitHub](https://github.com/andrea-tomassi/pi-open-agents) |
+
+Pi 已支持 `disable-model-invocation: true`，可让高影响 Skill 只通过显式 `/skill:name` 调用；OpenCode 会忽略这个未知字段，因此跨平台项目仍需在说明中写清触发和权限边界。
 
 ## 评测、可观测性与安全
 

@@ -1,5 +1,13 @@
 # 更新记录
 
+## 2026-09-25
+
+- 新增 Hugging Face 官方 `hf-mem`：在下载 Safetensors/GGUF 权重或租用 GPU 前估算权重内存与可选 KV cache；固定源码、Apache-2.0 和来源路径已核验，Pi/OpenCode 实机状态仍为 `not-run`。
+- 需求导航新增“模型能不能放进我的显存”场景，以 `hf-mem` 为首选、`huggingface-local-models` 为后续运行方案。
+- Hugging Face `huggingface-best` 因强触发、联网和本机 token 读取边界，UPskill 因模型 API/HF Jobs、凭据与费用边界，先进入观察清单。
+- “必装 Skill”来源补充一个可直接访问的抖音榜单页面；自动文稿只用于识别需求类别，不直接采纳其中可能误写的 Skill 名称。
+- 复核 Pi/OpenCode 官方 Skills 文档：确认 Pi 支持显式调用控制字段，OpenCode 仍只识别标准 frontmatter，因此跨平台 Skill 不能依赖该字段作为唯一安全边界。
+
 ## 2026-09-23
 
 - 新增独立“必装 Skill”栏目：通用必装 5 个、按工作内容加装 4 个，以及热门但暂缓安装清单；首页和顶部导航均提供入口。

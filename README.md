@@ -7,11 +7,11 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-16825d.svg)](LICENSE)
 [![Pi + OpenCode](https://img.shields.io/badge/targets-Pi%20%2B%20OpenCode-315bea.svg)](https://123abc-123.github.io/useful-agent-skills/)
 
-面向算法工程师的 Agent Skill 与 Agent Harness 实用清单，重点考虑 **Pi Coding Agent** 和 **OpenCode**。当前包含 **32 项结构化精选、10 个原创 Prompt、5 个 Tools 专题和 5 个可直接安装的自研 Skill**。
+面向算法工程师的 Agent Skill 与 Agent Harness 实用清单，重点考虑 **Pi Coding Agent** 和 **OpenCode**。当前包含 **33 项结构化精选、10 个原创 Prompt、5 个 Tools 专题和 5 个可直接安装的自研 Skill**。
 
 每个精选项都记录具体 `SKILL.md`、固定 commit、许可证、安装状态、Pi/OpenCode 运行状态和风险。热度只用于发现候选，源码和证据决定是否采用。
 
-> 最近核验：2026-09-19。`passed` 才表示有实机测试证据；`verified` 只表示路径、版本或命令已经核验。
+> 最近核验：2026-09-25。`passed` 才表示有实机测试证据；`verified` 只表示路径、版本或命令已经核验。
 
 ## 30 秒开始
 
@@ -78,7 +78,7 @@ tooling/                         维护工具
 |---|---|
 | 训练失败、出现 NaN 或指标异常 | `training-failure-debug` + `systematic-debugging` + `huggingface-trackio` |
 | 做数据集、训练和模型评测 | `huggingface-datasets` + `trl-training` + `model-eval-report` |
-| 在本机选择并运行开源模型 | `huggingface-local-models` |
+| 在本机选择并运行开源模型 | `hf-mem` + `huggingface-local-models` |
 | 接手陌生仓库并安全修改 | `acquire-codebase-knowledge` + `context-engineering` + `test-driven-development` |
 | 让 Coding Agent 少猜测、少返工 | [`context-engineering` + `writing-plans` + `systematic-debugging` + `verification-before-completion`](https://123abc-123.github.io/useful-agent-skills/tools/coding-agent-upgrades/) |
 | 合并 Agent 生成的代码 | `code-review-and-quality` + `test-gap-audit` + `verification-before-completion` |

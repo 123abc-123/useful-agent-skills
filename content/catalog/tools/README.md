@@ -2,7 +2,7 @@
 
 Tools 收录能直接产出、验证或保护工作结果的 Skill。目录由 `content/data/tools/` 自动生成；真正安装到 Pi/OpenCode 时，每个 Skill 仍保持独立目录。
 
-> 最近核验：2026-09-20。在线入口：[Tools](https://123abc-123.github.io/useful-agent-skills/tools/)。
+> 最近核验：2026-09-25。在线入口：[Tools](https://123abc-123.github.io/useful-agent-skills/tools/)。
 
 ## 当前子栏目
 

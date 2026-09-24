@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_verified": "2026-09-23",
+  "last_verified": "2026-09-25",
   "title": "必装 Skill",
   "subtitle": "从内容平台和公开榜单发现候选，再用源码、热度、维护、风险与 Pi/OpenCode 适配复核。",
   "sources": [
@@ -15,6 +15,12 @@
       "type": "social-secondary",
       "url": "https://post.smzdm.com/p/aomxd849/",
       "note": "公开二次整理称热门清单累计收藏接近 12 万；无法稳定取得原帖结构，因此不把收藏数当质量分。"
+    },
+    {
+      "name": "抖音 ·《Codex 做到底的 Skill》",
+      "type": "social",
+      "url": "https://www.douyin.com/shipin/7642130990860797967",
+      "note": "公开页面列出 Skill 创建、计划、代码审查、调试、交接和前端设计等高频角色；自动文稿可能误写名称，只作为需求信号。"
     },
     {
       "name": "skills.sh Leaderboard",
@@ -104,6 +110,12 @@
       "title": "按工作内容加装",
       "description": "这些不是人人都需要；命中你的任务时，价值比盲装热门 Skill 更高。",
       "items": [
+        {
+          "source": "huggingface/skills",
+          "name": "hf-mem",
+          "need": "下载模型前先判断显存够不够",
+          "reason": "不用下载权重即可估算 Safetensors/GGUF 权重内存和可选 KV cache。"
+        },
         {
           "source": "microsoft/playwright-cli",
           "name": "playwright-cli",

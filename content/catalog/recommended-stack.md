@@ -1,6 +1,6 @@
 # 算法工程师精选 Skill 组合
 
-最近核验：2026-09-18。机器可读数据见 [`content/data/recommended-skills.json`](../data/recommended-skills.json)，评分规则见 [`SCORING.md`](../../SCORING.md)。Google Agents CLI 与 MLflow 新增项已经完成 commit API 与网页双重核验；此前条目的全局 `pinning_status` 仍保持 pending，点击链接继续使用 `main` 的精确路径。
+最近核验：2026-09-25。机器可读数据见 [`content/data/recommended-skills.json`](../data/recommended-skills.json)，评分规则见 [`SCORING.md`](../../SCORING.md)。Google Agents CLI 与 MLflow 新增项已经完成 commit API 与网页双重核验；此前条目的全局 `pinning_status` 仍保持 pending，点击链接继续使用 `main` 的精确路径。
 
 ## 先安装本仓库的五个工作流
 
@@ -151,6 +151,7 @@ npx skills add addyosmani/agent-skills \
 
 npx skills add huggingface/skills \
   --skill huggingface-local-models \
+  --skill hf-mem \
   --skill huggingface-vision-trainer \
   --skill huggingface-trackio \
   -a pi -a opencode --copy
@@ -167,6 +168,7 @@ npx skills add github/awesome-copilot \
 | `test-driven-development` | 功能修改和 Bug 修复缺少可持续的回归证据 | 92 | 低 | [commit](https://github.com/addyosmani/agent-skills/blob/c004a74784a08295d52749b04cda634125b9a581/skills/test-driven-development/SKILL.md) |
 | `code-review-and-quality` | 合并人或 Agent 生成代码前做五维审查 | 91 | 低 | [commit](https://github.com/addyosmani/agent-skills/blob/c004a74784a08295d52749b04cda634125b9a581/skills/code-review-and-quality/SKILL.md) |
 | `huggingface-local-models` | 按 CPU、Metal、CUDA 或 ROCm 选择 GGUF 并启动本地模型 | 91 | 中 | [commit](https://github.com/huggingface/skills/blob/abc20ae526d8b4c0e4dff89f904adce28a4a0eb6/skills/huggingface-local-models/SKILL.md) |
+| `hf-mem` | 下载权重前估算 Safetensors/GGUF 权重内存与可选 KV cache | 90 | 中 | [commit](https://github.com/huggingface/skills/blob/c68f1b08d9eb3af22cdc1d3fb60e9cdb78522556/skills/hf-mem/SKILL.md) |
 | `huggingface-vision-trainer` | 分类、检测、SAM/SAM2 分割训练与成本检查 | 90 | 高 | [commit](https://github.com/huggingface/skills/blob/abc20ae526d8b4c0e4dff89f904adce28a4a0eb6/skills/huggingface-vision-trainer/SKILL.md) |
 | `huggingface-trackio` | 训练指标、异常告警和实验结果查询 | 89 | 中 | [commit](https://github.com/huggingface/skills/blob/abc20ae526d8b4c0e4dff89f904adce28a4a0eb6/skills/huggingface-trackio/SKILL.md) |
 | `test-gap-audit` | 只读找出缺失测试、弱断言和未覆盖的高风险路径 | 89 | 低 | [commit](https://github.com/github/awesome-copilot/blob/4f4796f0bf30e105700f97ed8408c12b6aa95e06/skills/test-gap-audit/SKILL.md) |

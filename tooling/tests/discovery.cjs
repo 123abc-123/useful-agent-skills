@@ -36,7 +36,7 @@ const server=http.createServer((req,res)=>{
     await page.waitForSelector('.group-card');
     assert.equal(await page.locator('.must-banner').count(),1);
     assert.equal(await page.locator('.group-card').count(),6);
-    assert.equal(await page.locator('.shortcut').count(),20);
+    assert.equal(await page.locator('.shortcut').count(),21);
     await page.screenshot({path:path.join(out,'home-desktop.png'),fullPage:true});
     const search=page.locator('#need-search');
     for(const [query,expected] of [['修 Bug','debug'],['RAG 回答不好','rag'],['生成 HTML 报告','report'],['上下文','understand'],['systematic-debugging','debug']]){
@@ -105,7 +105,7 @@ const server=http.createServer((req,res)=>{
     await page.goto(`${base}/must-have-skills/`);
     await page.waitForSelector('.must-card');
     assert.equal(await page.locator('#core .must-card').count(),5);
-    assert.equal(await page.locator('#role .must-card').count(),4);
+    assert.equal(await page.locator('#role .must-card').count(),5);
     assert.equal(await page.locator('.signal-card').count(),3);
     await page.locator('[data-static-copy]').first().click();
     await page.waitForFunction(()=>document.querySelector('.must-card .copy-status').textContent==='已复制');
