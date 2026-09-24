@@ -7,6 +7,7 @@
 - Hugging Face `huggingface-best` 因强触发、联网和本机 token 读取边界，UPskill 因模型 API/HF Jobs、凭据与费用边界，先进入观察清单。
 - “必装 Skill”来源补充一个可直接访问的抖音榜单页面；自动文稿只用于识别需求类别，不直接采纳其中可能误写的 Skill 名称。
 - 复核 Pi/OpenCode 官方 Skills 文档：确认 Pi 支持显式调用控制字段，OpenCode 仍只识别标准 frontmatter，因此跨平台 Skill 不能依赖该字段作为唯一安全边界。
+- 外链检查把抖音、小红书的反爬 404 归为受限访问，避免把浏览器可访问的内容平台页面误判成死链。
 
 ## 2026-09-23
 

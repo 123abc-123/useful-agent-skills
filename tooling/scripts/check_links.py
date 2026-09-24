@@ -16,6 +16,7 @@ ROOT = Path(__file__).resolve().parents[2]
 LINK = re.compile(r"\[[^\]]+\]\((https?://[^)]+)\)")
 SOFT_STATUSES = {401, 403, 405, 429}
 HARD_STATUSES = {404, 410}
+BOT_GATED_HOSTS = {"www.douyin.com", "v.douyin.com", "www.xiaohongshu.com"}
 SITE_PREFIX = "https://123abc-123.github.io/useful-agent-skills/"
 
 
@@ -36,6 +37,7 @@ def check(url: str, timeout: float) -> tuple[str, str, int | None]:
             local = local / "index.html"
         return url, "ok" if local.is_file() else "broken", 200 if local.is_file() else 404
     headers = {"User-Agent": "useful-agent-skills-link-check/1.0"}
+    host = urllib.parse.urlsplit(url).hostname
     for method in ("HEAD", "GET"):
         request = urllib.request.Request(url, headers=headers, method=method)
         if method == "GET":
@@ -45,6 +47,8 @@ def check(url: str, timeout: float) -> tuple[str, str, int | None]:
                 return url, "ok", response.status
         except urllib.error.HTTPError as exc:
             if exc.code in HARD_STATUSES:
+                if host in BOT_GATED_HOSTS:
+                    return url, "restricted", exc.code
                 return url, "broken", exc.code
             if exc.code in SOFT_STATUSES:
                 return url, "restricted", exc.code
