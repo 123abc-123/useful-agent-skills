@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "last_verified": "2026-09-25",
+  "last_verified": "2026-09-27",
   "skills": [
     {
       "name": "huggingface-datasets",
@@ -115,7 +115,7 @@
       "category": "debugging",
       "source": "obra/superpowers",
       "path": "skills/systematic-debugging/SKILL.md",
-      "commit": "b36e0829c6d0140e93cfef2ca599b1b07d4a7797",
+      "commit": "8ca22dba9a94f28898bbce59f2537ff4d87c747d",
       "license": "MIT",
       "purpose": "按复现、证据、假设和最小验证定位根因。",
       "score": 94,
@@ -124,8 +124,8 @@
       "install_syntax": "verified",
       "runtime_pi": "not-run",
       "runtime_opencode": "not-run",
-      "last_verified": "2026-09-18",
-      "pinning_status": "pending-upstream-commit-verification",
+      "last_verified": "2026-09-27",
+      "pinning_status": "verified",
       "runtime_evidence": null
     },
     {
@@ -133,7 +133,7 @@
       "category": "quality",
       "source": "obra/superpowers",
       "path": "skills/verification-before-completion/SKILL.md",
-      "commit": "b36e0829c6d0140e93cfef2ca599b1b07d4a7797",
+      "commit": "8ca22dba9a94f28898bbce59f2537ff4d87c747d",
       "license": "MIT",
       "purpose": "要求完成声明对应最新验证证据。",
       "score": 94,
@@ -142,8 +142,8 @@
       "install_syntax": "verified",
       "runtime_pi": "not-run",
       "runtime_opencode": "not-run",
-      "last_verified": "2026-09-18",
-      "pinning_status": "pending-upstream-commit-verification",
+      "last_verified": "2026-09-27",
+      "pinning_status": "verified",
       "runtime_evidence": null
     },
     {

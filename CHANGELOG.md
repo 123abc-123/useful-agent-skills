@@ -1,5 +1,11 @@
 # 更新记录
 
+## 2026-09-27
+
+- 跟进 Superpowers v6.4.2：`writing-plans` 改为记录文件、接口签名、测试断言、规格值和验证命令，减少把计划写成完整实现的冗余。
+- 将 Coding Agent 增强栏目中的 5 个 Superpowers 条目更新到固定提交 `8ca22dba9a94f28898bbce59f2537ff4d87c747d`，并通过 GitHub API 与固定网页核验路径；Pi/OpenCode 实机状态仍为 `not-run`。
+- 更新 Superpowers 来源快照为 292,022 Star（采集于 2026-09-27）；上游发布说明中的 9/9 缺陷探针与时间、token 改善只作为维护证据，不写成 Pi/OpenCode 实机通过。
+
 ## 2026-09-25
 
 - 新增 Hugging Face 官方 `hf-mem`：在下载 Safetensors/GGUF 权重或租用 GPU 前估算权重内存与可选 KV cache；固定源码、Apache-2.0 和来源路径已核验，Pi/OpenCode 实机状态仍为 `not-run`。

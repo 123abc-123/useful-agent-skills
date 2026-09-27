@@ -1,6 +1,6 @@
 # 算法工程师精选 Skill 组合
 
-最近核验：2026-09-25。机器可读数据见 [`content/data/recommended-skills.json`](../data/recommended-skills.json)，评分规则见 [`SCORING.md`](../../SCORING.md)。Google Agents CLI 与 MLflow 新增项已经完成 commit API 与网页双重核验；此前条目的全局 `pinning_status` 仍保持 pending，点击链接继续使用 `main` 的精确路径。
+最近核验：2026-09-27。机器可读数据见 [`content/data/recommended-skills.json`](../data/recommended-skills.json)，评分规则见 [`SCORING.md`](../../SCORING.md)。每个条目独立记录固定版本、路径、许可证、安装语法与 Pi/OpenCode 实机状态；页面不会把仅有网页链接的候选写成已完成版本核验。
 
 ## 先安装本仓库的五个工作流
 

@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "last_verified": "2026-09-19",
+  "last_verified": "2026-09-27",
   "items": [
     {
       "name": "acquire-codebase-knowledge",
@@ -51,7 +51,7 @@
       "category": "requirements",
       "source": "obra/superpowers",
       "path": "skills/brainstorming/SKILL.md",
-      "commit": "5bf4e78011075bcfc0dc295f0724994cd123ee71",
+      "commit": "8ca22dba9a94f28898bbce59f2537ff4d87c747d",
       "license": "MIT",
       "purpose": "在实现功能前澄清目标、约束、设计选项和验收条件，降低做错方向的概率。",
       "output": "经过确认的设计与需求说明",
@@ -64,7 +64,7 @@
       "runtime_pi": "not-run",
       "runtime_opencode": "not-run",
       "install": "npx skills add obra/superpowers --skill brainstorming -a pi -a opencode --copy",
-      "last_verified": "2026-09-19",
+      "last_verified": "2026-09-27",
       "pinning_status": "verified",
       "runtime_evidence": null
     },
@@ -73,11 +73,11 @@
       "category": "planning",
       "source": "obra/superpowers",
       "path": "skills/writing-plans/SKILL.md",
-      "commit": "5bf4e78011075bcfc0dc295f0724994cd123ee71",
+      "commit": "8ca22dba9a94f28898bbce59f2537ff4d87c747d",
       "license": "MIT",
-      "purpose": "把规格或需求拆成对应具体文件、验证命令和交付检查点的实施计划。",
+      "purpose": "把规格或需求压缩成实现者必须知道的决策：文件、接口签名、测试断言、规格值与验证命令，避免计划变成代码抄写。",
       "output": "可执行实施计划",
-      "compatibility": "纯指令型；会创建计划文档，适合多文件或多阶段任务。",
+      "compatibility": "纯指令型；会创建计划文档并要求计划自检。v6.4.2 上游报告在缺陷探针中保持 9/9，同时显著减少计划时间与 token；该结果不是 Pi/OpenCode 实机证据。",
       "score": 92,
       "status": "recommended",
       "risk": "low",
@@ -86,7 +86,7 @@
       "runtime_pi": "not-run",
       "runtime_opencode": "not-run",
       "install": "npx skills add obra/superpowers --skill writing-plans -a pi -a opencode --copy",
-      "last_verified": "2026-09-19",
+      "last_verified": "2026-09-27",
       "pinning_status": "verified",
       "runtime_evidence": null
     },
@@ -117,7 +117,7 @@
       "category": "isolation",
       "source": "obra/superpowers",
       "path": "skills/using-git-worktrees/SKILL.md",
-      "commit": "5bf4e78011075bcfc0dc295f0724994cd123ee71",
+      "commit": "8ca22dba9a94f28898bbce59f2537ff4d87c747d",
       "license": "MIT",
       "purpose": "在执行较大改动前建立隔离工作区，减少并行任务和现有工作树互相污染。",
       "output": "隔离的 Git worktree",
@@ -130,7 +130,7 @@
       "runtime_pi": "not-run",
       "runtime_opencode": "not-run",
       "install": "npx skills add obra/superpowers --skill using-git-worktrees -a pi -a opencode --copy",
-      "last_verified": "2026-09-19",
+      "last_verified": "2026-09-27",
       "pinning_status": "verified",
       "runtime_evidence": null
     },
@@ -161,7 +161,7 @@
       "category": "debugging",
       "source": "obra/superpowers",
       "path": "skills/systematic-debugging/SKILL.md",
-      "commit": "5bf4e78011075bcfc0dc295f0724994cd123ee71",
+      "commit": "8ca22dba9a94f28898bbce59f2537ff4d87c747d",
       "license": "MIT",
       "purpose": "要求 Agent 先收集证据、形成假设和最小复现，再修改代码并验证根因。",
       "output": "根因、修复和验证证据",
@@ -174,7 +174,7 @@
       "runtime_pi": "not-run",
       "runtime_opencode": "not-run",
       "install": "npx skills add obra/superpowers --skill systematic-debugging -a pi -a opencode --copy",
-      "last_verified": "2026-09-19",
+      "last_verified": "2026-09-27",
       "pinning_status": "verified",
       "runtime_evidence": null
     },
@@ -227,7 +227,7 @@
       "category": "completion",
       "source": "obra/superpowers",
       "path": "skills/verification-before-completion/SKILL.md",
-      "commit": "5bf4e78011075bcfc0dc295f0724994cd123ee71",
+      "commit": "8ca22dba9a94f28898bbce59f2537ff4d87c747d",
       "license": "MIT",
       "purpose": "阻止 Agent 在没有新鲜命令输出时声称任务已经完成、修复或通过。",
       "output": "完成声明对应的验证证据",
@@ -240,7 +240,7 @@
       "runtime_pi": "not-run",
       "runtime_opencode": "not-run",
       "install": "npx skills add obra/superpowers --skill verification-before-completion -a pi -a opencode --copy",
-      "last_verified": "2026-09-19",
+      "last_verified": "2026-09-27",
       "pinning_status": "verified",
       "runtime_evidence": null
     }
