@@ -1,5 +1,13 @@
 # 更新记录
 
+## 2026-10-06
+
+- 更新“必装 Skill”榜单快照：skills.sh 当前 `find-skills` 约 370 万次总安装，`agent-browser` 约 100 万次总安装且近 24 小时约 1.1 万次；继续把安装量与质量结论分开。
+- 补齐 LinklyAI/best-skills 与 Skills.sh Ecosystem Dashboard 两个发现源；Dashboard 的 2026-10-05 快照覆盖 3,871 个 Skill、1,089 个发布者和约 1.723 亿次累计安装。
+- 复核 Vercel `agent-browser` 的当前网络、进程与更新边界：新增自动升级入口并默认发现页面 WebMCP 工具，页面元数据仍按不可信输入处理；OpenCode 发现问题未解决，继续留在观察清单。
+- 新增 Hugging Face 官方 SageMaker 部署 Skill 组到观察清单。它会使用 AWS 凭据并创建持续计费资源，因此未进入默认推荐，也未写成 Pi/OpenCode 实机通过。
+- 新增 `principal-pi-skills` v4.6.0 到观察清单：8 个 Pi 工程 Skill 的证据交接设计值得跟踪，但会加载启动扩展、可安装子 Agent，且旧版曾有破坏性删除缺陷；当前只支持 Pi，需固定版本后隔离实测。
+
 ## 2026-09-27
 
 - 跟进 Superpowers v6.4.2：`writing-plans` 改为记录文件、接口签名、测试断言、规格值和验证命令，减少把计划写成完整实现的冗余。

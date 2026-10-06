@@ -3,126 +3,126 @@
   "repositories": {
     "123abc-123/useful-agent-skills": {
       "stars": 0,
-      "checked_at": "2026-09-19T10:00:58+00:00",
-      "pushed_at": "2026-09-19T07:57:08Z",
+      "checked_at": "2026-10-06T17:28:20+08:00",
+      "pushed_at": "2026-09-27T09:05:42Z",
       "archived": false,
       "api_url": "https://api.github.com/repos/123abc-123/useful-agent-skills"
     },
     "K-Dense-AI/scientific-agent-skills": {
-      "stars": 45568,
-      "checked_at": "2026-09-19T10:00:58+00:00",
-      "pushed_at": "2026-09-14T09:27:38Z",
+      "stars": 47737,
+      "checked_at": "2026-10-06T17:28:20+08:00",
+      "pushed_at": "2026-10-05T09:39:11Z",
       "archived": false,
       "api_url": "https://api.github.com/repos/K-Dense-AI/scientific-agent-skills"
     },
     "addyosmani/agent-skills": {
-      "stars": 96614,
-      "checked_at": "2026-09-19T10:00:58+00:00",
-      "pushed_at": "2026-09-18T03:32:22Z",
+      "stars": 101648,
+      "checked_at": "2026-10-06T17:28:20+08:00",
+      "pushed_at": "2026-10-03T18:21:11Z",
       "archived": false,
       "api_url": "https://api.github.com/repos/addyosmani/agent-skills"
     },
     "anthropics/skills": {
-      "stars": 177089,
-      "checked_at": "2026-09-19T10:00:58+00:00",
-      "pushed_at": "2026-09-10T19:44:11Z",
+      "stars": 179850,
+      "checked_at": "2026-10-06T17:28:20+08:00",
+      "pushed_at": "2026-10-05T13:46:45Z",
       "archived": false,
       "api_url": "https://api.github.com/repos/anthropics/skills"
     },
     "bluedusk/html-slides": {
-      "stars": 81,
-      "checked_at": "2026-09-19T10:00:58+00:00",
+      "stars": 86,
+      "checked_at": "2026-10-06T17:28:20+08:00",
       "pushed_at": "2026-05-03T10:06:34Z",
       "archived": false,
       "api_url": "https://api.github.com/repos/bluedusk/html-slides"
     },
     "cathrynlavery/diagram-design": {
-      "stars": 41470,
-      "checked_at": "2026-09-20T12:37:13+00:00",
-      "pushed_at": "2026-09-19T17:47:52Z",
+      "stars": 43574,
+      "checked_at": "2026-10-06T17:28:20+08:00",
+      "pushed_at": "2026-10-06T06:44:35Z",
       "archived": false,
       "api_url": "https://api.github.com/repos/cathrynlavery/diagram-design"
     },
     "f-labs-io/agent-html-skills": {
-      "stars": 56,
-      "checked_at": "2026-09-19T10:00:58+00:00",
-      "pushed_at": "2026-09-02T14:14:48Z",
+      "stars": 57,
+      "checked_at": "2026-10-06T17:28:20+08:00",
+      "pushed_at": "2026-10-05T07:47:03Z",
       "archived": false,
       "api_url": "https://api.github.com/repos/f-labs-io/agent-html-skills"
     },
     "github/awesome-copilot": {
-      "stars": 39157,
-      "checked_at": "2026-09-19T10:00:58+00:00",
-      "pushed_at": "2026-09-18T20:53:10Z",
+      "stars": 39729,
+      "checked_at": "2026-10-06T17:28:20+08:00",
+      "pushed_at": "2026-10-04T23:45:13Z",
       "archived": false,
       "api_url": "https://api.github.com/repos/github/awesome-copilot"
     },
     "google/agents-cli": {
-      "stars": 5964,
-      "checked_at": "2026-09-19T10:00:58+00:00",
-      "pushed_at": "2026-09-16T12:36:19Z",
+      "stars": 6052,
+      "checked_at": "2026-10-06T17:28:20+08:00",
+      "pushed_at": "2026-09-30T11:25:01Z",
       "archived": false,
       "api_url": "https://api.github.com/repos/google/agents-cli"
     },
     "huggingface/skills": {
-      "stars": 11093,
-      "checked_at": "2026-09-25T00:30:00+08:00",
-      "pushed_at": "2026-09-24T12:02:14Z",
+      "stars": 11141,
+      "checked_at": "2026-10-06T17:28:20+08:00",
+      "pushed_at": "2026-10-01T12:33:22Z",
       "archived": false,
       "api_url": "https://api.github.com/repos/huggingface/skills"
     },
     "maxedapps/agent-skills": {
-      "stars": 58,
-      "checked_at": "2026-09-19T10:00:58+00:00",
-      "pushed_at": "2026-09-11T13:22:44Z",
+      "stars": 59,
+      "checked_at": "2026-10-06T17:28:20+08:00",
+      "pushed_at": "2026-09-26T07:22:42Z",
       "archived": false,
       "api_url": "https://api.github.com/repos/maxedapps/agent-skills"
     },
     "microsoft/playwright-cli": {
-      "stars": 13415,
-      "checked_at": "2026-09-19T10:00:58+00:00",
-      "pushed_at": "2026-09-18T23:34:47Z",
+      "stars": 13821,
+      "checked_at": "2026-10-06T17:28:20+08:00",
+      "pushed_at": "2026-09-28T23:23:12Z",
       "archived": false,
       "api_url": "https://api.github.com/repos/microsoft/playwright-cli"
     },
     "mlflow/skills": {
-      "stars": 78,
-      "checked_at": "2026-09-19T10:00:58+00:00",
-      "pushed_at": "2026-09-19T01:15:08Z",
+      "stars": 79,
+      "checked_at": "2026-10-06T17:28:20+08:00",
+      "pushed_at": "2026-10-06T01:48:03Z",
       "archived": false,
       "api_url": "https://api.github.com/repos/mlflow/skills"
     },
     "netresearch/agent-harness-skill": {
       "stars": 5,
-      "checked_at": "2026-09-19T10:00:58+00:00",
-      "pushed_at": "2026-09-19T08:30:47Z",
+      "checked_at": "2026-10-06T17:28:20+08:00",
+      "pushed_at": "2026-10-04T22:01:12Z",
       "archived": false,
       "api_url": "https://api.github.com/repos/netresearch/agent-harness-skill"
     },
     "obra/superpowers": {
-      "stars": 292022,
-      "checked_at": "2026-09-27T16:40:00+08:00",
-      "pushed_at": "2026-09-27T02:37:47Z",
+      "stars": 295792,
+      "checked_at": "2026-10-06T17:28:20+08:00",
+      "pushed_at": "2026-10-06T05:15:48Z",
       "archived": false,
       "api_url": "https://api.github.com/repos/obra/superpowers"
     },
     "okooo5km/beautiful-mermaid-cli": {
-      "stars": 27,
-      "checked_at": "2026-09-19T10:00:58+00:00",
+      "stars": 29,
+      "checked_at": "2026-10-06T17:28:20+08:00",
       "pushed_at": "2026-08-01T10:26:49Z",
       "archived": false,
       "api_url": "https://api.github.com/repos/okooo5km/beautiful-mermaid-cli"
     },
     "trailofbits/skills": {
-      "stars": 7159,
-      "checked_at": "2026-09-19T10:00:58+00:00",
-      "pushed_at": "2026-09-16T22:05:12Z",
+      "stars": 7388,
+      "checked_at": "2026-10-06T17:28:20+08:00",
+      "pushed_at": "2026-10-02T10:05:35Z",
       "archived": false,
       "api_url": "https://api.github.com/repos/trailofbits/skills"
     },
     "wjhuang88/onepage-skill": {
       "stars": 1,
-      "checked_at": "2026-09-19T10:00:58+00:00",
+      "checked_at": "2026-10-06T17:28:20+08:00",
       "pushed_at": "2026-06-05T07:52:59Z",
       "archived": false,
       "api_url": "https://api.github.com/repos/wjhuang88/onepage-skill"
