@@ -1,6 +1,6 @@
 # 学习网站与资料
 
-最近核验：2026-09-25。优先列官方规范、官方文档和高质量工程文章。
+最近核验：2026-10-09。优先列官方规范、官方文档和高质量工程文章。
 
 ## Skill、上下文与工具协议
 
@@ -35,13 +35,13 @@
 | Pi Skills | Skill 搜索路径、格式和使用方式 | [Pi 文档](https://pi.dev/docs/latest/skills) |
 | Pi Extensions | 扩展系统和可编程能力 | [Pi 文档](https://pi.dev/docs/latest/extensions) |
 | Pi Packages | 可安装包和生态 | [Pi Packages](https://pi.dev/packages) |
-| OpenCode Skills | Skill 格式、发现路径和调用 | [OpenCode 文档](https://opencode.ai/docs/skills) |
+| OpenCode Skills（V1 / V2） | Skill 格式、发现路径、显式调用和权限；跨版本使用时核对 frontmatter 行为 | [V1 文档](https://opencode.ai/docs/skills) · [V2 文档](https://opencode.ai/v2/docs/skills) |
 | OpenCode Agents | 主 Agent、子 Agent 和配置 | [OpenCode 文档](https://opencode.ai/docs/agents) |
 | OpenCode Plugins | 插件机制与扩展方式 | [OpenCode 文档](https://opencode.ai/docs/plugins) |
 | OpenCode Tools | 内置工具与权限 | [OpenCode 文档](https://dev.opencode.ai/docs/tools/) |
 | pi-open-agents | 在 Pi 中统一主 Agent、子 Agent、模型与权限，并兼容 OpenCode Agent 定义 | [GitHub](https://github.com/andrea-tomassi/pi-open-agents) |
 
-Pi 已支持 `disable-model-invocation: true`，可让高影响 Skill 只通过显式 `/skill:name` 调用；OpenCode 会忽略这个未知字段，因此跨平台项目仍需在说明中写清触发和权限边界。
+Pi 支持 `disable-model-invocation: true`，可让 Skill 仅由用户显式调用。OpenCode V1 文档称未知 frontmatter 字段会被忽略；[OpenCode V2 文档](https://opencode.ai/v2/docs/skills)则明确支持此字段，将它视为 `metadata.opencode/autoinvoke: false`，但两者同时存在时以后者为准。V2 中该设置只是不向模型展示 Skill，不能替代实际的 `skill` 权限和高影响操作审批；跨平台使用时应先确认 OpenCode 版本和权限配置。
 
 ## 评测、可观测性与安全
 

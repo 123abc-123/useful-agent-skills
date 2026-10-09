@@ -1,5 +1,10 @@
 # 更新记录
 
+## 2026-10-09
+
+- 更正 OpenCode 跨版本 Skill 调用说明：V1 文档会忽略 `disable-model-invocation`，V2 文档则支持该字段，并允许 `metadata.opencode/autoinvoke` 覆盖。高影响 Skill 仍需核对权限配置，不能把“不向模型展示”当成执行权限控制。
+- 跟进 `addyosmani/agent-skills` v0.6.12：`code-review-and-quality` 增加一个条件反转的变异测试以检查回归测试缺口。现有精选条目仍固定在此前已核验提交；待新版固定源码与实际影响复核后再调整推荐，不将上游发布当作本地实机通过。
+
 ## 2026-10-06
 
 - 更新“必装 Skill”榜单快照：skills.sh 当前 `find-skills` 约 370 万次总安装，`agent-browser` 约 100 万次总安装且近 24 小时约 1.1 万次；继续把安装量与质量结论分开。
