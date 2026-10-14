@@ -1,5 +1,12 @@
 # 更新记录
 
+## 2026-10-14
+
+- 将 addyosmani 的 `code-review-and-quality` 与 `test-driven-development` 更新到 [v0.6.13](https://github.com/addyosmani/agent-skills/releases/tag/0.6.13) 固定提交 `aeac41d4d005999432bb7312f7ff06383a91d59d`。两个具体 `SKILL.md` 均通过 GitHub Contents API 和固定网页核验，MIT 许可证已读取；Pi/OpenCode 仍为 `not-run`。
+- 代码审查新增条件反转实验后会临时修改文件、运行测试再恢复，删除“只读审查”描述，将风险调为中；TDD 同步补充粘贴代码触发、宿主工具及共享 references 的适配说明，并统一其目录风险标记为中。没有把上游触发评测结果写成本仓库实机证据。
+- 同步必装页：更新两个条目的使用边界，以及 skills.sh 的总安装量和近 24 小时快照；刷新 18 个来源仓库的 Star 及采集时间，编辑评分保持原有依据。补充 SkillSignal 快照日期和 Dashboard 样本变化，避免跨口径计算增长。
+- 将 [Superpowers v7.0.0](https://github.com/obra/superpowers/releases/tag/v7.0.0) 的 `brainstorming` 升级列入观察清单，跟踪新澄清流程、子 Agent 检查与可视化服务的适配；现有已固定版本继续供审查。
+
 ## 2026-10-09
 
 - 更正 OpenCode 跨版本 Skill 调用说明：V1 文档会忽略 `disable-model-invocation`，V2 文档则支持该字段，并允许 `metadata.opencode/autoinvoke` 覆盖。高影响 Skill 仍需核对权限配置，不能把“不向模型展示”当成执行权限控制。
