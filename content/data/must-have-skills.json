@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_verified": "2026-10-14",
+  "last_verified": "2026-10-18",
   "title": "必装 Skill",
   "subtitle": "从内容平台和公开榜单发现候选，再用源码、热度、维护、风险与 Pi/OpenCode 适配复核。",
   "sources": [
@@ -38,7 +38,7 @@
       "name": "SkillSignal Rankings",
       "type": "multi-signal-ranking",
       "url": "https://skill-signal.org/rankings",
-      "note": "总安装、近 7 天、增长与元数据质量分开；本次可读取页面仍标注 2026-09-26 快照，不能作为今天的实时排名。"
+      "note": "总榜仍标注 2026-09-26 快照；新增每周报告使用独立的 LinklyAI 数据，不能把两者的日期、数量或排名混用。"
     },
     {
       "name": "The Skill Leaderboard",
@@ -57,6 +57,12 @@
       "type": "ecosystem-dashboard",
       "url": "https://skills-dashboard.olshansky.info/",
       "note": "2026-10-13 快照覆盖 3,195 个 Skill、557 个发布者与约 1.865 亿次累计安装；样本范围与旧快照不同，不直接据此计算生态增长率。"
+    },
+    {
+      "name": "SkillSignal · 近 7 天趋势报告",
+      "type": "multi-signal-ranking",
+      "url": "https://skill-signal.org/reports/trending-agent-skills-this-week",
+      "note": "2026-10-17 报告基于 LinklyAI 的 100 条记录，分别列本周安装量、上周安装量、数量差和周环比；增长前十均来自 heygen-com/hyperframes，是仓库集中增长信号，不是十项独立质量推荐。"
     }
   ],
   "market_signals": [

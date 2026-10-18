@@ -1,5 +1,10 @@
 # 更新记录
 
+## 2026-10-18
+
+- 为“必装 Skill”和发现源目录新增 SkillSignal 每周趋势报告，回查其引用的 LinklyAI 2026-10-17 CSV，并保留数据来源与 CC BY 4.0 归属。
+- 明确总榜旧快照、独立近 7 天报告和 skills.sh 24 小时趋势的区别；标明本周增长前十集中于同一个仓库，以及同名 Skill 需核对来源。此次补充发现依据，不据热度提高编辑评分或实机验证状态。
+
 ## 2026-10-14
 
 - 将 addyosmani 的 `code-review-and-quality` 与 `test-driven-development` 更新到 [v0.6.13](https://github.com/addyosmani/agent-skills/releases/tag/0.6.13) 固定提交 `aeac41d4d005999432bb7312f7ff06383a91d59d`。两个具体 `SKILL.md` 均通过 GitHub Contents API 和固定网页核验，MIT 许可证已读取；Pi/OpenCode 仍为 `not-run`。

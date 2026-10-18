@@ -1,6 +1,6 @@
 # Skill 榜单与发现源
 
-最近核验：2026-10-14。
+最近核验：2026-10-18。
 
 抖音视频中提到的“本周 Codex Skill 安装榜”确实有对应的数据生态。最主要的原始来源是 `skills.sh`，其他网站通常是在其数据之上增加 Codex 筛选、近 7 天变化、质量评分或其他平台数据。
 
@@ -38,6 +38,10 @@
 | Pi Packages | 观察 Pi 原生扩展和包 | Package 不一定是标准 Skill | [Pi Packages](https://pi.dev/packages) |
 
 ## 如何正确读榜单
+
+2026-10-18 补充：[SkillSignal 每周趋势报告](https://skill-signal.org/reports/trending-agent-skills-this-week)已提供独立的近 7 天观察；本次报告为 2026-10-17 快照，使用 LinklyAI 的 100 条记录，与其总榜的旧快照并非同一数据集。
+
+已回查[日期化 CSV](https://raw.githubusercontent.com/LinklyAI/best-skills/main/data/2026-10-17/rankings/trending-7d.csv)：`weekly_recent`、`weekly_prev` 与 `growth_pct` 分别表示最近一周、前一周的安装观察值及周环比。按正增长排序的前十条均来自 `heygen-com/hyperframes`，应作为一个仓库的趋势信号，不直接变成十个“必装”推荐。同名 Skill 也需连同来源判断，例如 `magentosh/superpowers` 与 `obra/superpowers` 是不同来源。数据来源为 [LinklyAI/Best Skills（CC BY 4.0）](https://github.com/LinklyAI/best-skills)，统计规则见[方法说明](https://github.com/LinklyAI/best-skills/blob/main/docs/methodology.md)。
 
 2026-10-14 复查时，skills.sh 的 Trending 标签为 **24h**，不能写成近 7 天增量。SkillSignal 可读取的页面仍标注 **2026-09-26** 快照；Ecosystem Dashboard 则为 **2026-10-13** 快照（3,195 个 Skill、557 个发布者、约 1.865 亿次安装）。不同榜单的样本数量和统计时间不同，不用它们之间的差值计算增长率。抖音短链及小红书原帖仍未取得稳定可核验内容，继续保留二次来源标记。
 
