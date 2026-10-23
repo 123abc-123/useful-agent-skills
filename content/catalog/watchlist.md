@@ -4,7 +4,7 @@
 
 | 项目 | 为什么关注 | 当前限制 | 链接 |
 |---|---|---|---|
-| Superpowers v7.0.0 `brainstorming` 升级 | 重写需求澄清：明确的小任务可直接执行，用户可跳过提问；项目级设计增加 builder check，以发现实现前仍缺的信息 | 此项跟踪新版升级，现有 Tools 条目仍固定于 v6.4.2。新版保留强触发描述，项目级流程涉及子 Agent、设计文档提交和经用户同意后启动的可视化服务；需复核 Pi/OpenCode 的工具映射及后台服务边界，尚未实机验证 | [固定 Skill 源码](https://github.com/obra/superpowers/blob/bb92a77741419a4ab5f06e711a283343f1ada0c3/skills/brainstorming/SKILL.md) · [发布说明](https://github.com/obra/superpowers/releases/tag/v7.0.0) |
+| Superpowers v7.0.1 `brainstorming` 升级 | 2026-10-23 复核：先读项目上下文再提问，避免重复追问；明确区分用户主动要求讨论与自动触发，并强化方案选择和设计文档确认。明确小任务和用户退出提问仍有例外 | 此项跟踪新版升级，现有 Tools 条目仍固定于 v6.4.2。新版保留强触发描述，项目级流程涉及子 Agent、设计文档提交和经用户同意后启动的可视化服务；需复核 Pi/OpenCode 的工具映射及后台服务边界，尚未实机验证 | [固定 Skill 源码](https://github.com/obra/superpowers/blob/2ce8aa15d05bd57213e6f746f953aafb7ded7a8b/skills/brainstorming/SKILL.md) · [发布说明](https://github.com/obra/superpowers/releases/tag/v7.0.1) |
 | Agent Harness Skills | OpenCode 原生，按评估、契约、验证、trace、交付拆分得很清楚 | 项目较新，真实案例仍少 | [GitHub](https://github.com/yfge/agent-harness-skills) |
 | Better Harness | 自动审计仓库 Harness，社区关注增长较快 | 未明确支持 Pi/OpenCode，需要适配 | [GitHub](https://github.com/QoderAI/better-harness) |
 | Data Analysis & ML Agent Skills | 强调证据、防泄漏、结论验证和失败诊断 | 社区采用度低，需要验证内容深度 | [GitHub](https://github.com/aiopshwang/data-analysis-ml-agent-skills) |
