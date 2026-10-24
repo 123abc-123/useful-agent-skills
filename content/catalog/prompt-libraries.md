@@ -1,6 +1,6 @@
 # 开源 Prompt 库与工程工具
 
-最近核验：2026-09-18。开源 Prompt 项目大致分为四类：可复制模板、提示工程教程、可执行 Pattern、评测与版本管理。收录不代表可以把社区 Prompt 直接放进生产环境。
+最近核验：2026-10-24。开源 Prompt 项目大致分为四类：可复制模板、提示工程教程、可执行 Pattern、评测与版本管理。收录不代表可以把社区 Prompt 直接放进生产环境。
 
 | 项目 | 类型 | 适合用途 | 许可证 | 链接 |
 |---|---|---|---|---|
@@ -13,6 +13,14 @@
 | agent-skill-eval | Skill/Prompt 行为评测 Harness | 用真实 Agent CLI 对比启用与禁用 Skill 的 pass@k、成本、耗时和误触发 | MIT | [GitHub](https://github.com/tardigrde/agent-skill-eval) |
 | Microsoft Prompt Engine | Prompt 组合代码库 | few-shot、代码生成和多轮 Prompt 组装 | MIT | [GitHub](https://github.com/microsoft/prompt-engine) |
 | Anthropic Prompt Tutorial | 交互式练习 | 从基础结构到幻觉控制和复杂行业案例 | 查看仓库当前许可证 | [GitHub](https://github.com/anthropics/prompt-eng-interactive-tutorial) |
+
+## Promptfoo 0.125.0 升级提示（2026-10-24 核验）
+
+[0.125.0 发布说明](https://github.com/promptfoo/promptfoo/releases/tag/0.125.0)包含两项依赖兼容性变化：Claude Agent / Codex SDK 改为按需安装，`jks-js` 改为可选 peer dependency。使用对应 provider 或 JKS 证书的项目升级前，应核对其依赖与配置，先在隔离环境跑已有回归用例。
+
+新增 `--safe-mode` 可限制字符串形式的 JavaScript 断言与共享 transform；它不是沙箱，文件回调、配置模块、可执行 provider 及 Python/Ruby 断言等执行路径仍可能运行。不要据此直接执行不可信评测配置。边界见[上游实现说明](https://github.com/promptfoo/promptfoo/pull/11382)。重复测试稳定性报告与缓存命中标记有助于解释结果，但不替代业务验收标准。
+
+以上为发布说明和实现文档复核；本仓库未安装或运行新版 Promptfoo，未新增 Prompt 实机回归证据。
 
 ## 使用判断
 
